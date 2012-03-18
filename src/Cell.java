@@ -7,19 +7,14 @@ public class Cell {
 
 	private Cell root;
 	private String value; //1=wall
-	private Cell[] neighbours;
-	private String nwall,swall,wwall,ewall;
+	//private Cell[] neighbours;
+	private String[] walls = {"1","1","1","1"};
 	
 	/**
 	 * 
 	 */
 	public Cell() {
 		this.root = this;
-		nwall = "1";
-		swall = "1";
-		wwall = "1";
-		ewall = "1";
-		value = "1";
 	}
 		
 	/**
