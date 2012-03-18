@@ -9,10 +9,6 @@ public class Labyrinth {
 		this.cols = cols;
 		map = new Cell[rows][cols];
 		generateMap();
-		printMap();
-		System.out.println("-----");
-		getRandomCell().setValue("X");
-		printMap();
 	}
 	
 	private void generateMap() {
