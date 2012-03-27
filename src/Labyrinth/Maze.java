@@ -20,7 +20,7 @@ public class Maze {
 	private void generateMap() {
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < cols; col++) {
-				map[row][col] = new Cell();
+				map[row][col] = new Cell(row, col);
 				map[row][col].setValue(row + "" + col);
 			}
 		}

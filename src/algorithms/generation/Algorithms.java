@@ -46,11 +46,10 @@ abstract public class Algorithms implements IAlgorithms {
 		} else
 			new java.lang.Exception(
 					"I can not resolve this maze. I'm a Creating Algo");
-		;
 
 	}
 
-	 public Class<? extends Algorithms> getInstance(String name){
+	public Class<? extends Algorithms> getInstance(String name) {
 		return this.getClass();
 	}
 

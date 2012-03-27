@@ -1,8 +1,12 @@
+
 import java.util.Random;
+
+import Labyrinth.Cell;
 
 public class Labyrinth {
 	private int rows,cols;
 	private Cell[][] map;
+	private 
 	
 	public Labyrinth(int rows, int cols) {
 		this.rows = rows;
@@ -17,6 +21,18 @@ public class Labyrinth {
 				map[row][col]=new Cell();
 			}
 		}
+	}
+	
+	
+	/**
+	 * Creates the lab with the own algorithmus.
+	 * It's a test method
+	 */
+	public void initialisizeCells(){
+		
+		
+		
+		
 	}
 	
 	public void printMap() {

@@ -21,17 +21,12 @@ public class Test {
 		 */
 		possiblesAlgos = new Algorithms[] { new ownAlgo(true), new Kruskal(true), new ownAlgo(true)};
 
-		//mycreatingAlgo = new ownAlgo(true);
 
-		
-		
-		//System.out.println(mycreatingAlgo.getInstance(null));
-
-		 for (int i = 0; i < possiblesAlgos.length; i++) {
-		 System.out.println(possiblesAlgos[i].getInstance(null));
+//		 for (int i = 0; i < possiblesAlgos.length; i++) {
+//		 System.out.println(possiblesAlgos[i].getInstance(null));}
 
 	}
-	}
+
 	// lab.create_One_Solution();
 
 	// lab.printMap();
@@ -40,3 +35,4 @@ public class Test {
 	// lab.printMap();
 
 }
+
