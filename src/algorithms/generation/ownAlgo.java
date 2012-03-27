@@ -2,17 +2,16 @@ package algorithms.generation;
 
 import Labyrinth.Maze;
 
-public class Kruskal extends Algorithms{
+public class ownAlgo extends Algorithms {
 
-	
-	public Kruskal(boolean isCreating) {
+	public ownAlgo(boolean isCreating) {
 		super(isCreating);
 	}
 
 	@Override
 	public void setName(String algoName) {
-		// TODO Auto-generated method stub
-		
+		this.algoName = algoName;
+
 	}
 
 	@Override
@@ -24,16 +23,17 @@ public class Kruskal extends Algorithms{
 	@Override
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void calc(Maze maze) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 
 	
+	
+
 }
