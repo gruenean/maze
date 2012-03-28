@@ -7,18 +7,18 @@ import java.util.Random;
 public class Maze {
 	private int rows, cols;
 	private Cell[][] map;
-	private Map<String, Cell> positions;
+	private Map<int[], Cell> positions;
 	private Map<Cell, Cell> relations;
 
 	public Maze(int rows, int cols) {
 		this.rows = rows;
 		this.cols = cols;
 		map = new Cell[rows][cols];
-		positions = new HashMap<String, Cell>();
+		positions = new HashMap<int[], Cell>();
 		relations= new HashMap<Cell, Cell>();
 		
 		generateMap();
-		printMap();
+		//printMap();
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class Maze {
 				Cell newCell = new Cell();
 				map[row][col] = newCell;
 				relations.put(newCell, newCell);
-				positions.put(""+row+"."+col, newCell);
+				positions.put(new int[]{1,1}, newCell);
 			}
 		}
 	}
@@ -64,14 +64,21 @@ public class Maze {
 	 * @param cell	 
 	 * @return		position of the given cell
 	 */
-	private String getPositionOfCell(Cell cell) {
-		for (Map.Entry<String, Cell> entry: positions.entrySet()) {
+	//TODO: set method to private - currently used for testing 
+	public int[] getPositionOfCell(Cell cell) {
+		for (Map.Entry<int[], Cell> entry: positions.entrySet()) {
 			if (entry.getValue().equals(cell)) {
 				return entry.getKey();
 			}
 		}
-		return new String();
+		return new int[0];
 	}
+	
+//	public Cell getRandomNeighbour(Cell cell) {
+//		int[] position = getPositionOfCell(cell);
+//		ArrayList<int[]> neighbours= new ArrayList<int[]>();
+//		neighbours.add(arg0)
+//	}
 	
 //	public void create_One_Solution(){
 //		
