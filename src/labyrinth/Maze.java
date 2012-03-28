@@ -68,7 +68,6 @@ public class Maze {
 	 * @param cell	 
 	 * @return		position of the given cell
 	 */
-	//TODO: 'return new int[0]' ugly
 	private int[] getPositionOfCell(Cell cell) {
 		return positions.get(cell);
 	}
