@@ -38,9 +38,9 @@ public class Maze {
 	/**
 	 * Creates the lab with the own algorithmus. It's a test method
 	 */
-	public void initialisizeCells() {
-
-	}
+//	public void initialisizeCells() {
+//
+//	}
 
 	public void printMap() {
 		for (int i = 0; i < map.length; i++) {
