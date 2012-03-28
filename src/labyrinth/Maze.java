@@ -8,14 +8,14 @@ import java.util.Random;
 public class Maze {
 	private int rows, cols;
 	private Cell[][] map;
-	private Map<int[], Cell> positions;
+	private Map<Cell, int[]> positions;
 	private Map<Cell, Cell> relations;
 
 	public Maze(int rows, int cols) {
 		this.rows = rows;
 		this.cols = cols;
 		map = new Cell[rows][cols];
-		positions = new HashMap<int[], Cell>();
+		positions = new HashMap<Cell, int[]>();
 		relations= new HashMap<Cell, Cell>();
 		
 		generateMap();
@@ -34,7 +34,7 @@ public class Maze {
 				newCell.setValue(""+row+col);
 				map[row][col] = newCell;
 				relations.put(newCell, newCell);
-				positions.put(new int[]{row,col}, newCell);
+				positions.put(newCell, new int[]{row,col});
 			}
 		}
 	}
@@ -70,19 +70,14 @@ public class Maze {
 	 */
 	//TODO: 'return new int[0]' ugly
 	private int[] getPositionOfCell(Cell cell) {
-		for (Map.Entry<int[], Cell> entry: positions.entrySet()) {
-			if (entry.getValue().equals(cell)) {
-				return entry.getKey();
-			}
-		}
-		return new int[0];
+		return positions.get(cell);
 	}
 	
 	//TODO: 'return new Cell()' ugly
 	private Cell getCellOnPosition(int[] pos) {
-		for (Map.Entry<int[], Cell> entry: positions.entrySet()) {
-			if (entry.getKey()[0] == pos[0] && entry.getKey()[1] == pos[1]) {
-				return entry.getValue();
+		for (Map.Entry<Cell, int[]> entry: positions.entrySet()) {
+			if (entry.getValue()[0] == pos[0] && entry.getValue()[1] == pos[1]) {
+				return entry.getKey();
 			}
 		}
 		return new Cell();
