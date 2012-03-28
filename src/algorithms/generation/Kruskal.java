@@ -1,6 +1,6 @@
 package algorithms.generation;
 
-import Labyrinth.Maze;
+import labyrinth.Maze;
 
 public class Kruskal extends Algorithms{
 

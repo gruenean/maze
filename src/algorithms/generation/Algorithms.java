@@ -1,7 +1,7 @@
 package algorithms.generation;
 
-import Labyrinth.Cell;
-import Labyrinth.Maze;
+import labyrinth.Cell;
+import labyrinth.Maze;
 
 abstract public class Algorithms implements IAlgorithms {
 

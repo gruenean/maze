@@ -1,4 +1,4 @@
-import Labyrinth.Maze;
+import labyrinth.Maze;
 import algorithms.generation.Algorithms;
 import algorithms.generation.Kruskal;
 import algorithms.generation.ownAlgo;

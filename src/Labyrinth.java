@@ -1,7 +1,8 @@
 
 import java.util.Random;
 
-import Labyrinth.Cell;
+import labyrinth.Cell;
+
 
 public class Labyrinth {
 	private int rows,cols;
