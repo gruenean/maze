@@ -60,7 +60,18 @@ public class Maze {
 		return map[new Random().nextInt(map.length)][new Random().nextInt(map.length)];
 	}
 
-	
+	/**
+	 * @param cell	 
+	 * @return		position of the given cell
+	 */
+	private String getPositionOfCell(Cell cell) {
+		for (Map.Entry<String, Cell> entry: positions.entrySet()) {
+			if (entry.getValue().equals(cell)) {
+				return entry.getKey();
+			}
+		}
+		return new String();
+	}
 	
 //	public void create_One_Solution(){
 //		
