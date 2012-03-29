@@ -16,6 +16,11 @@ public class Test {
 		cols = 10;
 		Maze lab = new Maze(10, 10);
 
+		
+		
+		lab.printMap();
+		
+		
 		/**
 		 * creates all possibles Algorithms
 		 */

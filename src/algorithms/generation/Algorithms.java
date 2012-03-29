@@ -3,7 +3,9 @@ package algorithms.generation;
 import labyrinth.Cell;
 import labyrinth.Maze;
 
-abstract public class Algorithms implements IAlgorithms {
+
+
+abstract public class Algorithms {
 
 	protected int rows;
 	protected int cols;
@@ -33,6 +35,8 @@ abstract public class Algorithms implements IAlgorithms {
 	public void createMaze() {
 		if (isCreating) {
 
+			// TODO create the maze
+
 		} else
 			new java.lang.Exception(
 					"I can not create this maze. I'm a resolving algo");
@@ -43,12 +47,18 @@ abstract public class Algorithms implements IAlgorithms {
 	public void resolveMaze() {
 		if (!isCreating) {
 
+			// TODO resolve the maze
+
 		} else
 			new java.lang.Exception(
 					"I can not resolve this maze. I'm a Creating Algo");
 
 	}
 
+	/**
+	 * gives the specificied Class of the Algoritm. The extended Class is always
+	 * Algorithms
+	 */
 	public Class<? extends Algorithms> getInstance(String name) {
 		return this.getClass();
 	}

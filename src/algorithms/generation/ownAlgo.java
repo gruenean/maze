@@ -2,7 +2,7 @@ package algorithms.generation;
 
 import labyrinth.Maze;
 
-public class ownAlgo extends Algorithms {
+public class ownAlgo extends Algorithms implements IAlgorithmsCreating {
 
 	public ownAlgo(boolean isCreating) {
 		super(isCreating);
@@ -31,12 +31,5 @@ public class ownAlgo extends Algorithms {
 		// TODO Auto-generated method stub
 
 	}
-
-	
-	
-	
-
-	
-	
 
 }
