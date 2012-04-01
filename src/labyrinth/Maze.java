@@ -15,11 +15,10 @@ public class Maze {
 		this.rows = rows;
 		this.cols = cols;
 		map = new Cell[rows][cols];
-		positions = new HashMap<Cell, int[]>();
-		relations= new HashMap<Cell, Cell>();
+		positions = new HashMap<Cell, int[]>(); //cell, position
+		relations= new HashMap<Cell, Cell>(); //cell, root
 		
 		generateMap();
-		//printMap();
 	}
 
 	/**
@@ -42,10 +41,6 @@ public class Maze {
 	/**
 	 * Creates the lab with the own algorithmus. It's a test method
 	 */
-//	public void initialisizeCells() {
-//
-//	}
-
 	public void printMap() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
@@ -57,6 +52,17 @@ public class Maze {
 		}
 	}
 
+	public void printRoots() {
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map.length; j++) {
+				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
+				if (j == map.length - 1) {
+					System.out.println();
+				}
+			}
+		}
+	}
+	
 	/**
 	 * @return	returns a randomly selected cell
 	 */
@@ -95,12 +101,24 @@ public class Maze {
 		neighbourPositions.add(new int[]{currentPos[0]-1,currentPos[1]}); // neighbour top
 		neighbourPositions.add(new int[]{currentPos[0]+1,currentPos[1]}); // neighour bottom
 		
+		//TODO: Testing only
 		getCellOnPosition(neighbourPositions.get(0)).setValue("LL");
 		getCellOnPosition(neighbourPositions.get(1)).setValue("RR");
 		getCellOnPosition(neighbourPositions.get(2)).setValue("TT");
 		getCellOnPosition(neighbourPositions.get(3)).setValue("BB");
 		
 		return getCellOnPosition(neighbourPositions.get(new Random().nextInt(neighbourPositions.size())));
+	}
+	
+	//TODO: set to protected after testing
+	public void updateRoots(Cell cell1, Cell cell2) {
+		Cell obsoleteRoot = cell2.getRoot();
+		Cell root = cell1.getRoot();
+		
+		for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
+			if (entry.getValue().getRoot().equals(obsoleteRoot))
+				entry.getValue().setRoot(root);
+		}
 	}
 	
 //	public void create_One_Solution(){
