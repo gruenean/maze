@@ -153,7 +153,12 @@ public class Maze {
 		return getCellOnPosition(neighbourPositions.get(new Random().nextInt(neighbourPositions.size())));
 	}
 
-	// TODO: set to protected after testing
+	/**
+	 * This method takes care of cells belonging to the same root. 
+	 * 
+	 * @param cell1
+	 * @param cell2
+	 */
 	public void updateRoots(Cell cell1, Cell cell2) {
 		Cell obsoleteRoot = cell2.getRoot();
 		Cell root = cell1.getRoot();
@@ -167,11 +172,15 @@ public class Maze {
 	}
 		
 
+	/**
+	 * @return	true if still more than one root exists
+	 */
 	public boolean hasMultipleRoots() {
 		if(allRoots.size() > 1 )
 			return true;
 		return false;
 	}
+	
 	public int[] getRowsAndCols() {
 		int[] rowscols = { rows, cols };
 		return rowscols;
