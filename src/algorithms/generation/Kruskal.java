@@ -2,11 +2,11 @@ package algorithms.generation;
 
 import labyrinth.Maze;
 
-public class Kruskal extends Algorithms implements IAlgorithmsCreating{ 
+public class Kruskal extends CreatingAlgorithms implements ICreatingAlgorithms{ 
 
 	
-	public Kruskal(boolean isCreating) {
-		super(isCreating);
+	public Kruskal(Maze maze) {
+		super(maze);
 	}
 
 	@Override
@@ -28,10 +28,12 @@ public class Kruskal extends Algorithms implements IAlgorithmsCreating{
 	}
 
 	@Override
-	public void calc(Maze maze) {
+	public void createMaze() {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 	
 

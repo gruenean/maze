@@ -74,7 +74,8 @@ public class Maze {
 	 * @param cell	 
 	 * @return		position of the given cell
 	 */
-	private int[] getPositionOfCell(Cell cell) {
+	public int[] getPositionOfCell(Cell cell) {
+		//System.out.println(positions.get(cell));
 		return positions.get(cell);
 	}
 	

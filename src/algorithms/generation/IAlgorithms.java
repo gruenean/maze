@@ -1,6 +1,5 @@
 package algorithms.generation;
 
-import labyrinth.Maze;
 
 public interface IAlgorithms {
 
@@ -20,15 +19,8 @@ public interface IAlgorithms {
 	 * @param maze
 	 *            this is the maze which should be calced
 	 */
-	public void calc(Maze maze);
 	
-	
-	
-	public void createMaze();
-	
-	
-	public void resolveMaze();
-	
-	public Class<? extends Algorithms> getInstance(String name);
+
+	public Class<? extends CreatingAlgorithms> getInstance(String name);
 
 }

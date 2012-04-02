@@ -32,8 +32,9 @@ public class Cell {
 	/**
 	 * @param	wall to destroy
 	*/
-	protected void destroyWall(int wall) {
+	public void destroyWall(int wall) {
 		walls[wall]=0;
+		System.out.println("Die Wand " +wall + "wurde abgerissen");
 	}
 	
 	/**

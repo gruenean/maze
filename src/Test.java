@@ -1,31 +1,30 @@
 import labyrinth.Maze;
-import algorithms.generation.Algorithms;
-import algorithms.generation.Kruskal;
+import algorithms.generation.CreatingAlgorithms;
 import algorithms.generation.ownAlgo;
 
 public class Test {
 
-	private static Algorithms[] possiblesAlgos = null;
+	private static CreatingAlgorithms[] possiblesAlgos = null;
 	private static int rows;
 	private static int cols;
-	private static Maze mymaze;
+	private static Maze maze;
 	private static ownAlgo mycreatingAlgo;
 
 	public static void main(String[] args) {
 		rows = 10;
 		cols = 10;
-		Maze lab = new Maze(10, 10);
+		Maze maze = new Maze(10, 10);
 
 		
 		
-		lab.printMap();
-		
+		maze.printMap();
 		
 		/**
 		 * creates all possibles Algorithms
 		 */
-		possiblesAlgos = new Algorithms[] { new ownAlgo(true), new Kruskal(true), new ownAlgo(true)};
-
+		possiblesAlgos = new CreatingAlgorithms[] { new ownAlgo(maze)};
+possiblesAlgos[0].createMaze();
+		
 
 //		 for (int i = 0; i < possiblesAlgos.length; i++) {
 //		 System.out.println(possiblesAlgos[i].getInstance(null));}
