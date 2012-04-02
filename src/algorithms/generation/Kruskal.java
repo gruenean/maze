@@ -15,19 +15,19 @@ public class Kruskal extends CreatingAlgorithms implements ICreatingAlgorithms{
 		
 	}
 
-	@Override
+	
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+
 	public void createMaze() {
 		// TODO Auto-generated method stub
 		

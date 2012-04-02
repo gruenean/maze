@@ -11,23 +11,20 @@ public class Test {
 	private static ownAlgo mycreatingAlgo;
 
 	public static void main(String[] args) {
-		rows = 10;
-		cols = 10;
-		Maze maze = new Maze(10, 10);
+		rows = 5;
+		cols = 5;
+		Maze maze = new Maze(15, 15);
 
-		
-		
-		maze.printMap();
-		
+		//maze.printMap();
+
 		/**
 		 * creates all possibles Algorithms
 		 */
-		possiblesAlgos = new CreatingAlgorithms[] { new ownAlgo(maze)};
-possiblesAlgos[0].createMaze();
-		
+		possiblesAlgos = new CreatingAlgorithms[] { new ownAlgo(maze) };
+		possiblesAlgos[0].createMaze();
 
-//		 for (int i = 0; i < possiblesAlgos.length; i++) {
-//		 System.out.println(possiblesAlgos[i].getInstance(null));}
+		// for (int i = 0; i < possiblesAlgos.length; i++) {
+		// System.out.println(possiblesAlgos[i].getInstance(null));}
 
 	}
 
@@ -39,4 +36,3 @@ possiblesAlgos[0].createMaze();
 	// lab.printMap();
 
 }
-

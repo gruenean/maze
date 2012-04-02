@@ -14,105 +14,107 @@ public class ownAlgo extends CreatingAlgorithms implements ICreatingAlgorithms {
 		NeighbourCell = null;
 	}
 
-	
-
-
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub
 
 	}
 
-
 	public void createMaze() {
-		
-		for (int i= 1 ;i<10;i++)
-		{		
-		randomCell = _maze.getRandomCell();
-		NeighbourCell = _maze.getRandomNeighbour(randomCell);
 
-		checkRoots();
-		whichWallToBreakDown();
+		/**
+		 * do this loop rows * cols * 5 and then look if all cell has the same
+		 * root. If yes, there is a way in the maze.
+		 */
+		while (!_maze.existJustOneRoot()) {
+			// System.out.println(_maze.existJustOneRoot());
+
+			for (int i = 1; i < (_maze.getRowsAndCols()[0]
+					* _maze.getRowsAndCols()[1] ); i++) {
+				// System.out.println(i + "-te Schlaufe");
+				randomCell = _maze.getRandomCell();
+				NeighbourCell = _maze.getRandomNeighbour(randomCell);
+
+				if (checkRoots()) {
+					whichWallToBreakDown();
+				}
+				// else {
+				// int help = 1;
+				// System.out.println(i+ "-te Schlaufe: gleicher Root");
+				// }
+			}
 		}
+
 	}
 
-	
-	public void whichWallToBreakDown(){
-		
-	int [] randomPosition= _maze.getPositionOfCell(randomCell);
-	int [] randomNeigbourPosition = _maze.getPositionOfCell(NeighbourCell);
-		
-	//System.out.println(randomNeigbourPosition.length);
-	//System.out.println(randomNeigbourPosition[0] + ":" + randomNeigbourPosition[1]);
-	
-	/**
-	 * if the Neigbour is at left, break the left Wall
-	 */
-	if (randomPosition[1]-1== randomNeigbourPosition[1]) destroyWall(0, 1);
-	
-	/**
-	 * if the Neigbour is at right, break the right Wall
-	 */
-	if (randomPosition[1]+1== randomNeigbourPosition[1]) destroyWall(1, 0);
-	
-	
-	/**
-	 * if the Neigbour is at top, break the top Wall
-	 */
-	if (randomPosition[0]+1== randomNeigbourPosition[0]) destroyWall(2, 3);
-	
-	
-	
-	/**
-	 * if the Neigbour is at bottom, break the bottom Wall
-	 */
-	if (randomPosition[0]+1== randomNeigbourPosition[0]) destroyWall(3, 2);
-	
-	
-		
-	
-	
-		
+	public void whichWallToBreakDown() {
+
+		int[] randomPosition = _maze.getPositionOfCell(randomCell);
+		int[] randomNeigbourPosition = _maze.getPositionOfCell(NeighbourCell);
+
+		// System.out.println(randomCell.getValue());
+
+		/**
+		 * if the Neigbour is at left, break the left Wall
+		 */
+		if (randomPosition[0] == randomNeigbourPosition[0]
+				&& randomPosition[1] - 1 == randomNeigbourPosition[1])
+			destroyWall(0, 1);
+
+		/**
+		 * if the Neigbour is at right, break the right Wall
+		 */
+		else if (randomPosition[0] == randomNeigbourPosition[0]
+				&& randomPosition[1] + 1 == randomNeigbourPosition[1])
+			destroyWall(1, 0);
+
+		/**
+		 * if the Neigbour is at top, break the top Wall
+		 */
+		else if (randomPosition[0] - 1 == randomNeigbourPosition[0]
+				&& randomPosition[1] == randomNeigbourPosition[1])
+			destroyWall(2, 3);
+
+		/**
+		 * if the Neigbour is at bottom, break the bottom Wall
+		 */
+		else if (randomPosition[0] + 1 == randomNeigbourPosition[0]
+				&& randomPosition[1] == randomNeigbourPosition[1])
+			destroyWall(3, 2);
+
+		/**
+		 * just to see if it is always a neighbour ;-)
+		 */
+		else
+			System.out.println("not a neighbour !!!!");
+
 	}
-	
-	
-	public void destroyWall(int whichWall, int whichWall2){
-	randomCell.destroyWall(whichWall);
-	NeighbourCell.destroyWall(whichWall2);
-	
-	randomCell.setRoot(NeighbourCell.getRoot());
-	
-	//System.out.println(randomCell.getRoot());
-	//System.out.println(NeighbourCell.getRoot());
-	
+
+	public void destroyWall(int whichWall, int whichWall2) {
+		randomCell.destroyWall(whichWall);
+		NeighbourCell.destroyWall(whichWall2);
+
+	//	randomCell.setRoot(NeighbourCell.getRoot());
+		_maze.updateRoots(randomCell, NeighbourCell);
+
+		// System.out.println(randomCell.getRoot());
+		// System.out.println(NeighbourCell.getRoot());
+
 	}
-	
-	
-	public void checkRoots() {
+
+	public boolean checkRoots() {
 		/**
 		 * just do anything, if the roots of this two cells are not the same
 		 */
 		if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
-
-			
-			
-			
-			
-			
-			
+			return true;
 		}
 
-		/**
-		 * if the root is the same, then ask the maze for a new randomCell
-		 */
-		else {
-
-		}
+		return false;
 
 	}
 
