@@ -1,9 +1,8 @@
 package labyrinth;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -12,6 +11,7 @@ public class Maze {
 	private Cell[][] map;
 	private Map<Cell, int[]> positions;
 	private Map<Cell, Cell> relations;
+	private List<Cell> allCells;
 
 	public Maze(int rows, int cols) {
 		this.rows = rows;
@@ -19,6 +19,7 @@ public class Maze {
 		map = new Cell[rows][cols];
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		relations = new HashMap<Cell, Cell>(); // cell, root
+		allCells = new ArrayList<Cell>();
 
 		generateMap();
 	}
@@ -36,6 +37,7 @@ public class Maze {
 				map[row][col] = newCell;
 				relations.put(newCell, newCell);
 				positions.put(newCell, new int[] { row, col });
+				allCells.add(newCell);
 			}
 		}
 	}
@@ -57,7 +59,8 @@ public class Maze {
 	public void printRoots() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
+				System.out.print("[" + map[i][j].getRoot() + "]");
+//				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
 				if (j == map.length - 1) {
 					System.out.println();
 				}
@@ -90,8 +93,7 @@ public class Maze {
 	 * @return returns a randomly selected cell
 	 */
 	public Cell getRandomCell() {
-		return map[new Random().nextInt(map.length)][new Random()
-				.nextInt(map.length)];
+		return map[new Random().nextInt(map.length)][new Random().nextInt(map.length)];
 	}
 
 	/**
@@ -99,7 +101,6 @@ public class Maze {
 	 * @return position of the given cell
 	 */
 	public int[] getPositionOfCell(Cell cell) {
-		// System.out.println(positions.get(cell));
 		return positions.get(cell);
 	}
 
@@ -154,41 +155,26 @@ public class Maze {
 		// Random().nextInt(neighbourPositions.size()))));
 		// System.out.println(neighbourPositions.size());
 
-		return getCellOnPosition(neighbourPositions.get(new Random()
-				.nextInt(neighbourPositions.size())));
+		return getCellOnPosition(neighbourPositions.get(new Random().nextInt(neighbourPositions.size())));
 	}
 
 	// TODO: set to protected after testing
 	public void updateRoots(Cell cell1, Cell cell2) {
 		Cell obsoleteRoot = cell2.getRoot();
 		Cell root = cell1.getRoot();
-		// just for testing
 
-		for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
-			if (entry.getValue().getRoot().equals(obsoleteRoot)) {
-				Cell oldRoot = relations.get(cell2);
-				// set the new root directely on the founded Cell
-				entry.getValue().setRoot(root);
-				// add updated Entry with root in relations
-				relations.put(entry.getValue(), root);
-				//setze neuen Root direkt auf Zelle
-				Cell actuelCell = entry.getValue();
-				System.out.println(entry.getValue() + "         "
-						+ entry.getKey());
-				Cell tmpCell = entry.getValue();
-
-				System.out.println("richtiger Root:             " + root + "\n"
-						+ "alter Root (obsoleteRoot):  " + obsoleteRoot + "\n"
-						+ "Root alt (Hasmap):          " + oldRoot);
-				System.out.println("Root neu (Hashmap):         "
-						+ relations.get(actuelCell)
-						+ "\nRoot neu (direkt) :         " + actuelCell.getRoot()
-						+ "\n ------------------------------");
+		for (Cell entry : allCells) {
+			if (entry.getRoot().equals(obsoleteRoot)) {
+				entry.setRoot(root);
 			}
 		}
-
 	}
+		
 
+	public void getRootCount() {
+		System.out.println(relations.values());
+		
+	}
 	public int[] getRowsAndCols() {
 		int[] rowscols = { rows, cols };
 		return rowscols;
