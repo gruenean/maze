@@ -66,21 +66,24 @@ public class Maze {
 	}
 
 	public boolean existJustOneRoot() {
-	
-			int[] startPosition = {0,0};
-			int equals = 0;
-		Cell startRoot = getCellOnPosition(startPosition);
-	//	for (int i = 0; i < relations.size(); i++) {
-//System.out.println(startRoot);
 
-for (Map.Entry<Cell, Cell> entry : relations.entrySet())
-{
-   if (startRoot.equals(entry.getValue())) equals=equals+1;
-  // System.out.println(entry.getValue() + "            " + entry.getKey());
-}
-System.out.println(equals);
-if (equals==1) return false;
-else return true;
+		int[] startPosition = { 0, 0 };
+		int equals = 0;
+		Cell startRoot = getCellOnPosition(startPosition);
+		// for (int i = 0; i < relations.size(); i++) {
+		// System.out.println(startRoot);
+
+		for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
+			if (startRoot.equals(entry.getValue()))
+				equals = equals + 1;
+			// System.out.println(entry.getValue() + "            " +
+			// entry.getKey());
+		}
+		// System.out.println(equals);
+		if (equals == 1)
+			return false;
+		else
+			return true;
 	}
 
 	/**
@@ -159,21 +162,49 @@ else return true;
 	public void updateRoots(Cell cell1, Cell cell2) {
 		Cell obsoleteRoot = cell2.getRoot();
 		Cell root = cell1.getRoot();
+		// just for testing
 
-		
 		for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
-			if (entry.getValue().getRoot().equals(obsoleteRoot)){
-			//System.out.println(entry.getKey());
+			if (entry.getValue().getRoot().equals(obsoleteRoot)) {
+				Cell oldRoot = relations.get(cell2);
+				// set the new root directely on the founded Cell
 				entry.getValue().setRoot(root);
-			entry.setValue(root);
-			System.out.println("zu updatende Zelle: " + entry.getValue() + "       " + "neuer Root: " +entry.getValue().getRoot() + "   Root gesetzt: " + root);
-			//System.out.println("root cell: " + root.getRoot() + "      Hash root: " + "");
-		}}
+				// add updated Entry with root in relations
+				relations.put(entry.getValue(), root);
+				//setze neuen Root direkt auf Zelle
+				Cell actuelCell = entry.getValue();
+				System.out.println(entry.getValue() + "         "
+						+ entry.getKey());
+				Cell tmpCell = entry.getValue();
+
+				System.out.println("richtiger Root:             " + root + "\n"
+						+ "alter Root (obsoleteRoot):  " + obsoleteRoot + "\n"
+						+ "Root alt (Hasmap):          " + oldRoot);
+				System.out.println("Root neu (Hashmap):         "
+						+ relations.get(actuelCell)
+						+ "\nRoot neu (direkt) :         " + actuelCell.getRoot()
+						+ "\n ------------------------------");
+			}
+		}
+
 	}
 
 	public int[] getRowsAndCols() {
 		int[] rowscols = { rows, cols };
 		return rowscols;
+
+	}
+
+	/**
+	 * This is just for Testing
+	 */
+	public void sysoutAllCellAndRoots() {
+
+		 for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
+		
+		 System.out.println("Zelle:      " + entry.getValue()
+		 + "                         Root zu der Zelle:  " + entry.getKey());
+		 }
 
 	}
 
