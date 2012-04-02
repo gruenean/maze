@@ -128,21 +128,13 @@ public class Maze {
 		 */
 		ArrayList<int[]> neighbourPositions = new ArrayList<int[]>();
 		if ((currentPos[1] - 1 >= 0))
-			neighbourPositions
-					.add(new int[] { currentPos[0], currentPos[1] - 1 }); // neighour
-																			// left
+			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] - 1 }); // neighour left
 		if ((currentPos[1] + 1 < cols))
-			neighbourPositions
-					.add(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour
-																			// right
+			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour right
 		if ((currentPos[0] - 1 >= 0))
-			neighbourPositions
-					.add(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour
-																			// top
+			neighbourPositions.add(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour top
 		if ((currentPos[0] + 1 < rows))
-			neighbourPositions
-					.add(new int[] { currentPos[0] + 1, currentPos[1] }); // neighour
-																			// bottom
+			neighbourPositions.add(new int[] { currentPos[0] + 1, currentPos[1] }); // neighour bottom
 
 		// TODO: Testing only
 		// getCellOnPosition(neighbourPositions.get(0)).setValue("LL");
