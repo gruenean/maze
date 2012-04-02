@@ -2,7 +2,7 @@ package algorithms.generation;
 
 import labyrinth.Maze;
 
-public class Kruskal extends CreatingAlgorithms implements ICreatingAlgorithms{ 
+public class Kruskal extends CreatingAlgorithms{ 
 
 	
 	public Kruskal(Maze maze) {

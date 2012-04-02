@@ -1,7 +1,7 @@
 package algorithms.generation;
 
 
-public interface ICreatingAlgorithms {
+public interface ICreatingAlgorithms extends IAlgorithms{
 
 	
 	public void createMaze();

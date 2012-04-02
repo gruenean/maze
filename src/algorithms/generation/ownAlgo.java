@@ -3,7 +3,7 @@ package algorithms.generation;
 import labyrinth.Cell;
 import labyrinth.Maze;
 
-public class ownAlgo extends CreatingAlgorithms implements ICreatingAlgorithms {
+public class ownAlgo extends CreatingAlgorithms {
 
 	Cell randomCell;
 	Cell NeighbourCell;
