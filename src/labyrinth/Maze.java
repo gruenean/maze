@@ -12,6 +12,7 @@ public class Maze {
 	private Map<Cell, int[]> positions;
 	private Map<Cell, Cell> relations;
 	private List<Cell> allCells;
+	private List<Cell> allRoots;
 
 	public Maze(int rows, int cols) {
 		this.rows = rows;
@@ -20,6 +21,7 @@ public class Maze {
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		relations = new HashMap<Cell, Cell>(); // cell, root
 		allCells = new ArrayList<Cell>();
+		allRoots = new ArrayList<Cell>();
 
 		generateMap();
 	}
@@ -35,9 +37,10 @@ public class Maze {
 				// TODO Testing only - remove
 				newCell.setValue("" + row + col);
 				map[row][col] = newCell;
-				relations.put(newCell, newCell);
+				//relations.put(newCell, newCell);
 				positions.put(newCell, new int[] { row, col });
 				allCells.add(newCell);
+				allRoots.add(newCell);
 			}
 		}
 	}
@@ -128,13 +131,13 @@ public class Maze {
 		 */
 		ArrayList<int[]> neighbourPositions = new ArrayList<int[]>();
 		if ((currentPos[1] - 1 >= 0))
-			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] - 1 }); // neighour left
+			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] - 1 }); // neighbour left
 		if ((currentPos[1] + 1 < cols))
 			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour right
 		if ((currentPos[0] - 1 >= 0))
 			neighbourPositions.add(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour top
 		if ((currentPos[0] + 1 < rows))
-			neighbourPositions.add(new int[] { currentPos[0] + 1, currentPos[1] }); // neighour bottom
+			neighbourPositions.add(new int[] { currentPos[0] + 1, currentPos[1] }); // neighbour bottom
 
 		// TODO: Testing only
 		// getCellOnPosition(neighbourPositions.get(0)).setValue("LL");
@@ -158,14 +161,16 @@ public class Maze {
 		for (Cell entry : allCells) {
 			if (entry.getRoot().equals(obsoleteRoot)) {
 				entry.setRoot(root);
+				allRoots.remove(obsoleteRoot);
 			}
 		}
 	}
 		
 
-	public void getRootCount() {
-		System.out.println(relations.values());
-		
+	public boolean hasMultipleRoots() {
+		if(allRoots.size() > 1 )
+			return true;
+		return false;
 	}
 	public int[] getRowsAndCols() {
 		int[] rowscols = { rows, cols };
