@@ -62,8 +62,8 @@ public class Maze {
 	public void printRoots() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-				System.out.print("[" + map[i][j].getRoot() + "]");
-//				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
+//				System.out.print("[" + map[i][j].getRoot() + "]");
+				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
 				if (j == map.length - 1) {
 					System.out.println();
 				}
