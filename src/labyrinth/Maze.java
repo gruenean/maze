@@ -68,27 +68,6 @@ public class Maze {
 		}
 	}
 
-//	public boolean existJustOneRoot() {
-//
-//		int[] startPosition = { 0, 0 };
-//		int equals = 0;
-//		Cell startRoot = getCellOnPosition(startPosition);
-//		// for (int i = 0; i < relations.size(); i++) {
-//		// System.out.println(startRoot);
-//
-//		for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
-//			if (startRoot.equals(entry.getValue()))
-//				equals = equals + 1;
-//			// System.out.println(entry.getValue() + "            " +
-//			// entry.getKey());
-//		}
-//		// System.out.println(equals);
-//		if (equals == 1)
-//			return false;
-//		else
-//			return true;
-//	}
-
 	/**
 	 * @return returns a randomly selected cell
 	 */
@@ -190,13 +169,5 @@ public class Maze {
 	public void sysoutAllCellAndRoots() {
 		printMap();
 		printRoots();
-//		 for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
-//		 System.out.println("Zelle:      " + entry.getValue()
-//		 + "                         Root zu der Zelle:  " + entry.getKey());
-//		 }
 	}
-
-	// public void create_One_Solution(){
-	//
-	// }
 }
