@@ -10,7 +10,6 @@ public class Maze {
 	private int rows, cols;
 	private Cell[][] map;
 	private Map<Cell, int[]> positions;
-	private Map<Cell, Cell> relations;
 	private List<Cell> allCells;
 	private List<Cell> allRoots;
 
@@ -19,7 +18,6 @@ public class Maze {
 		this.cols = cols;
 		map = new Cell[rows][cols];
 		positions = new HashMap<Cell, int[]>(); // cell, position
-		relations = new HashMap<Cell, Cell>(); // cell, root
 		allCells = new ArrayList<Cell>();
 		allRoots = new ArrayList<Cell>();
 
@@ -37,7 +35,6 @@ public class Maze {
 				// TODO Testing only - remove
 				newCell.setValue("" + row + col);
 				map[row][col] = newCell;
-				//relations.put(newCell, newCell);
 				positions.put(newCell, new int[] { row, col });
 				allCells.add(newCell);
 				allRoots.add(newCell);
@@ -71,26 +68,26 @@ public class Maze {
 		}
 	}
 
-	public boolean existJustOneRoot() {
-
-		int[] startPosition = { 0, 0 };
-		int equals = 0;
-		Cell startRoot = getCellOnPosition(startPosition);
-		// for (int i = 0; i < relations.size(); i++) {
-		// System.out.println(startRoot);
-
-		for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
-			if (startRoot.equals(entry.getValue()))
-				equals = equals + 1;
-			// System.out.println(entry.getValue() + "            " +
-			// entry.getKey());
-		}
-		// System.out.println(equals);
-		if (equals == 1)
-			return false;
-		else
-			return true;
-	}
+//	public boolean existJustOneRoot() {
+//
+//		int[] startPosition = { 0, 0 };
+//		int equals = 0;
+//		Cell startRoot = getCellOnPosition(startPosition);
+//		// for (int i = 0; i < relations.size(); i++) {
+//		// System.out.println(startRoot);
+//
+//		for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
+//			if (startRoot.equals(entry.getValue()))
+//				equals = equals + 1;
+//			// System.out.println(entry.getValue() + "            " +
+//			// entry.getKey());
+//		}
+//		// System.out.println(equals);
+//		if (equals == 1)
+//			return false;
+//		else
+//			return true;
+//	}
 
 	/**
 	 * @return returns a randomly selected cell
@@ -191,13 +188,12 @@ public class Maze {
 	 * This is just for Testing
 	 */
 	public void sysoutAllCellAndRoots() {
-
-		 for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
-		
-		 System.out.println("Zelle:      " + entry.getValue()
-		 + "                         Root zu der Zelle:  " + entry.getKey());
-		 }
-
+		printMap();
+		printRoots();
+//		 for (Map.Entry<Cell, Cell> entry : relations.entrySet()) {
+//		 System.out.println("Zelle:      " + entry.getValue()
+//		 + "                         Root zu der Zelle:  " + entry.getKey());
+//		 }
 	}
 
 	// public void create_One_Solution(){
