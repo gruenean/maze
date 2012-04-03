@@ -31,10 +31,11 @@ public class ownAlgo extends CreatingAlgorithms {
 		 * root. If yes, there is a way in the maze.
 		 */
 		while (!_maze.existJustOneRoot()) {
-			 System.out.println("Exist just one Root?! = " + _maze.existJustOneRoot());
+			System.out.println("Exist just one Root?! = "
+					+ _maze.existJustOneRoot());
 
-			for (int i = 1; i < (_maze.getRowsAndCols()[0]
-					* _maze.getRowsAndCols()[1] ); i++) {
+			for (int i = 1; i < (_maze.getRowsAndCols()[0] * _maze
+					.getRowsAndCols()[1]); i++) {
 				// System.out.println(i + "-te Schlaufe");
 				randomCell = _maze.getRandomCell();
 				NeighbourCell = _maze.getRandomNeighbour(randomCell);
@@ -45,14 +46,12 @@ public class ownAlgo extends CreatingAlgorithms {
 				// else {
 				// int help = 1;
 				// System.out.println(i+ "-te Schlaufe: gleicher Root");
-				 }
 			}
-	_maze.sysoutAllCellAndRoots();
+		}
+		_maze.sysoutAllCellAndRoots();
 	}
-	
-	
 
-	//}
+	// }
 
 	public void whichWallToBreakDown() {
 
@@ -102,7 +101,6 @@ public class ownAlgo extends CreatingAlgorithms {
 		NeighbourCell.destroyWall(whichWall2);
 
 		_maze.updateRoots(randomCell, NeighbourCell);
-
 
 	}
 
