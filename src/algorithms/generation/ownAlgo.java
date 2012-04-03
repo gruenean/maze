@@ -33,19 +33,16 @@ public class ownAlgo extends CreatingAlgorithms {
 		 * do this loop rows * cols * 5 and then look if all cell has the same
 		 * root. If yes, there is a way in the maze.
 		 */
-		Date dNow = new Date( );
-	       SimpleDateFormat ft = 
-	       new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-
-	       System.out.println("Current Date: " + ft.format(dNow));
-	       
-	       
+		// long BeginTime = System.currentTimeMillis();
+		// System.out.println(BeginTime);
+		int HelpInt = 4;
+		// int anzahlDurchgänge = 0;
 		while (_maze.hasMultipleRoots()) {
-			System.out.println("Exist just one Root?! = "
-					+ _maze.existJustOneRoot());
+			// System.out.println("Exist just one Root?! = " +
+			// _maze.existJustOneRoot());
 
-			for (int i = 1; i < (_maze.getRowsAndCols()[0] * _maze
-					.getRowsAndCols()[1]); i++) {
+			for (int i = 1; i < (_maze.getRowsAndCols()[0]
+					* _maze.getRowsAndCols()[1] * 10 ^ HelpInt); i++) {
 				// System.out.println(i + "-te Schlaufe");
 				randomCell = _maze.getRandomCell();
 				NeighbourCell = _maze.getRandomNeighbour(randomCell);
@@ -57,10 +54,18 @@ public class ownAlgo extends CreatingAlgorithms {
 				// int help = 1;
 				// System.out.println(i+ "-te Schlaufe: gleicher Root");
 			}
+			if (HelpInt > 0)
+				HelpInt = HelpInt - 1;
+//			anzahlDurchgänge = anzahlDurchgänge + 1;
 		}
+		long EndTime = System.currentTimeMillis();
+//		System.out.println(EndTime);
+//		System.out.println(EndTime - BeginTime);
+//		System.out.println("Anzahl Duchgänge: " + anzahlDurchgänge);
 		_maze.printMap();
 		System.out.println("");
 		_maze.printRoots();
+
 	}
 
 	// }
