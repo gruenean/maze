@@ -1,5 +1,8 @@
 package algorithms.generation;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import labyrinth.Cell;
 import labyrinth.Maze;
 
@@ -30,7 +33,14 @@ public class ownAlgo extends CreatingAlgorithms {
 		 * do this loop rows * cols * 5 and then look if all cell has the same
 		 * root. If yes, there is a way in the maze.
 		 */
-		while (!_maze.existJustOneRoot()) {
+		Date dNow = new Date( );
+	       SimpleDateFormat ft = 
+	       new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+
+	       System.out.println("Current Date: " + ft.format(dNow));
+	       
+	       
+		while (_maze.hasMultipleRoots()) {
 			System.out.println("Exist just one Root?! = "
 					+ _maze.existJustOneRoot());
 
@@ -48,7 +58,9 @@ public class ownAlgo extends CreatingAlgorithms {
 				// System.out.println(i+ "-te Schlaufe: gleicher Root");
 			}
 		}
-		_maze.sysoutAllCellAndRoots();
+		_maze.printMap();
+		System.out.println("");
+		_maze.printRoots();
 	}
 
 	// }
