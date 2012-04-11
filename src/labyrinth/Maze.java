@@ -24,6 +24,14 @@ public class Maze {
 		generateMap();
 	}
 
+	
+	public Cell getCellOnPosition(int rows, int cols){
+		return map[rows][cols];
+		
+	}
+	
+	
+	
 	/**
 	 * creates the Map of the Labyrinth with a Cell[][] -Array.
 	 */
@@ -170,4 +178,11 @@ public class Maze {
 		printMap();
 		printRoots();
 	}
+	
+	
+	
+	
+	
+	
+	
 }

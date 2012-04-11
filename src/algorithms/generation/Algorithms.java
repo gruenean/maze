@@ -1,66 +1,61 @@
 package algorithms.generation;
 
-import labyrinth.Cell;
 import labyrinth.Maze;
 
+abstract public class Algorithms implements IAlgorithms {
 
+	// protected int rows;
+	// protected int cols;
+	// protected Cell[][] map;
+	// protected String algoName;
+	protected String _algoName;
+	protected Maze _maze;
 
-abstract public class Algorithms {
+	// /**
+	// * if boolean isCreating = true, then the Algo is a Algo to create a maze
+	// if
+	// * boolean isCreating = false, then the Algo is a Algo to resolve the maze
+	// * (to find a way)
+	// */
+	// protected boolean isCreating;
 
-	protected int rows;
-	protected int cols;
-	protected Cell[][] map;
-	protected String algoName;
-	protected Maze mymaze;
 	/**
-	 * if boolean isCreating = true, then the Algo is a Algo to create a maze if
-	 * boolean isCreating = false, then the Algo is a Algo to resolve the maze
-	 * (to find a way)
+	 * default constructor (is needed for Solving Algos. The solving Algos
+	 * mustn't know the maze!
 	 */
-	protected boolean isCreating;
+	public Algorithms() {
+	}
 
 	/**
 	 * Constructor for all Algorithms
 	 */
-	public Algorithms(boolean isCreating) {
-		mymaze = null;
-		rows = 0;
-		cols = 0;
-		map = null;
-		algoName = "";
-		this.isCreating = isCreating;
+	public Algorithms(Maze maze) {
+
+		_maze = maze;
+		// rows = 0;
+		// cols = 0;
+		// map = null;
+		// algoName = "";
 
 	}
 
-	public void createMaze() {
-		if (isCreating) {
-
-			// TODO create the maze
-
-		} else
-			new java.lang.Exception(
-					"I can not create this maze. I'm a resolving algo");
-		;
+	public void setName(String name) {
+		_algoName = name;
 
 	}
 
-	public void resolveMaze() {
-		if (!isCreating) {
-
-			// TODO resolve the maze
-
-		} else
-			new java.lang.Exception(
-					"I can not resolve this maze. I'm a Creating Algo");
+	public String getName() {
+		return _algoName;
 
 	}
 
-	/**
-	 * gives the specificied Class of the Algoritm. The extended Class is always
-	 * Algorithms
-	 */
-	public Class<? extends Algorithms> getInstance(String name) {
-		return this.getClass();
-	}
+	// /**
+	// * gives the specificied Class of the Algoritm. The extended Class is
+	// always
+	// * Algorithms
+	// */
+	// public Class<? extends Algorithms> getInstance(String name) {
+	// return this.getClass();
+	// }
 
 }
