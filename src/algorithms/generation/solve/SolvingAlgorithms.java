@@ -9,6 +9,7 @@ abstract public class SolvingAlgorithms extends Algorithms implements
 
 	protected Cell _startCell;
 	protected Cell _endCell;
+	protected Cell _currentCell;
 
 	// protected String _algoName;
 	// protected Maze _maze;
@@ -16,8 +17,8 @@ abstract public class SolvingAlgorithms extends Algorithms implements
 	/**
 	 * Constructor for all Solving Algorithms
 	 */
-	public SolvingAlgorithms(Cell startCell, Cell endCell) {
-		super();
+	public SolvingAlgorithms(Maze maze, Cell startCell, Cell endCell) {
+		super(maze);
 		_startCell = startCell;
 		_endCell = endCell;
 

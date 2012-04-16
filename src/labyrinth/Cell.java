@@ -9,6 +9,7 @@ public class Cell {
 	private Cell root;
 	private String value; // 1=wall / 0 = no wall
 	private int[] walls = { 1, 1, 1, 1 }; // left,right,top,bottom
+	private boolean[] bool_walls = { true, true, true, true };
 
 	public Cell() {
 		this.root = this;
@@ -36,7 +37,23 @@ public class Cell {
 	 */
 	public void destroyWall(int wall) {
 		walls[wall] = 0;
+		bool_walls[wall] = false;
+		
 		// System.out.println("Die Wand " +wall + " wurde abgerissen");
+	}
+
+	public boolean isWallHere(int wall) {
+		// if (wall<0 || wall >3) throw
+		// Exception("wall must be between 0 and 3.");
+		try {
+			if (walls[wall] == 1)
+				return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 	/**

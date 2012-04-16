@@ -1,0 +1,10 @@
+16.04.2012 12:53:47 algorithms.generation.solve.OwnSolvingAlgoCalcing whichWalls
+SCHWERWIEGEND: notThisWall = 5
+16.04.2012 12:53:47 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Berechnen wurde aufgerufen. 
+Anzahl Steps = 1
+Bin jetzt bei Zelle an Position: [11]
+16.04.2012 12:53:47 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Berechnen wurde aufgerufen. 
+Anzahl Steps = 2
+Bin jetzt bei Zelle an Position: [11]

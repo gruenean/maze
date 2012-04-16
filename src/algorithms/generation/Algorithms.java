@@ -1,5 +1,6 @@
 package algorithms.generation;
 
+
 import labyrinth.Maze;
 
 abstract public class Algorithms implements IAlgorithms {
@@ -10,6 +11,7 @@ abstract public class Algorithms implements IAlgorithms {
 	// protected String algoName;
 	protected String _algoName;
 	protected Maze _maze;
+	protected Conf _configs;
 
 	// /**
 	// * if boolean isCreating = true, then the Algo is a Algo to create a maze
@@ -32,6 +34,7 @@ abstract public class Algorithms implements IAlgorithms {
 	public Algorithms(Maze maze) {
 
 		_maze = maze;
+		//Conf config = new Conf();
 		// rows = 0;
 		// cols = 0;
 		// map = null;

@@ -1,38 +1,52 @@
 package algorithms.generation.solve;
 
 import labyrinth.Cell;
+import labyrinth.Maze;
+import logging.UseLogger;
 
-public class OwnSolvingAlgo extends SolvingAlgorithms implements ISolvingAlgorithms{
+public class OwnSolvingAlgo extends SolvingAlgorithms implements
+		ISolvingAlgorithms {
 
-//	Cell randomCell;
-//	Cell NeighbourCell;
+	OwnSolvingAlgoCalcing _calc;
 
-	public OwnSolvingAlgo(Cell startCell, Cell endCell) {
-		super(startCell, endCell);
+	// Cell randomCell;
+	// Cell NeighbourCell;
+
+	public OwnSolvingAlgo(Maze maze, Cell startCell, Cell endCell) {
+		super(maze, startCell, endCell);
 		setName("<<eigener CreatingAlgo>>");
-		
-//		randomCell = null;
-//		NeighbourCell = null;
+
+		_currentCell = startCell;
+		UseLogger.LOGGER.finest("Startcelle = " + _startCell);
+		// randomCell = null;
+		// NeighbourCell = null;
 	}
-
-	
-
-	
-	
-	
 
 	@Override
 	public void resolveMaze() {
-		//TODO make the resolving Algo....
+		_calc = new OwnSolvingAlgoCalcing(_maze, _startCell, _endCell, 5);
 		
+		
+	int notMoreThan = 1000;
+	int currentSteps = 0;
+	while(	_calc.calc() && notMoreThan > currentSteps){
+		
+		
+		currentSteps++;
 	}
 
+	}
 
+	// private boolean isWallHere(){
+	// return false;
+	//
+	//
+	// }
 
 	@Override
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

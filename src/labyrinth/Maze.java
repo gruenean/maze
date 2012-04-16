@@ -24,14 +24,11 @@ public class Maze {
 		generateMap();
 	}
 
-	
-	public Cell getCellOnPosition(int rows, int cols){
+	public Cell getCellOnPosition(int rows, int cols) {
 		return map[rows][cols];
-		
+
 	}
-	
-	
-	
+
 	/**
 	 * creates the Map of the Labyrinth with a Cell[][] -Array.
 	 */
@@ -67,7 +64,7 @@ public class Maze {
 	public void printRoots() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-//				System.out.print("[" + map[i][j].getRoot() + "]");
+				// System.out.print("[" + map[i][j].getRoot() + "]");
 				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
 				if (j == map.length - 1) {
 					System.out.println();
@@ -80,7 +77,8 @@ public class Maze {
 	 * @return returns a randomly selected cell
 	 */
 	public Cell getRandomCell() {
-		return map[new Random().nextInt(map.length)][new Random().nextInt(map.length)];
+		return map[new Random().nextInt(map.length)][new Random()
+				.nextInt(map.length)];
 	}
 
 	/**
@@ -115,13 +113,21 @@ public class Maze {
 		 */
 		ArrayList<int[]> neighbourPositions = new ArrayList<int[]>();
 		if ((currentPos[1] - 1 >= 0))
-			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] - 1 }); // neighbour left
+			neighbourPositions
+					.add(new int[] { currentPos[0], currentPos[1] - 1 }); // neighbour
+																			// left
 		if ((currentPos[1] + 1 < cols))
-			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour right
+			neighbourPositions
+					.add(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour
+																			// right
 		if ((currentPos[0] - 1 >= 0))
-			neighbourPositions.add(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour top
+			neighbourPositions
+					.add(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour
+																			// top
 		if ((currentPos[0] + 1 < rows))
-			neighbourPositions.add(new int[] { currentPos[0] + 1, currentPos[1] }); // neighbour bottom
+			neighbourPositions
+					.add(new int[] { currentPos[0] + 1, currentPos[1] }); // neighbour
+																			// bottom
 
 		// TODO: Testing only
 		// getCellOnPosition(neighbourPositions.get(0)).setValue("LL");
@@ -134,15 +140,39 @@ public class Maze {
 		// Random().nextInt(neighbourPositions.size()))));
 		// System.out.println(neighbourPositions.size());
 
-		return getCellOnPosition(neighbourPositions.get(new Random().nextInt(neighbourPositions.size())));
+		return getCellOnPosition(neighbourPositions.get(new Random()
+				.nextInt(neighbourPositions.size())));
 	}
 
 	/**
-	 * This method takes care of cells belonging to the same root. 
+	 * This method takes care of cells belonging to the same root.
 	 * 
 	 * @param cell1
 	 * @param cell2
 	 */
+
+	public Cell getNeigbourofCell(Cell cell, int wall) {
+
+		int[] currentPos = this.getPositionOfCell(cell);
+		{
+			System.out.println("Suche Nachbar bei Walls = " + wall);
+			if (wall == 0)
+				return this.getCellOnPosition(currentPos[0], currentPos[1] - 1); // neighbour
+																					// left
+			if (wall == 1)
+				return this.getCellOnPosition(new int[] { currentPos[0],
+						currentPos[1] - 1 }); // neighbour right
+			if (wall == 2)
+				return this.getCellOnPosition(new int[] { currentPos[0],
+						currentPos[1] - 1 }); // neighbour top
+			if (wall == 3)
+				return this.getCellOnPosition(new int[] { currentPos[0],
+						currentPos[1] - 1 }); // neighbour bottom
+
+		}
+		return null;
+	}
+
 	public void updateRoots(Cell cell1, Cell cell2) {
 		Cell obsoleteRoot = cell2.getRoot();
 		Cell root = cell1.getRoot();
@@ -154,17 +184,16 @@ public class Maze {
 			}
 		}
 	}
-		
 
 	/**
-	 * @return	true if still more than one root exists
+	 * @return true if still more than one root exists
 	 */
 	public boolean hasMultipleRoots() {
-		if(allRoots.size() > 1 )
+		if (allRoots.size() > 1)
 			return true;
 		return false;
 	}
-	
+
 	public int[] getRowsAndCols() {
 		int[] rowscols = { rows, cols };
 		return rowscols;
@@ -178,11 +207,5 @@ public class Maze {
 		printMap();
 		printRoots();
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
