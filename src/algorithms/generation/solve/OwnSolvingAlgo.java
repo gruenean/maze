@@ -9,9 +9,6 @@ public class OwnSolvingAlgo extends SolvingAlgorithms implements
 
 	OwnSolvingAlgoCalcing _calc;
 
-	// Cell randomCell;
-	// Cell NeighbourCell;
-
 	public OwnSolvingAlgo(Maze maze, Cell startCell, Cell endCell) {
 		super(maze, startCell, endCell);
 		setName("<<eigener CreatingAlgo>>");
@@ -24,18 +21,18 @@ public class OwnSolvingAlgo extends SolvingAlgorithms implements
 
 	@Override
 	public void resolveMaze() {
-		_calc = new OwnSolvingAlgoCalcing(_maze, _startCell, _endCell, 5);
+		System.out.println("Position letzte Zelle = ["
+				+ _maze.getPositionOfCell(_endCell)[0]
+				+ _maze.getPositionOfCell(_endCell)[1] + "]");
+		_calc = new OwnSolvingAlgoCalcing(_maze, _startCell, _endCell, 3);
+
+		if (_calc.calc()) System.out.println("Lšsung yes...");
+		else System.out.println("keine Lšsung...");
 		
 		
-	int notMoreThan = 1000;
-	int currentSteps = 0;
-	while(	_calc.calc() && notMoreThan > currentSteps){
-		
-		
-		currentSteps++;
 	}
 
-	}
+	// }
 
 	// private boolean isWallHere(){
 	// return false;

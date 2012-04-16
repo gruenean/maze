@@ -8,7 +8,7 @@ public class Cell {
 
 	private Cell root;
 	private String value; // 1=wall / 0 = no wall
-	private int[] walls = { 1, 1, 1, 1 }; // left,right,top,bottom
+	//private int[] walls = { 1, 1, 1, 1 }; // left,right,top,bottom
 	private boolean[] bool_walls = { true, true, true, true };
 
 	public Cell() {
@@ -36,7 +36,7 @@ public class Cell {
 	 *            to destroy
 	 */
 	public void destroyWall(int wall) {
-		walls[wall] = 0;
+		//walls[wall] = 0;
 		bool_walls[wall] = false;
 		
 		// System.out.println("Die Wand " +wall + " wurde abgerissen");
@@ -46,7 +46,7 @@ public class Cell {
 		// if (wall<0 || wall >3) throw
 		// Exception("wall must be between 0 and 3.");
 		try {
-			if (walls[wall] == 1)
+			if (bool_walls[wall])
 				return true;
 
 		} catch (Exception e) {
@@ -55,6 +55,19 @@ public class Cell {
 
 		return false;
 	}
+//	public boolean isWallHere_old(int wall) {
+//		// if (wall<0 || wall >3) throw
+//		// Exception("wall must be between 0 and 3.");
+//		try {
+//			if (walls[wall] == 1)
+//				return true;
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return false;
+//	}
 
 	/**
 	 * @param value

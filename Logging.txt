@@ -1,10 +1,135 @@
-16.04.2012 12:53:47 algorithms.generation.solve.OwnSolvingAlgoCalcing whichWalls
-SCHWERWIEGEND: notThisWall = 5
-16.04.2012 12:53:47 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
-SCHWERWIEGEND: Berechnen wurde aufgerufen. 
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 1. Zelle. 
+Berechnen wurde aufgerufen. 
 Anzahl Steps = 1
-Bin jetzt bei Zelle an Position: [11]
-16.04.2012 12:53:47 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
-SCHWERWIEGEND: Berechnen wurde aufgerufen. 
+Bin jetzt bei Zelle an Position: [00]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [01]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 1  Position ist RIGHT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 2. Zelle. 
+Berechnen wurde aufgerufen. 
 Anzahl Steps = 2
-Bin jetzt bei Zelle an Position: [11]
+Bin jetzt bei Zelle an Position: [01]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [02]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 1  Position ist RIGHT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 3. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 3
+Bin jetzt bei Zelle an Position: [02]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [12]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 3  Position ist BOTTOM
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 4. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 4
+Bin jetzt bei Zelle an Position: [12]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [22]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 3  Position ist BOTTOM
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 5. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 5
+Bin jetzt bei Zelle an Position: [22]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [23]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 1  Position ist RIGHT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 6. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 6
+Bin jetzt bei Zelle an Position: [23]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [24]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 1  Position ist RIGHT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 7. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 7
+Bin jetzt bei Zelle an Position: [24]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [13]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 2  Position ist TOP
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 8. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 8
+Bin jetzt bei Zelle an Position: [13]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [14]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 1  Position ist RIGHT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 9. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 9
+Bin jetzt bei Zelle an Position: [14]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [04]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 2  Position ist TOP
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 10. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 10
+Bin jetzt bei Zelle an Position: [04]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [03]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 0  Position ist LEFT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 11. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 11
+Bin jetzt bei Zelle an Position: [03]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [04]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 1  Position ist RIGHT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 12. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 12
+Bin jetzt bei Zelle an Position: [04]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [14]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 3  Position ist BOTTOM
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 13. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 13
+Bin jetzt bei Zelle an Position: [14]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [33]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 3  Position ist BOTTOM
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 14. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 14
+Bin jetzt bei Zelle an Position: [33]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [34]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 1  Position ist RIGHT
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Bin bei der 15. Zelle. 
+Berechnen wurde aufgerufen. 
+Anzahl Steps = 15
+Bin jetzt bei Zelle an Position: [34]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Neue Zelle ist an Position: [44]
+16.04.2012 15:02:12 algorithms.generation.solve.OwnSolvingAlgoCalcing calc
+SCHWERWIEGEND: Mšchte zur Zelle 3  Position ist BOTTOM

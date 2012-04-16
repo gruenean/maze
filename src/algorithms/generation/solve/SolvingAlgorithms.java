@@ -11,9 +11,6 @@ abstract public class SolvingAlgorithms extends Algorithms implements
 	protected Cell _endCell;
 	protected Cell _currentCell;
 
-	// protected String _algoName;
-	// protected Maze _maze;
-
 	/**
 	 * Constructor for all Solving Algorithms
 	 */

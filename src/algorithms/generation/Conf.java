@@ -11,4 +11,14 @@ public class Conf {
 		STEPS = STEPS + 1;
 	}
 
+	
+	public static String getWallName(int i) {
+
+	if (i==0) return "LEFT";
+	if (i==1) return "RIGHT";
+	if (i==2) return "TOP";
+	if (i==3) return "BOTTOM";
+	else return "NOT A CORRECT WALL DIRECTION!!!!";
+	}
+	
 }

@@ -6,17 +6,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import algorithms.generation.Conf;
+
 public class Maze {
-	private int rows, cols;
+	private int _rows, _cols;
 	private Cell[][] map;
 	private Map<Cell, int[]> positions;
 	private List<Cell> allCells;
 	private List<Cell> allRoots;
 
 	public Maze(int rows, int cols) {
-		this.rows = rows;
-		this.cols = cols;
-		map = new Cell[rows][cols];
+		System.out.println(rows + " + " + cols);
+		_rows = rows;
+		_cols = cols;
+		map = new Cell[_rows][_cols];
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		allCells = new ArrayList<Cell>();
 		allRoots = new ArrayList<Cell>();
@@ -25,6 +28,7 @@ public class Maze {
 	}
 
 	public Cell getCellOnPosition(int rows, int cols) {
+//		System.out.println(rows + " + " + cols);
 		return map[rows][cols];
 
 	}
@@ -33,8 +37,8 @@ public class Maze {
 	 * creates the Map of the Labyrinth with a Cell[][] -Array.
 	 */
 	private void generateMap() {
-		for (int row = 0; row < rows; row++) {
-			for (int col = 0; col < cols; col++) {
+		for (int row = 0; row < _rows; row++) {
+			for (int col = 0; col < _cols; col++) {
 				Cell newCell = new Cell();
 
 				// TODO Testing only - remove
@@ -116,7 +120,7 @@ public class Maze {
 			neighbourPositions
 					.add(new int[] { currentPos[0], currentPos[1] - 1 }); // neighbour
 																			// left
-		if ((currentPos[1] + 1 < cols))
+		if ((currentPos[1] + 1 < _cols))
 			neighbourPositions
 					.add(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour
 																			// right
@@ -124,7 +128,7 @@ public class Maze {
 			neighbourPositions
 					.add(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour
 																			// top
-		if ((currentPos[0] + 1 < rows))
+		if ((currentPos[0] + 1 < _rows))
 			neighbourPositions
 					.add(new int[] { currentPos[0] + 1, currentPos[1] }); // neighbour
 																			// bottom
@@ -151,23 +155,28 @@ public class Maze {
 	 * @param cell2
 	 */
 
+	/**
+	 * 
+	 * @param cell
+	 * @param wall
+	 * @return gives the Neigbour of the inserted Cell back. int wall defines
+	 *         which Neibour. (0=left,
+	 */
 	public Cell getNeigbourofCell(Cell cell, int wall) {
-
+System.out.println("WŸnsche Nachbar bei Wand: " + wall);
 		int[] currentPos = this.getPositionOfCell(cell);
+		int[] neighbourPositions;
 		{
-			System.out.println("Suche Nachbar bei Walls = " + wall);
-			if (wall == 0)
-				return this.getCellOnPosition(currentPos[0], currentPos[1] - 1); // neighbour
+			// System.out.println("Suche Nachbar bei Walls = " + wall);
+			if (Conf.LEFT_WALL == wall)
+				return this.getCellOnPosition( currentPos[0], currentPos[1] - 1 ); // neighbour
 																					// left
-			if (wall == 1)
-				return this.getCellOnPosition(new int[] { currentPos[0],
-						currentPos[1] - 1 }); // neighbour right
-			if (wall == 2)
-				return this.getCellOnPosition(new int[] { currentPos[0],
-						currentPos[1] - 1 }); // neighbour top
-			if (wall == 3)
-				return this.getCellOnPosition(new int[] { currentPos[0],
-						currentPos[1] - 1 }); // neighbour bottom
+			if (Conf.RIGHT_WALL == wall)
+				return this.getCellOnPosition(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour right
+			if (Conf.TOP_WALL == wall)
+				return this.getCellOnPosition(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour top
+			if (Conf.BOTTOM_WALL == wall)
+				return this.getCellOnPosition(new int[] { currentPos[0] + 1, currentPos[1]}); // neighbour bottom
 
 		}
 		return null;
@@ -195,7 +204,7 @@ public class Maze {
 	}
 
 	public int[] getRowsAndCols() {
-		int[] rowscols = { rows, cols };
+		int[] rowscols = { _rows, _cols };
 		return rowscols;
 
 	}

@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Level;
@@ -23,9 +24,9 @@ public class Test{
 	private static Cell _startCell;
 	private static Cell _endCell;
 	private static MyLogger _logger;
+	private static Console _console;
 
 	public static void main(String[] args) {
-		
 		_logger = new MyLogger();
 		try {
 			_logger.setup();
@@ -38,9 +39,9 @@ public class Test{
 
 		_rows = 5;
 		_cols = 5;
-		Maze _maze = new Maze(10, 10);
-		_startCell = _maze.getCellOnPosition(1, 1);
-		_endCell = _maze.getCellOnPosition(_rows, _cols);
+		Maze _maze = new Maze(_rows, _cols);
+		_startCell = _maze.getCellOnPosition(0, 0);
+		_endCell = _maze.getCellOnPosition(_rows-1, _cols-1);
 
 		/**
 		 * creates all possibles Algorithms

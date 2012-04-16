@@ -9,80 +9,105 @@ public class OwnSolvingAlgoCalcing {
 	Cell _endCell;
 	Cell _cell;
 	Maze _maze;
-	int[] walls;
+	boolean[] _isWallAllowed;
 
 	public OwnSolvingAlgoCalcing(Maze maze, Cell cell, Cell endCell,
 			int notThisWall) {
 		_cell = cell;
 		_endCell = endCell;
 		_maze = maze;
-
 		whichWalls(notThisWall);
-		calc();
+		// checkIfEndCell();
+		// calc();
 	}
 
 	public void whichWalls(int notThisWall) {
 		/**
-		 * create an arary with 3 walls. This makes shure that there is no loop
+		 * create an array with 3 walls. This makes shure that there is no loop
 		 * and the algorihm can not go back to a cell which was solved before.
 		 * 
 		 */
 
-		UseLogger.LOGGER.severe("notThisWall = " + notThisWall);
+		// UseLogger.LOGGER.severe("notThisWall = " + notThisWall);
 
-		if (notThisWall == Conf.LEFT_WALL)
-			walls = new int[] { 0, 1, 0, 0 }; // you are allowed for all walls
-												// excepted the right one
+		/**
+		 * if the solving algo confs from the right, then do not go back left
+		 */
 		if (notThisWall == Conf.RIGHT_WALL)
-			walls = new int[] { 1, 0, 0, 0 }; // you are allowed for all walls
-												// the right one
-		if (notThisWall == Conf.BOTTOM_WALL)
-			walls = new int[] { 0, 0, 1, 0 }; // you are allowed for all walls
-												// the bottom one
+			_isWallAllowed = new boolean[] { false, true, true, true };
+
+		/**
+		 * if the solving algo confs from the left, then do not go back right
+		 */
+		if (notThisWall == Conf.LEFT_WALL)
+			_isWallAllowed = new boolean[] { true, false, true, true };
+
+		/**
+		 * if the solving algo confs from the top, then do not go back bottom
+		 */
 		if (notThisWall == Conf.TOP_WALL)
-			walls = new int[] { 0, 0, 0, 1 }; // you are allowed for all walls
-												// the top one
-		if (notThisWall > 3)
-			walls = new int[] { Conf.TOP_WALL, Conf.BOTTOM_WALL }; // this could
-																	// just be
-																	// if it is
-																	// the start
-																	// Cell
-		UseLogger.LOGGER.info("Anzahl WŠnde zum checken = " + walls.length);
+			_isWallAllowed = new boolean[] { true, true, true, false };
+		/**
+		 * if the solving algo confs from the bottom, then do not go top
+		 */
+		if (notThisWall == Conf.LEFT_WALL)
+			_isWallAllowed = new boolean[] { true, true, false, true };
+
+		/**
+		 * this is just used for the first Cell (startCell)
+		 */
+		if (notThisWall >= 3)
+			_isWallAllowed = new boolean[] { false, true, false, true };
 
 	}
 
 	public boolean calc() {
+		if (_cell == _endCell) {
+			System.out.println("Position aktuelle Zelle = ["
+					+ _maze.getPositionOfCell(_cell)[0]
+					+ _maze.getPositionOfCell(_cell)[1] + "]");
+
+			System.out.println("Position letzte Zelle = ["
+					+ _maze.getPositionOfCell(_endCell)[0]
+					+ _maze.getPositionOfCell(_endCell)[1] + "]");
+
+			System.out.println("ich bin bei der letzten Zelle ;-)");
+			return true;
+		}
+
+		Cell newCell = null;
+
 		Conf.increseSteps();
-		UseLogger.LOGGER.severe("Berechnen wurde aufgerufen. \nAnzahl Steps = "
+		UseLogger.LOGGER.severe("Bin bei der " + Conf.STEPS
+				+ ". Zelle. \nBerechnen wurde aufgerufen. \nAnzahl Steps = "
 				+ Conf.STEPS + "\nBin jetzt bei Zelle an Position: " + "["
 				+ _maze.getPositionOfCell(_cell)[0]
 				+ _maze.getPositionOfCell(_cell)[1] + "]");
 
-		// while (Conf.STEPS < 1000) {
+		for (int i = 0; i <= _isWallAllowed.length - 1; i++) {
 
-		for (int i = 0; i <= walls.length; i++) {
-			if (_cell.isWallHere(i)) {
-				UseLogger.LOGGER.info("Hier IST eine Wand");
-				return false; // because there is a Wall there is no way
-								// here
-			} else {
-				// System.out.println("Rekursiver Aufruf mit " + i);
-				// new OwnSolvingAlgoCalcing(_cell, _endCell, i);
-				UseLogger.LOGGER
-						.info("Hier ist keine Wand. NŠchster Aufruf des Nachbarn...");
-				for (int j = 0; j < walls.length; j++) {
-					System.out.println("mšgliche Wand: " + j);
-				}
+			/**
+			 * if the Cell doesn't have a Wall and wallisAllowed then...
+			 */
+			System.out.println("Ist hier eine Wand? = " + _cell.isWallHere(i)
+					+ "     Erlaubt? " + _isWallAllowed[i]);
 
-				Cell newCell = _maze.getNeigbourofCell(_cell, walls[i]);
+			if (!_cell.isWallHere(i) && _isWallAllowed[i]) {
 
-				new OwnSolvingAlgoCalcing(_maze, newCell, _endCell, i);
+				newCell = _maze.getNeigbourofCell(_cell, i);
+				UseLogger.LOGGER.severe("Neue Zelle ist an Position: " + "["
+						+ _maze.getPositionOfCell(newCell)[0]
+						+ _maze.getPositionOfCell(newCell)[1] + "]");
+				UseLogger.LOGGER.severe("Mšchte zur Zelle " + i
+						+ "  Position ist " + Conf.getWallName(i));
+				OwnSolvingAlgoCalcing newOne = new OwnSolvingAlgoCalcing(_maze,
+						newCell, _endCell, i);
+				if (newOne.calc())
+					return true;
 
 			}
 		}
 
-		// }
-		return true;// because there is NOT a Wall there is no way here
+		return false;
 	}
 }

@@ -44,16 +44,16 @@ public class Cell {
 		return value;
 	}
 	
-	public boolean isWallHere(int wall){
-		if wall <0 || wall>3 throw new Exception("int must be 0 <= int < 3");
-		
-		
-		if (walls[wall]=="1") return true;
-		
-		
-		else return false;
-		
-		
-	}
+//	public boolean isWallHere(int wall){
+//		if wall <0 || wall>3 throw new Exception("int must be 0 <= int < 3");
+//		
+//		
+//		if (walls[wall]=="1") return true;
+//		
+//		
+//		else return false;
+//		
+//		
+//	}
 	
 }
