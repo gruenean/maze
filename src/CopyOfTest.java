@@ -2,7 +2,7 @@
 import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Level;
-
+import justTest.ConsoleTest;
 import labyrinth.Cell;
 import labyrinth.Maze;
 import logging.MyLogger;
@@ -12,7 +12,7 @@ import algorithms.generation.create.ownCreatingAlgo;
 import algorithms.generation.solve.OwnSolvingAlgo;
 import algorithms.generation.solve.SolvingAlgorithms;
 
-public class Test{
+public class CopyOfTest{
 
 	private static CreatingAlgorithms[] _possiblesCreatingAlgos = null;
 	private static SolvingAlgorithms[] _possiblesSolvingAlgos = null;
@@ -24,11 +24,11 @@ public class Test{
 	private static Cell _startCell;
 	private static Cell _endCell;
 	private static MyLogger _logger;
-//	private static Console _console;
+	private static Console _console;
 	
 
-	public Test() {
-//		_console = new Console();
+	public static void main(String[] args) {
+		_console = new Console();
 		_logger = new MyLogger();
 		try {
 			_logger.setup();
@@ -38,43 +38,34 @@ public class Test{
 		}
 
 		UseLogger.LOGGER.setLevel(Level.SEVERE);
+
 		_rows = 5;
 		_cols = 5;
 		Maze _maze = new Maze(_rows, _cols);
 		_startCell = _maze.getCellOnPosition(0, 0);
 		_endCell = _maze.getCellOnPosition(_rows-1, _cols-1);
 
-
+		/**
+		 * creates all possibles Algorithms
+		 */
 		_possiblesCreatingAlgos = new CreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze) };
 		_possiblesSolvingAlgos = new SolvingAlgorithms[] { new OwnSolvingAlgo(
 				_maze, _startCell, _endCell) };
-		_mycreatingAlgo = chooseOneRandomCreatingAlgo();
-		_mysolvingAlgo = chooseOneRandomSolvingAlgo();
-	}
 
-	
-	public void createMaze(){
-		
-		/**
-		 * creates all possibles Algorithms
-		 */
+		_mycreatingAlgo = chooseOneRandomCreatingAlgo();
 		_mycreatingAlgo.createMaze();
-		
+
+		_mysolvingAlgo = chooseOneRandomSolvingAlgo();
+
 		System.out.println("\n Das Labyrinth wurde mit dem "
 				+ _mycreatingAlgo.getName() + " erstellt... \n\n\n");
-		
-		
-	}
-	
-	public void solveMaze(){
+
 		// TODO this is in TESING MODE
 		_mysolvingAlgo.resolveMaze();
-	
+
 	}
-	
-	
-	
+
 	/**
 	 * 
 	 * @return gives a Random Creating Algorithms (off all possibles)
