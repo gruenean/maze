@@ -1,68 +1,84 @@
 package ioInferface;
 
 import java.util.Scanner;
-import java.util.logging.Level;
 
-import logging.UseLogger;
 import Cell.Test;
 
 public class Console extends AListener implements IListener {
 	static Test _mytest;
+	String[] stringArray;
+
+	// private String[] inputArray = new String[] {};
 
 	public Console() {
 		super();
 		_in = new Scanner(System.in);
 		goingon = true;
 		_mytest = null;
-
-		// UseLogger.LOGGER.setLevel(Level.SEVERE);
-
 		startListening();
 	}
 
 	public void startListening() {
-
 		while (goingon) {
-			System.out.print("main: ");
-			inputString = _in.nextLine();
+			System.out.print("MAIN: ");
+			inputString = _in.nextLine().toUpperCase();
+			stringArray = inputString.split(" ");
+			// printArray(stringArray);
 
-			if (inputString.contains("create")) {
+			/**
+			 * go to the next menue for creating a maze
+			 */
+			if (stringArray[0].equals(Commands.CREATE)) {
 				_mytest = new Test();
 				_mytest.createMaze();
-			} else if (inputString.contains("solve"))
-				_mytest.solveMaze();
-			else if (inputString.contains("log level")) {
-				new LogListener();
 
-				// goingon = false;
-				System.out.println(inputString);
-				System.out.println("Log  verlassen.");
-			} else if (inputString.contains("quit") || inputString.isEmpty())
-				goingon = false;
-			inputString = "create";
+				/**
+				 * go to the next menue for solving a maze
+				 */
+
+			} else if (stringArray[0].equals(Commands.SOLVE)) {
+				new solveListener(stringArray, _mytest);
+//				_mytest = new Test();
+				
+
+				/**
+				 * go to the next menue for changing the log level
+				 */
+			} else if (stringArray[0].equals(Commands.LOG)) {
+				new LogListener(stringArray);
+				System.out.println(Commands.LOG + " Menu verlassen.");
+
+				/**
+				 * go to the help menu and give possibilities
+				 */
+			} else if (stringArray[0].contains(Commands.HELP)) {
+				getHelp();
+			}
+
+			/**
+			 * if quit... just do it
+			 */
+			else if (stringArray[0].equals(Commands.QUIT))
+				quit();
 		}
 
 		_in.close();
 
 	}
 
-	public static void setLogLevel(String level) {
-
-		try {
-			UseLogger.LOGGER.setLevel(Level.parse(level));
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Mšgliche Log-Level: ");
-		}
-
-		System.out.println(UseLogger.LOGGER.getLevel());
-
-	}
-
 	@Override
 	public void getHelp() {
-		// TODO Auto-generated method stub
+		if (inputString.isEmpty()) {
+			System.out
+					.println("<<"
+							+ makeStringArrayToString(stringArray)
+							+ ">> is NOT a valid input. Please use one of the following inputs...\n");
+		}
+		System.out
+				.println("*You can enter a prompt...\nFor example log. Then you enter the Log menu");
+		System.out
+				.println("*You can also use more than one prompt in a line.\nFor example write <<log set INFO>> and the Log Level will be set to INFO");
+		System.out.println("QUIT:\t\t go back to main menu.");
 
 	}
 
