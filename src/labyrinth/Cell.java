@@ -7,14 +7,24 @@ package labyrinth;
 public class Cell {
 
 	private Cell root;
+	private String state;
 	private String value; // 1=wall / 0 = no wall
-	//private int[] walls = { 1, 1, 1, 1 }; // left,right,top,bottom
-	private boolean[] bool_walls = { true, true, true, true };
-
-	public Cell() {
+	private boolean isWall;
+	private boolean isBreakable;
+	public Cell(boolean isWall, boolean isBreakable) {
+		this.isWall = isWall;
+		this.isBreakable = isBreakable;
 		this.root = this;
 	}
 
+	public boolean isWall() {
+		return isWall;
+	}
+	
+	public boolean isBreakable() {
+		return isBreakable;
+	}
+	
 	/**
 	 * @return current root of this cell
 	 */
@@ -31,44 +41,7 @@ public class Cell {
 
 	}
 
-	/**
-	 * @param wall
-	 *            to destroy
-	 */
-	public void destroyWall(int wall) {
-		//walls[wall] = 0;
-		bool_walls[wall] = false;
-		
-		// System.out.println("Die Wand " +wall + " wurde abgerissen");
-	}
-
-	public boolean isWallHere(int wall) {
-		// if (wall<0 || wall >3) throw
-		// Exception("wall must be between 0 and 3.");
-		try {
-			if (bool_walls[wall])
-				return true;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return false;
-	}
-//	public boolean isWallHere_old(int wall) {
-//		// if (wall<0 || wall >3) throw
-//		// Exception("wall must be between 0 and 3.");
-//		try {
-//			if (walls[wall] == 1)
-//				return true;
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//		return false;
-//	}
-
+	
 	/**
 	 * @param value
 	 *            This value is a Tag. If all cell has the same tag, it is
@@ -80,5 +53,21 @@ public class Cell {
 
 	public String getValue() {
 		return value;
+	}
+	
+	public void setState(String state) {
+		this.state= state;
+	}
+
+	public String getState() {
+		return state;
+	}
+	
+	protected void setisWall(boolean isWall) {
+		this.isWall = isWall;
+	}
+	
+	protected void setisBreakable(boolean isBreakable) {
+		this.isBreakable = isBreakable;
 	}
 }
