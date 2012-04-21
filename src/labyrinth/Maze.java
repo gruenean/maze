@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import algorithms.generation.Conf;
-
 public class Maze {
 	private int _rows, _cols;
 	private Cell[][] map;
@@ -15,8 +13,7 @@ public class Maze {
 	private List<Cell> allCells;
 	private List<Cell> allRoots;
 
-	public Maze(int rows, int cols) {
-		
+	public Maze(int rows, int cols) {	
 		_rows = 2*rows+1;
 		_cols = 2*cols+1;
 		map = new Cell[_rows][_cols];
@@ -27,13 +24,19 @@ public class Maze {
 		generateMap();
 	}
 
-// ?????? METHOD ALREADY EXISTS!!!!
 	
-//	public Cell getCellOnPosition(int rows, int cols) {
-////		System.out.println(rows + " + " + cols);
-//		return map[rows][cols];
-//
-//	}
+	/** REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
+	 * 3METHOD ALREADY EXISTS!!!!
+	 * TODO: delete this method
+	 * @param rows
+	 * @param cols
+	 * @return
+	 */
+	public Cell getCellOnPosition(int rows, int cols) {
+//		System.out.println(rows + " + " + cols);
+		return map[rows][cols];
+
+	}
 
 	/**
 	 * creates the Map of the Labyrinth with a Cell[][] -Array.
@@ -81,7 +84,7 @@ public class Maze {
 	}
 
 	/**
-	 * Creates the lab with the own algorithmus. It's a test method
+	 * Prints the maze showing the values of all cells and walls
 	 */
 	public void printMap() {
 		for (int i = 0; i < map.length; i++) {
@@ -94,10 +97,12 @@ public class Maze {
 		}
 	}
 
+	/**
+	 * Prints the maze showing the values of the root of each cell or wall
+	 */
 	public void printRoots() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-				// System.out.print("[" + map[i][j].getRoot() + "]");
 				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
 				if (j == map.length - 1) {
 					System.out.println();
@@ -106,6 +111,12 @@ public class Maze {
 		}
 	}
 
+	/**
+	 * Prints an ascii maze as follows:
+	 * B = breakable wall 
+	 * U = unbreakable wall
+	 * C = cells 
+	 */
 	public void printAsciiMaze() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
@@ -118,14 +129,19 @@ public class Maze {
 	}
 	
 	/**
+	 * This method is used to select a cell randomly
+	 * 
 	 * @return returns a randomly selected cell
 	 */
 	public Cell getRandomCell() {
-		//return map[new Random().nextInt(map.length)][new Random().nextInt(map.length)];
 		return allCells.get(new Random().nextInt(allCells.size()));
 	}
 
 	/**
+	 * TODO: set to private
+	 * NOTE: This method will be set to private soon.
+	 * This method is used to get the position of a given cell
+	 * 
 	 * @param cell
 	 * @return position of the given cell
 	 */
@@ -144,7 +160,9 @@ public class Maze {
 	}
 
 	/**
-	 * @param
+	 * This method returns a randomly chosen neighbour of a given cell
+	 * 
+	 * @param	
 	 * @return Returns a randomly chosen neighbour of input cell
 	 */
 	public Cell getRandomNeighbour(Cell cell) {
@@ -169,7 +187,9 @@ public class Maze {
 	}
 
 
-	/**
+	/** REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
+	 * TODO: delete method
+	 * NOTE: This method already exists and will be deleted soon!!!!!!
 	 * 
 	 * @param cell
 	 * @param wall
@@ -200,6 +220,8 @@ public class Maze {
 //	}
 
 	/**
+	 * TODO: set to private
+	 * NOTE: This method will be set to private soon
 	 * This method takes care of cells belonging to the same root.
 	 * 
 	 * @param cell1
@@ -217,11 +239,16 @@ public class Maze {
 		}
 	}
 
+	/**
+	 * This method handles the deletion of a wall between to cells
+	 * 
+	 * @param cell1
+	 * @param cell2
+	 */
 	public void breakWallBetweenCells(Cell cell1, Cell cell2) {
 		int[] pos1 = getPositionOfCell(cell1);
 		int[] pos2 = getPositionOfCell(cell2);
 
-		//return getCellOnPosition(new int[] {(pos1[0]+pos2[0])/2,(pos1[1]+pos2[1])/2 });
 		int[] wallPos =  new int[] {(pos1[0]+pos2[0])/2,(pos1[1]+pos2[1])/2 };
 		Cell wall = getCellOnPosition(wallPos);
 		if (wall.isWall() && wall.isBreakable()) {
@@ -242,6 +269,12 @@ public class Maze {
 		return false;
 	}
 
+	
+	/** THIS METHOD WILL BE DELETED SOON
+	 * TODO: delete method!!!
+	 * seems not to be used anymore.
+	 * 
+	 */
 	public int[] getRowsAndCols() {
 		int[] rowscols = { _rows, _cols };
 		return rowscols;
@@ -256,5 +289,4 @@ public class Maze {
 		printRoots();
 		printAsciiMaze();
 	}
-
 }
