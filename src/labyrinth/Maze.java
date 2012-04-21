@@ -1,6 +1,7 @@
 package labyrinth;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -185,7 +186,8 @@ public class Maze {
 			neighbourPositions.add(new int[] { currentPos[0] - 2, currentPos[1] }); // neighbour top
 		if ((currentPos[0] + 2 < _rows))
 			neighbourPositions.add(new int[] { currentPos[0] + 2, currentPos[1] }); // neighbour bottoom
-
+ 
+		Collections.shuffle(neighbourPositions);
 		return getCellOnPosition(neighbourPositions.get(new Random().nextInt(neighbourPositions.size())));
 	}
 
@@ -236,6 +238,7 @@ public class Maze {
 			if (entry.getRoot().equals(obsoleteRoot)) {
 				entry.setRoot(root);
 				allRoots.remove(obsoleteRoot);
+				
 			}
 		}
 	}
@@ -298,7 +301,7 @@ public class Maze {
 	/**
 	 * This is just for Testing
 	 */
-	public void sysoutAllCellAndRoots() {
+	public void printMapRootsAsci() {
 		printMap();
 		printRoots();
 		printAsciiMaze();

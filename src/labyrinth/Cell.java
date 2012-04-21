@@ -66,6 +66,9 @@ public class Cell {
 	 * @param state		new state to be set
 	 */
 	protected void setState(String state) {
+		if (state == "C") {
+			state=" ";
+		}
 		this.state= state;
 	}
 
