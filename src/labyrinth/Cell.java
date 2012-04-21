@@ -52,11 +52,11 @@ public class Cell {
 	 *            This value is a Tag. If all cell has the same tag, it is
 	 *            possible to find a way through the labyrinth
 	 */
-	protected void setValue(String value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 
-	protected String getValue() {
+	public String getValue() {
 		return value;
 	}
 	
