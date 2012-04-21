@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import algorithms.generation.Conf;
+
 public class Maze {
 	private int _rows, _cols;
 	private Cell[][] map;
@@ -25,8 +27,9 @@ public class Maze {
 	}
 
 	
-	/** REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
-	 * 3METHOD ALREADY EXISTS!!!!
+	/**@deprecated
+	 *  REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
+	 * METHOD ALREADY EXISTS!!!!
 	 * TODO: delete this method
 	 * @param rows
 	 * @param cols
@@ -137,7 +140,7 @@ public class Maze {
 		return allCells.get(new Random().nextInt(allCells.size()));
 	}
 
-	/**
+	/**@deprecated
 	 * TODO: set to private
 	 * NOTE: This method will be set to private soon.
 	 * This method is used to get the position of a given cell
@@ -187,7 +190,8 @@ public class Maze {
 	}
 
 
-	/** REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
+	/** @deprecated
+	 * REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon - as it is pretty much the same as getRandomNeighbour()
 	 * TODO: delete method
 	 * NOTE: This method already exists and will be deleted soon!!!!!!
 	 * 
@@ -196,38 +200,35 @@ public class Maze {
 	 * @return gives the Neigbour of the inserted Cell back. int wall defines
 	 *         which Neibour. (0=left,
 	 */
+	public Cell getNeigbourofCell(Cell cell, int wall) {
+		System.out.println("W�nsche Nachbar bei Wand: " + wall);
+		int[] currentPos = this.getPositionOfCell(cell);
+		int[] neighbourPositions;
+		{
+			// System.out.println("Suche Nachbar bei Walls = " + wall);
+			if (Conf.LEFT_WALL == wall)
+				return this.getCellOnPosition(new int[] { currentPos[0], currentPos[1] - 1 }); // neighbour
+																					// left
+			if (Conf.RIGHT_WALL == wall)
+				return this.getCellOnPosition(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour right
+			if (Conf.TOP_WALL == wall)
+				return this.getCellOnPosition(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour top
+			if (Conf.BOTTOM_WALL == wall)
+				return this.getCellOnPosition(new int[] { currentPos[0] + 1, currentPos[1]}); // neighbour bottom
 
-	// ?? redundancy department of redundandcy?! 
-	// pretty much the same as 'getRandomNeighbour()'
-//	public Cell getNeigbourofCell(Cell cell, int wall) {
-//System.out.println("W�nsche Nachbar bei Wand: " + wall);
-//		int[] currentPos = this.getPositionOfCell(cell);
-//		int[] neighbourPositions;
-//		{
-//			// System.out.println("Suche Nachbar bei Walls = " + wall);
-//			if (Conf.LEFT_WALL == wall)
-//				return this.getCellOnPosition(new int[] { currentPos[0], currentPos[1] - 1 }); // neighbour
-//																					// left
-//			if (Conf.RIGHT_WALL == wall)
-//				return this.getCellOnPosition(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour right
-//			if (Conf.TOP_WALL == wall)
-//				return this.getCellOnPosition(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour top
-//			if (Conf.BOTTOM_WALL == wall)
-//				return this.getCellOnPosition(new int[] { currentPos[0] + 1, currentPos[1]}); // neighbour bottom
-//
-//		}
-//		return null;
-//	}
+		}
+		return null;
+	}
 
 	/**
-	 * TODO: set to private
+	 * TODO: rename
 	 * NOTE: This method will be set to private soon
 	 * This method takes care of cells belonging to the same root.
 	 * 
 	 * @param cell1
 	 * @param cell2
 	 */
-	public void updateRoots(Cell cell1, Cell cell2) {
+	private void updateRoots2(Cell cell1, Cell cell2) {
 		Cell obsoleteRoot = cell2.getRoot();
 		Cell root = cell1.getRoot();
 
@@ -239,6 +240,18 @@ public class Maze {
 		}
 	}
 
+	
+	/** @deprecated
+	 * This method is deprecated and will be removed form Maze soon. please do not use it anymore!
+	 * TODO: delete method!!!!
+	 * 
+	 * @param cell1
+	 * @param cell2
+	 */
+	public void updateRoots(Cell cell1, Cell cell2) {
+		breakWallBetweenCells(cell1, cell2);
+	}
+	
 	/**
 	 * This method handles the deletion of a wall between to cells
 	 * 
@@ -257,7 +270,7 @@ public class Maze {
 			wall.setisBreakable(false);
 		}
 		
-		updateRoots(cell1, cell2);
+		updateRoots2(cell1, cell2);
 	}
 	
 	/**
@@ -270,7 +283,8 @@ public class Maze {
 	}
 
 	
-	/** THIS METHOD WILL BE DELETED SOON
+	/**@deprecated
+	 *  THIS METHOD WILL BE DELETED SOON
 	 * TODO: delete method!!!
 	 * seems not to be used anymore.
 	 * 
