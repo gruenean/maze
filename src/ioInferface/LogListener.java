@@ -42,9 +42,10 @@ public class LogListener extends AListener implements IListener {
 			/**
 			 * if the input is LOG, just clear ist
 			 */
-			if (stringArray[0].equals(Commands.LOG)){
+			if (stringArray[0].equals(Commands.LOG)) {
 				stringArray = removeFirstCommand(stringArray);
-			if(stringArray.length==0) reinitializeStringArray();	
+				if (stringArray.length == 0)
+					reinitializeStringArray();
 			}
 
 			if (stringArray[0].equals(Commands.QUIT))
@@ -63,9 +64,8 @@ public class LogListener extends AListener implements IListener {
 				stringArray = removeFirstCommand(stringArray);
 			}
 
-			else 
+			else
 				getHelp();
-			
 
 			stringArray = removeFirstCommand(stringArray);
 

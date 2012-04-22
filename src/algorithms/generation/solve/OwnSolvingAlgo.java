@@ -14,7 +14,8 @@ public class OwnSolvingAlgo extends SolvingAlgorithms implements
 		setName("<<eigener CreatingAlgo>>");
 
 		_currentCell = startCell;
-		UseLogger.LOGGER.finest("Startcelle = " + _startCell);
+		UseLogger.LOGGER.finest("Startcell = " + _startCell);
+		System.out.println("Startcell = " + _startCell);
 		// randomCell = null;
 		// NeighbourCell = null;
 	}

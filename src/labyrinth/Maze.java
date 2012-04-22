@@ -16,9 +16,9 @@ public class Maze {
 	private List<Cell> allCells;
 	private List<Cell> allRoots;
 
-	public Maze(int rows, int cols) {	
-		_rows = 2*rows+1;
-		_cols = 2*cols+1;
+	public Maze(int rows, int cols) {
+		_rows = 2 * rows + 1;
+		_cols = 2 * cols + 1;
 		map = new Cell[_rows][_cols];
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		allCells = new ArrayList<Cell>();
@@ -27,17 +27,15 @@ public class Maze {
 		generateMap();
 	}
 
-	
-	/**@deprecated
-	 *  REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
-	 * METHOD ALREADY EXISTS!!!!
-	 * TODO: delete this method
+	/**
+	 * @deprecated REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
+	 *             METHOD ALREADY EXISTS!!!! TODO: delete this method
 	 * @param rows
 	 * @param cols
 	 * @return
 	 */
 	public Cell getCellOnPosition(int rows, int cols) {
-//		System.out.println(rows + " + " + cols);
+		// System.out.println(rows + " + " + cols);
 		return map[rows][cols];
 
 	}
@@ -48,29 +46,29 @@ public class Maze {
 	private void generateMap() {
 		for (int row = 0; row < _rows; row++) {
 			for (int col = 0; col < _cols; col++) {
-	
+
 				Cell newCell;
 				// Unbreakable walls
-				if (row==0 || col ==0 || row == _rows -1 || col == _cols -1) {
+				if (row == 0 || col == 0 || row == _rows - 1
+						|| col == _cols - 1) {
 					newCell = new Cell(true, false);
 					newCell.setState("U");
 				}
-					
-				else if (row%2 == 0 && col%2 == 0) {
+
+				else if (row % 2 == 0 && col % 2 == 0) {
 					newCell = new Cell(true, false);
 					newCell.setState("U");
 				}
 
 				// Breakable walls
-				else if (row%2 == 0 && col%2 == 1) {
+				else if (row % 2 == 0 && col % 2 == 1) {
+					newCell = new Cell(true, true);
+					newCell.setState("B");
+				} else if (row % 2 == 1 && col % 2 == 0) {
 					newCell = new Cell(true, true);
 					newCell.setState("B");
 				}
-				else if (row%2 == 1 && col%2 == 0) {
-					newCell = new Cell(true, true);
-					newCell.setState("B");
-				}
-				
+
 				// Cell
 				else {
 					newCell = new Cell(false, false);
@@ -78,8 +76,21 @@ public class Maze {
 					allRoots.add(newCell);
 					allCells.add(newCell);
 				}
-				newCell.setValue("" + row + col);
+				/**
+				 * set the Value of the generated Cell (lengt = always 3)
+				 */
+			
+				String rowString = "" + row;
+				if (rowString.length()==1) rowString="0"+rowString;
+				//else if (rowString.length()==2) rowString="0"+rowString;
 				
+				String colString = "" + col;
+				if (colString.length()==1) colString="0"+colString;
+				//else if (colString.length()==2) colString="0"+colString;
+				
+			
+				newCell.setValue("" + rowString + " " + colString);
+
 				// TODO Testing only - remove
 				map[row][col] = newCell;
 				positions.put(newCell, new int[] { row, col });
@@ -93,7 +104,11 @@ public class Maze {
 	public void printMap() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
+
+				String currentCell = map[i][j].getValue();
+
 				System.out.print("[" + map[i][j].getValue() + "]");
+
 				if (j == map.length - 1) {
 					System.out.println();
 				}
@@ -116,10 +131,8 @@ public class Maze {
 	}
 
 	/**
-	 * Prints an ascii maze as follows:
-	 * B = breakable wall 
-	 * U = unbreakable wall
-	 * C = cells 
+	 * Prints an ascii maze as follows: B = breakable wall U = unbreakable wall
+	 * C = cells
 	 */
 	public void printAsciiMaze() {
 		for (int i = 0; i < map.length; i++) {
@@ -131,7 +144,7 @@ public class Maze {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method is used to select a cell randomly
 	 * 
@@ -141,10 +154,9 @@ public class Maze {
 		return allCells.get(new Random().nextInt(allCells.size()));
 	}
 
-	/**@deprecated
-	 * TODO: set to private
-	 * NOTE: This method will be set to private soon.
-	 * This method is used to get the position of a given cell
+	/**
+	 * @deprecated TODO: set to private NOTE: This method will be set to private
+	 *             soon. This method is used to get the position of a given cell
 	 * 
 	 * @param cell
 	 * @return position of the given cell
@@ -166,7 +178,7 @@ public class Maze {
 	/**
 	 * This method returns a randomly chosen neighbour of a given cell
 	 * 
-	 * @param	
+	 * @param
 	 * @return Returns a randomly chosen neighbour of input cell
 	 */
 	public Cell getRandomNeighbour(Cell cell) {
@@ -179,23 +191,32 @@ public class Maze {
 		 */
 		ArrayList<int[]> neighbourPositions = new ArrayList<int[]>();
 		if ((currentPos[1] - 2 >= 0))
-			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] - 2 }); // neighbour left
+			neighbourPositions
+					.add(new int[] { currentPos[0], currentPos[1] - 2 }); // neighbour
+																			// left
 		if ((currentPos[1] + 2 < _cols))
-			neighbourPositions.add(new int[] { currentPos[0], currentPos[1] + 2 }); // neighbour right
+			neighbourPositions
+					.add(new int[] { currentPos[0], currentPos[1] + 2 }); // neighbour
+																			// right
 		if ((currentPos[0] - 2 >= 0))
-			neighbourPositions.add(new int[] { currentPos[0] - 2, currentPos[1] }); // neighbour top
+			neighbourPositions
+					.add(new int[] { currentPos[0] - 2, currentPos[1] }); // neighbour
+																			// top
 		if ((currentPos[0] + 2 < _rows))
-			neighbourPositions.add(new int[] { currentPos[0] + 2, currentPos[1] }); // neighbour bottoom
- 
+			neighbourPositions
+					.add(new int[] { currentPos[0] + 2, currentPos[1] }); // neighbour
+																			// bottoom
+
 		Collections.shuffle(neighbourPositions);
-		return getCellOnPosition(neighbourPositions.get(new Random().nextInt(neighbourPositions.size())));
+		return getCellOnPosition(neighbourPositions.get(new Random()
+				.nextInt(neighbourPositions.size())));
 	}
 
-
-	/** @deprecated
-	 * REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon - as it is pretty much the same as getRandomNeighbour()
-	 * TODO: delete method
-	 * NOTE: This method already exists and will be deleted soon!!!!!!
+	/**
+	 * @deprecated REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon -
+	 *             as it is pretty much the same as getRandomNeighbour() TODO:
+	 *             delete method NOTE: This method already exists and will be
+	 *             deleted soon!!!!!!
 	 * 
 	 * @param cell
 	 * @param wall
@@ -209,23 +230,26 @@ public class Maze {
 		{
 			// System.out.println("Suche Nachbar bei Walls = " + wall);
 			if (Conf.LEFT_WALL == wall)
-				return this.getCellOnPosition(new int[] { currentPos[0], currentPos[1] - 1 }); // neighbour
-																					// left
+				return this.getCellOnPosition(new int[] { currentPos[0],
+						currentPos[1] - 1 }); // neighbour
+			// left
 			if (Conf.RIGHT_WALL == wall)
-				return this.getCellOnPosition(new int[] { currentPos[0], currentPos[1] + 1 }); // neighbour right
+				return this.getCellOnPosition(new int[] { currentPos[0],
+						currentPos[1] + 1 }); // neighbour right
 			if (Conf.TOP_WALL == wall)
-				return this.getCellOnPosition(new int[] { currentPos[0] - 1, currentPos[1] }); // neighbour top
+				return this.getCellOnPosition(new int[] { currentPos[0] - 1,
+						currentPos[1] }); // neighbour top
 			if (Conf.BOTTOM_WALL == wall)
-				return this.getCellOnPosition(new int[] { currentPos[0] + 1, currentPos[1]}); // neighbour bottom
+				return this.getCellOnPosition(new int[] { currentPos[0] + 1,
+						currentPos[1] }); // neighbour bottom
 
 		}
 		return null;
 	}
 
 	/**
-	 * TODO: rename
-	 * NOTE: This method will be set to private soon
-	 * This method takes care of cells belonging to the same root.
+	 * TODO: rename NOTE: This method will be set to private soon This method
+	 * takes care of cells belonging to the same root.
 	 * 
 	 * @param cell1
 	 * @param cell2
@@ -238,15 +262,14 @@ public class Maze {
 			if (entry.getRoot().equals(obsoleteRoot)) {
 				entry.setRoot(root);
 				allRoots.remove(obsoleteRoot);
-				
+
 			}
 		}
 	}
 
-	
-	/** @deprecated
-	 * This method is deprecated and will be removed form Maze soon. please do not use it anymore!
-	 * TODO: delete method!!!!
+	/**
+	 * @deprecated This method is deprecated and will be removed form Maze soon.
+	 *             please do not use it anymore! TODO: delete method!!!!
 	 * 
 	 * @param cell1
 	 * @param cell2
@@ -254,7 +277,7 @@ public class Maze {
 	public void updateRoots(Cell cell1, Cell cell2) {
 		breakWallBetweenCells(cell1, cell2);
 	}
-	
+
 	/**
 	 * This method handles the deletion of a wall between to cells
 	 * 
@@ -265,17 +288,18 @@ public class Maze {
 		int[] pos1 = getPositionOfCell(cell1);
 		int[] pos2 = getPositionOfCell(cell2);
 
-		int[] wallPos =  new int[] {(pos1[0]+pos2[0])/2,(pos1[1]+pos2[1])/2 };
+		int[] wallPos = new int[] { (pos1[0] + pos2[0]) / 2,
+				(pos1[1] + pos2[1]) / 2 };
 		Cell wall = getCellOnPosition(wallPos);
 		if (wall.isWall() && wall.isBreakable()) {
 			wall.setState("C");
 			wall.setisWall(false);
 			wall.setisBreakable(false);
 		}
-		
+
 		updateRoots2(cell1, cell2);
 	}
-	
+
 	/**
 	 * @return true if still more than one root exists
 	 */
@@ -285,11 +309,9 @@ public class Maze {
 		return false;
 	}
 
-	
-	/**@deprecated
-	 *  THIS METHOD WILL BE DELETED SOON
-	 * TODO: delete method!!!
-	 * seems not to be used anymore.
+	/**
+	 * @deprecated THIS METHOD WILL BE DELETED SOON TODO: delete method!!! seems
+	 *             not to be used anymore.
 	 * 
 	 */
 	public int[] getRowsAndCols() {

@@ -3,13 +3,12 @@ package algorithms.generation.create;
 import labyrinth.Cell;
 import labyrinth.Maze;
 
-public class ownCreatingAlgo extends CreatingAlgorithms implements
-		ICreatingAlgorithms {
+public class ownCreatingAlgo_BACKUP extends CreatingAlgorithms implements ICreatingAlgorithms{
 
 	Cell randomCell;
 	Cell NeighbourCell;
 
-	public ownCreatingAlgo(Maze maze) {
+	public ownCreatingAlgo_BACKUP(Maze maze) {
 		super(maze);
 		setName("<<eigener CreatingAlgo>>");
 	}
@@ -20,26 +19,24 @@ public class ownCreatingAlgo extends CreatingAlgorithms implements
 
 	public void createMaze() {
 		while (_maze.hasMultipleRoots()) {
-			// for (int i = 1; i < (_maze.getRowsAndCols()[0] *
-			// _maze.getRowsAndCols()[1] * 10 ^ HelpInt); i++) {
-			randomCell = _maze.getRandomCell();
-			NeighbourCell = _maze.getRandomNeighbour(randomCell);
+		//	for (int i = 1; i < (_maze.getRowsAndCols()[0] * _maze.getRowsAndCols()[1] * 10 ^ HelpInt); i++) {
+				randomCell = _maze.getRandomCell();
+				NeighbourCell = _maze.getRandomNeighbour(randomCell);				
 
-			if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
-				_maze.breakWallBetweenCells(randomCell, NeighbourCell);
-				// TODO: comment out the following four lines as these are
-				// testing only
-				_maze.printAsciiMaze();
-				System.out.println();
-			} else {
-				System.out.println("impossibru");
-			}
-			// }
+				if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
+					_maze.breakWallBetweenCells(randomCell, NeighbourCell);
+//TODO: comment out the following four lines as these are testing only
+					_maze.printAsciiMaze();
+					System.out.println();
+				} else {
+					System.out.println("impossibru");
+				}				
+		//	}
 		}
-		// long EndTime = System.currentTimeMillis();
-		// System.out.println(EndTime);
-		// System.out.println(EndTime - BeginTime);
-		// System.out.println("Anzahl Duchg�nge: " + anzahlDurchg�nge);
+//		long EndTime = System.currentTimeMillis();
+//		System.out.println(EndTime);
+//		System.out.println(EndTime - BeginTime);
+//		System.out.println("Anzahl Duchg�nge: " + anzahlDurchg�nge);
 		System.out.println("--MAP--");
 		_maze.printMap();
 		System.out.println("--ROOTS--");
@@ -47,7 +44,6 @@ public class ownCreatingAlgo extends CreatingAlgorithms implements
 		System.out.println("--ASCI MAP--");
 		_maze.printAsciiMaze();
 	}
-
 	public void createMaze2() {
 
 		/**
@@ -77,12 +73,12 @@ public class ownCreatingAlgo extends CreatingAlgorithms implements
 			}
 			if (HelpInt > 0)
 				HelpInt = HelpInt - 1;
-			// anzahlDurchg�nge = anzahlDurchg�nge + 1;
+//			anzahlDurchg�nge = anzahlDurchg�nge + 1;
 		}
 		long EndTime = System.currentTimeMillis();
-		// System.out.println(EndTime);
-		// System.out.println(EndTime - BeginTime);
-		// System.out.println("Anzahl Duchg�nge: " + anzahlDurchg�nge);
+//		System.out.println(EndTime);
+//		System.out.println(EndTime - BeginTime);
+//		System.out.println("Anzahl Duchg�nge: " + anzahlDurchg�nge);
 		_maze.printMap();
 		System.out.println("");
 		_maze.printRoots();
@@ -91,9 +87,11 @@ public class ownCreatingAlgo extends CreatingAlgorithms implements
 
 	// }
 
-	/**
-	 * @deprecated This is now handled by maze.breakWallBetweenCells(Cell cell,
-	 *             Cell neighbourcell) TODO: Delete it!
+
+	
+	/**@deprecated
+	 * This is now handled by maze.breakWallBetweenCells(Cell cell, Cell neighbourcell)
+	 * TODO: Delete it!
 	 * 
 	 */
 	public void whichWallToBreakDown() {
@@ -140,11 +138,11 @@ public class ownCreatingAlgo extends CreatingAlgorithms implements
 	}
 
 	public void destroyWall(int whichWall, int whichWall2) {
-		// randomCell.destroyWall(whichWall);
-		// NeighbourCell.destroyWall(whichWall2);
-		//
-		//
-		// _maze.updateRoots(randomCell, NeighbourCell);
+//		randomCell.destroyWall(whichWall);
+//		NeighbourCell.destroyWall(whichWall2);
+//
+//		
+//		_maze.updateRoots(randomCell, NeighbourCell);
 
 		_maze.breakWallBetweenCells(randomCell, NeighbourCell);
 	}
@@ -160,5 +158,7 @@ public class ownCreatingAlgo extends CreatingAlgorithms implements
 		return false;
 
 	}
+
+	
 
 }

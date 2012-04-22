@@ -1,9 +1,7 @@
 package ioInferface;
 
-import java.util.logging.Level;
+import Cell_OLDOLDOLD.Test;
 
-import logging.UseLogger;
-import Cell.Test;
 
 public class solveListener extends AListener implements IListener {
 	private String inputString = " ";
@@ -46,19 +44,20 @@ public class solveListener extends AListener implements IListener {
 			/**
 			 * if the input is SOLVE, just clear ist
 			 */
-			if (stringArray[0].equals(Commands.SOLVE)){
+			if (stringArray[0].equals(Commands.SOLVE)) {
 				stringArray = removeFirstCommand(stringArray);
-			if(stringArray.length==0) reinitializeStringArray();	
+				if (stringArray.length == 0)
+					reinitializeStringArray();
 			}
 
 			if (stringArray[0].equals(Commands.OWN))
 				_mytest.solveMaze();
-			// goingon = false;
 
 			if (stringArray[0].equals(Commands.QUIT))
 				goingon = false;
 
-			else if (stringArray[0].equals(Commands.HELP) || stringArray.length==0)
+			else if (stringArray[0].equals(Commands.HELP)
+					|| stringArray.length == 0)
 				getHelp();
 
 			else
