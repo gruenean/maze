@@ -24,8 +24,8 @@ public class Test {
 
 	public Test() {
 
-		_rows = 4;
-		_cols = 4;
+		_rows = 5;
+		_cols = 5;
 		_maze = new Maze(_rows, _cols);
 		
 		/**
