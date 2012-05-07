@@ -15,7 +15,7 @@ public class OwnSolvingAlgoCalcing_NEW {
 	// Cell[] _thisIsTheWay;
 	Cell[] _alreadyChecked;
 	Cell _tempCell;
-	boolean[] _directionPossible = new boolean[] { true, true, true, true };
+	boolean[] _directionPossible;
 	String logString;
 	String _whereDoIComeFrom;
 
@@ -25,6 +25,8 @@ public class OwnSolvingAlgoCalcing_NEW {
 		_maze = maze;
 		_currentCell = startCell;
 		_tempCell = null;
+		_directionPossible = new boolean[] { true, true, true, true };
+		
 
 		if (notthisWall == 0) {
 			_directionPossible[1] = false;
