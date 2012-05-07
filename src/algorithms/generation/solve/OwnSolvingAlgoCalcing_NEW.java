@@ -29,21 +29,27 @@ public class OwnSolvingAlgoCalcing_NEW {
 		if (notthisWall == 0) {
 			_directionPossible[1] = false;
 			_whereDoIComeFrom = Conf.getWallName(1);
-		} else if (notthisWall == 1) {
+		}
+		if (notthisWall == 1) {
 			_directionPossible[0] = false;
 			_whereDoIComeFrom = Conf.getWallName(0);
-		} else if (notthisWall == 2) {
+		}
+		if (notthisWall == 2) {
 			_directionPossible[3] = false;
 			_whereDoIComeFrom = Conf.getWallName(3);
-		} else if (notthisWall == 3) {
+		}
+		if (notthisWall == 3) {
+
 			_directionPossible[2] = false;
 			_whereDoIComeFrom = Conf.getWallName(2);
 		}
-		
-		logString = " Ich bin Zelle " + _maze.getPositionOfCell(_currentCell)[0]
-				+ _maze.getPositionOfCell(_currentCell)[1] + " und mein Status = " + _currentCell.getState();
-						
-						UseLogger.LOGGER.info(logString);
+
+		logString = " Ich bin Zelle "
+				+ _maze.getPositionOfCell(_currentCell)[0]
+				+ _maze.getPositionOfCell(_currentCell)[1]
+				+ " und mein Status = " + _currentCell.getState();
+
+		UseLogger.LOGGER.info(logString);
 
 	}
 
@@ -56,21 +62,21 @@ public class OwnSolvingAlgoCalcing_NEW {
 	private boolean getPossibleNeigbour(int i) {
 
 		_tempCell = _maze.getNeigbourofCell(_currentCell, i);
-		
+
 		/**
 		 * if the Cell is not a empty one, return null. Then it is a U or B Cell
 		 */
 		if (_tempCell == null) {
-			//System.out.println("not possible: Cell = null");
-			//UseLogger.LOGGER.info("not possible: Cell = null");
+			// System.out.println("not possible: Cell = null");
+			// UseLogger.LOGGER.info("not possible: Cell = null");
 			return false;
 		}
 		if (_tempCell.getState() == "B" || _tempCell.getState() == "U") {
 			logString = "Ist nicht mšglich. Zelle hat getState: "
 					+ _tempCell.getState();
-			//System.out.println(logString);
+			// System.out.println(logString);
 
-		UseLogger.LOGGER.info(logString);
+			UseLogger.LOGGER.info(logString);
 			return false;
 		}
 
@@ -93,6 +99,9 @@ public class OwnSolvingAlgoCalcing_NEW {
 	}
 
 	public boolean calc() {
+		UseLogger.LOGGER.info("Calc von Zelle "
+				+ _maze.getPositionOfCell(_currentCell)[0]
+				+ _maze.getPositionOfCell(_currentCell)[1] + "aufgerufen...");
 
 		if (reachedTheEndCell()) {
 			UseLogger.LOGGER.info("ENDE ERREICHT!!!!");
@@ -100,34 +109,50 @@ public class OwnSolvingAlgoCalcing_NEW {
 			return true;
 		}
 
-		// String poss = "";
-		
 		for (int i = 0; i < 4; i++) {
-			if (!getPossibleNeigbour(i)) _directionPossible[i]  = false;
+			if (!getPossibleNeigbour(i))
+				_directionPossible[i] = false;
 		}
-		
-		UseLogger.LOGGER.info("Moegliche Waende = "
-				+ _directionPossible[0] + "  " + _directionPossible[1]
-						+ "  " + _directionPossible[2] + "  "
-						+ _directionPossible[3]);
+
+		return calcnow();
+
+	}
+
+	public boolean calcnow() {
+
+		UseLogger.LOGGER.info("Moegliche Durchgang fuer Zelle "
+				+ _maze.getPositionOfCell(_currentCell)[0]
+				+ _maze.getPositionOfCell(_currentCell)[1] + " "
+				+ _directionPossible[0] + "  " + _directionPossible[1] + "  "
+				+ _directionPossible[2] + "  " + _directionPossible[3]);
 		System.out.println("Mein Status: " + _currentCell.getState());
-		
-		for (int i = 0; i < 4; i++) {
-			
-			UseLogger.LOGGER.info(_maze.getPositionOfCell(_currentCell)[0]
-					+ _maze.getPositionOfCell(_currentCell)[1] + " will nach " + Conf.getWallName(i)
-					+ " gehen. Dies ist " + _directionPossible[i] + ".");
-			
-			if (_directionPossible[i]) {
-				logString = "\n Suche Nachbar " + Conf.getWallName(i)
+
+		if (!_directionPossible[0] && !_directionPossible[1]
+				&& !_directionPossible[2] && !_directionPossible[3]) {
+			logString = "Kein Druchgang mšglich. Sorry.";
+			UseLogger.LOGGER.info(logString);
+			return false;
+		}
+
+		for (int counter = 0; counter < 4; counter++) {
+
+			if (_directionPossible[counter]) {
+				UseLogger.LOGGER.info(" "
+						+ _maze.getPositionOfCell(_currentCell)[0]
+						+ _maze.getPositionOfCell(_currentCell)[1]
+						+ " will nach " + Conf.getWallName(counter)
+						+ " gehen. Dies ist " + _directionPossible[counter]
+						+ ".");
+				logString = "\n Suche Nachbar " + Conf.getWallName(counter)
 						+ " von Zelle an Position: \n "
 						+ _maze.getPositionOfCell(_currentCell)[0]
 						+ _maze.getPositionOfCell(_currentCell)[1]
-						+ "     possible ? = " + getPossibleNeigbour(i);
-				_tempCell = _maze.getNeigbourofCell(_currentCell, i);
+						+ "     possible ? = " + getPossibleNeigbour(counter);
+				_tempCell = _maze.getNeigbourofCell(_currentCell, counter);
 				UseLogger.LOGGER.info(logString);
 
-			//	SolvingAlgorithms._solvingCounter = SolvingAlgorithms._solvingCounter++;
+				// SolvingAlgorithms._solvingCounter =
+				// SolvingAlgorithms._solvingCounter++;
 				_currentCell = _tempCell;
 
 				String _currentCellPosition = ""
@@ -138,39 +163,41 @@ public class OwnSolvingAlgoCalcing_NEW {
 				logString = "Rekursiver Aufruf:  Aktuelle Zelle = "
 						+ _currentCellPosition + "\n";
 				UseLogger.LOGGER.info(logString);
-				
+
 				boolean retbool = new OwnSolvingAlgoCalcing_NEW(_maze,
-						_currentCell, _endCell, i).calc();
-				
+						_currentCell, _endCell, counter).calc();
+
 				if (retbool)
 					return retbool;
 
 				if (!retbool) {
 					System.out.println();
-					_directionPossible[i] = false;
+
 					logString = "Ich bin die Zelle "
 							+ _maze.getPositionOfCell(_currentCell)[0]
 							+ _maze.getPositionOfCell(_currentCell)[1]
 							+ " und habe keinen Weg in die Richtung "
-							+ Conf.getWallName(i) + " gefunden.";
+							+ Conf.getWallName(counter) + " gefunden.";
 					UseLogger.LOGGER.info(logString);
-					String logString = "current Cell = "
+					logString = "current Cell = "
+							+ _maze.getPositionOfCell(_currentCell)[0]
+							+ _maze.getPositionOfCell(_currentCell)[1] + " "
 							+ _directionPossible[0] + " "
-							+ _directionPossible[1] + "  "  
+							+ _directionPossible[1] + "  "
 							+ _directionPossible[2] + " "
 							+ _directionPossible[3];
 					UseLogger.LOGGER.info(logString);
-					
-					
-					
-					// System.out.println(_directionPossible[i]);
-					
+					_directionPossible[counter] = false;
+					logString = "current Cell = "
+							+ _maze.getPositionOfCell(_currentCell)[0]
+							+ _maze.getPositionOfCell(_currentCell)[1] + " "
+							+ _directionPossible[0] + " "
+							+ _directionPossible[1] + "  "
+							+ _directionPossible[2] + " "
+							+ _directionPossible[3];
+					UseLogger.LOGGER.info(logString);
+
 				}
-
-//				else {
-//					UseLogger.LOGGER.info("FALSE, FALSE !!!!");
-//				}
-
 			}
 		}
 
@@ -180,7 +207,6 @@ public class OwnSolvingAlgoCalcing_NEW {
 		// + _maze.getPositionOfCell(_currentCell)[1]
 		// + ". Es geht hier nicht mehr weiter... ;-( \n";
 		// UseLogger.LOGGER.info(logString);
-		
 
 	}
 }
