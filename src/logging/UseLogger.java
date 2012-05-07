@@ -11,7 +11,7 @@ public class UseLogger {
 
 	public void writeLog() {
 		// Set the LogLevel to Severe, only severe Messages will be written
-		LOGGER.setLevel(Level.FINEST);
+		LOGGER.setLevel(Level.ALL);
 		LOGGER.finest("First message \n --------------------------- \n");
 //		LOGGER.severe("Info Log");
 //		LOGGER.warning("Info Log");

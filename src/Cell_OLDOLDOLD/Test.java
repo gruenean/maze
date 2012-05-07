@@ -4,9 +4,10 @@ import java.util.Random;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
+import logging.UseLogger;
 import algorithms.generation.create.CreatingAlgorithms;
 import algorithms.generation.create.ownCreatingAlgo;
-import algorithms.generation.solve.OwnSolvingAlgo;
+import algorithms.generation.solve.OwnSolvingAlgo_NEW;
 import algorithms.generation.solve.SolvingAlgorithms;
 
 public class Test {
@@ -23,15 +24,32 @@ public class Test {
 
 	public Test() {
 
-		_rows = 7;
-		_cols = 7;
+		_rows = 4;
+		_cols = 4;
 		_maze = new Maze(_rows, _cols);
-		_startCell = _maze.getCellOnPosition(0, 0);
-		_endCell = _maze.getCellOnPosition(_rows - 1, _cols - 1);
-
+		
+		/**
+		 * set _rows, _cols and _endCell new
+		 */
+		_rows = _maze.getLastPosition()[0];
+		_cols = _maze.getLastPosition()[1];
+		
+		
+		_startCell = _maze.getCellOnPosition(1, 1);
+		
+		
+		//_endCell = _maze.getCellOnPosition(_maze.getLastPosition()[0], _maze.getLastPosition()[1]);
+		
+		_endCell = _maze.getCellOnPosition(_cols-2, _rows-2);
+		
+		
+		System.out.println("Position Ende = " + _maze.getLastPosition()[0] + _maze.getLastPosition()[1]);
+		
+		System.out.println("Position EndCell = " + _maze.getPositionOfCell(_endCell)[0] + _maze.getPositionOfCell(_endCell)[1]);
+		
 		_possiblesCreatingAlgos = new CreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze) };
-		_possiblesSolvingAlgos = new SolvingAlgorithms[] { new OwnSolvingAlgo(
+		_possiblesSolvingAlgos = new SolvingAlgorithms[] { new OwnSolvingAlgo_NEW(
 				_maze, _startCell, _endCell) };
 		_mycreatingAlgo = chooseOneRandomCreatingAlgo();
 		_mysolvingAlgo = chooseOneRandomSolvingAlgo();
@@ -47,6 +65,7 @@ public class Test {
 		System.out.println("\n Das Labyrinth wurde mit dem "
 				+ _mycreatingAlgo.getName() + " erstellt... \n\n\n");
 
+		
 	}
 
 	public void solveMaze() {

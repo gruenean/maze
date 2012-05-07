@@ -12,7 +12,7 @@ public class Conf {
 	public final static int TOP_WALL = 2;
 	public final static int BOTTOM_WALL = 3;
 	public static int STEPS = 0;
-	private  MyLogger _logger;
+	private MyLogger _logger;
 	
 	
 	public  static void increseSteps() {

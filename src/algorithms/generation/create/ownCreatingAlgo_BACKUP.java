@@ -10,7 +10,7 @@ public class ownCreatingAlgo_BACKUP extends CreatingAlgorithms implements ICreat
 
 	public ownCreatingAlgo_BACKUP(Maze maze) {
 		super(maze);
-		setName("<<eigener CreatingAlgo>>");
+		setName("<<eigener CreatingAlgo Backup>>");
 	}
 
 	public void defineStartandEndCell() {

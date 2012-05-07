@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import logging.UseLogger;
+
 import algorithms.generation.Conf;
 
 public class Maze {
@@ -19,6 +21,7 @@ public class Maze {
 	public Maze(int rows, int cols) {
 		_rows = 2 * rows + 1;
 		_cols = 2 * cols + 1;
+		
 		map = new Cell[_rows][_cols];
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		allCells = new ArrayList<Cell>();
@@ -26,16 +29,22 @@ public class Maze {
 
 		generateMap();
 	}
+	
+	public int[] getLastPosition(){
+		int[] temp = {_rows, _cols};
+		return temp;
+	}
 
 	/**
-	 * @deprecated REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon.
-	 *             METHOD ALREADY EXISTS!!!! TODO: delete this method
 	 * @param rows
 	 * @param cols
 	 * @return
 	 */
 	public Cell getCellOnPosition(int rows, int cols) {
-		// System.out.println(rows + " + " + cols);
+		System.out.println("Will Zelle an Position " + rows + " + " + cols);
+		
+		
+		System.out.println("Map Length = " + map.length);
 		return map[rows][cols];
 
 	}
@@ -155,9 +164,7 @@ public class Maze {
 	}
 
 	/**
-	 * @deprecated TODO: set to private NOTE: This method will be set to private
-	 *             soon. This method is used to get the position of a given cell
-	 * 
+	
 	 * @param cell
 	 * @return position of the given cell
 	 */
@@ -213,10 +220,7 @@ public class Maze {
 	}
 
 	/**
-	 * @deprecated REDUNDANDCY DEPARTEMENT OF REDUNDANCY - will be deleted soon -
-	 *             as it is pretty much the same as getRandomNeighbour() TODO:
-	 *             delete method NOTE: This method already exists and will be
-	 *             deleted soon!!!!!!
+	
 	 * 
 	 * @param cell
 	 * @param wall
@@ -224,7 +228,7 @@ public class Maze {
 	 *         which Neibour. (0=left,
 	 */
 	public Cell getNeigbourofCell(Cell cell, int wall) {
-		System.out.println("Wï¿½nsche Nachbar bei Wand: " + wall);
+//		System.out.println("WŸnsche Nachbar bei Wand: " + wall);
 		int[] currentPos = this.getPositionOfCell(cell);
 		int[] neighbourPositions;
 		{

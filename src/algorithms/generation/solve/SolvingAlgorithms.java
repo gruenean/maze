@@ -10,6 +10,7 @@ abstract public class SolvingAlgorithms extends Algorithms implements
 	protected Cell _startCell;
 	protected Cell _endCell;
 	protected Cell _currentCell;
+	protected static int _solvingCounter = 0;
 
 	/**
 	 * Constructor for all Solving Algorithms

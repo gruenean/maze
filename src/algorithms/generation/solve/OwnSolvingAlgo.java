@@ -8,6 +8,7 @@ public class OwnSolvingAlgo extends SolvingAlgorithms implements
 		ISolvingAlgorithms {
 
 	OwnSolvingAlgoCalcing _calc;
+	
 
 	public OwnSolvingAlgo(Maze maze, Cell startCell, Cell endCell) {
 		super(maze, startCell, endCell);
@@ -33,13 +34,6 @@ public class OwnSolvingAlgo extends SolvingAlgorithms implements
 		
 	}
 
-	// }
-
-	// private boolean isWallHere(){
-	// return false;
-	//
-	//
-	// }
 
 	@Override
 	public void defineStartandEndCell() {

@@ -17,7 +17,7 @@ public class MyLogger {
 	static public void setup() throws IOException {
 		// Create Logger
 		Logger logger = Logger.getLogger("");
-		logger.setLevel(Level.INFO);
+		logger.setLevel(Level.ALL);
 		fileTxt = new FileHandler("Logging.txt");
 		fileHTML = new FileHandler("Logging.html");
 
