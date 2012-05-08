@@ -7,12 +7,10 @@ import algorithms.generation.Conf;
 
 public class OwnSolvingAlgoCalcing_NEW {
 	Cell _endCell;
-	// Cell _cell;
 	Maze _maze;
 	boolean[] _isWallAllowed;
 	Cell _currentCell;
 	int[] possibleWays;
-	// Cell[] _thisIsTheWay;
 	Cell[] _alreadyChecked;
 	Cell _tempCell;
 	boolean[] _directionPossible;
@@ -26,7 +24,6 @@ public class OwnSolvingAlgoCalcing_NEW {
 		_currentCell = startCell;
 		_tempCell = null;
 		_directionPossible = new boolean[] { true, true, true, true };
-		
 
 		if (notthisWall == 0) {
 			_directionPossible[1] = false;
@@ -189,7 +186,7 @@ public class OwnSolvingAlgoCalcing_NEW {
 							+ _directionPossible[2] + " "
 							+ _directionPossible[3];
 					UseLogger.LOGGER.info(logString);
-					_directionPossible[counter] = false;
+					// _directionPossible[counter] = false;
 					logString = "current Cell = "
 							+ _maze.getPositionOfCell(_currentCell)[0]
 							+ _maze.getPositionOfCell(_currentCell)[1] + " "
