@@ -37,9 +37,13 @@ public class Console extends AListener implements IListener {
 				 */
 
 			} else if (stringArray[0].equals(Commands.SOLVE)) {
+				System.out.println("vor aufruf = " + _mytest);
 				new solveListener(stringArray, _mytest);
 //				_mytest = new Test();
-				
+			
+			} else if (stringArray[0].equals(Commands.GUI)) {
+				System.out.println("vor aufruf = " + _mytest);
+				new GUIListener(stringArray, _mytest);
 
 				/**
 				 * go to the next menue for changing the log level

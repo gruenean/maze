@@ -11,5 +11,6 @@ public class Commands {
 	protected static String SET = "SET";
 
 	protected static String OWN = "OWN";
+	protected static String GUI = "GUI";
 
 }

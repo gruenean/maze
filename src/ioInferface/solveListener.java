@@ -12,6 +12,8 @@ public class solveListener extends AListener implements IListener {
 	public solveListener(String[] inputString, Test test) {
 		super();
 		_mytest = test;
+		System.out.println("solvelistener instanzierung : " + _mytest);
+		
 		stringArray = removeFirstCommand(inputString);
 
 		// System.out.println("\nWelcome in the Log-Menu\n--------------------------");

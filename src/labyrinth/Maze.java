@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import logging.UseLogger;
-
 import algorithms.generation.Conf;
 
 public class Maze {
@@ -21,7 +19,7 @@ public class Maze {
 	public Maze(int rows, int cols) {
 		_rows = 2 * rows + 1;
 		_cols = 2 * cols + 1;
-		
+
 		map = new Cell[_rows][_cols];
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		allCells = new ArrayList<Cell>();
@@ -29,9 +27,9 @@ public class Maze {
 
 		generateMap();
 	}
-	
-	public int[] getLastPosition(){
-		int[] temp = {_rows, _cols};
+
+	public int[] getLastPosition() {
+		int[] temp = { _rows, _cols };
 		return temp;
 	}
 
@@ -42,8 +40,7 @@ public class Maze {
 	 */
 	public Cell getCellOnPosition(int rows, int cols) {
 		System.out.println("Will Zelle an Position " + rows + " + " + cols);
-		
-		
+
 		System.out.println("Map Length = " + map.length);
 		return map[rows][cols];
 
@@ -88,16 +85,17 @@ public class Maze {
 				/**
 				 * set the Value of the generated Cell (lengt = always 3)
 				 */
-			
+
 				String rowString = "" + row;
-				if (rowString.length()==1) rowString="0"+rowString;
-				//else if (rowString.length()==2) rowString="0"+rowString;
-				
+				if (rowString.length() == 1)
+					rowString = "0" + rowString;
+				// else if (rowString.length()==2) rowString="0"+rowString;
+
 				String colString = "" + col;
-				if (colString.length()==1) colString="0"+colString;
-				//else if (colString.length()==2) colString="0"+colString;
-				
-			
+				if (colString.length() == 1)
+					colString = "0" + colString;
+				// else if (colString.length()==2) colString="0"+colString;
+
 				newCell.setValue("" + rowString + " " + colString);
 
 				// TODO Testing only - remove
@@ -164,7 +162,7 @@ public class Maze {
 	}
 
 	/**
-	
+	 * 
 	 * @param cell
 	 * @return position of the given cell
 	 */
@@ -220,7 +218,7 @@ public class Maze {
 	}
 
 	/**
-	
+	 * 
 	 * 
 	 * @param cell
 	 * @param wall
@@ -228,7 +226,7 @@ public class Maze {
 	 *         which Neibour. (0=left,
 	 */
 	public Cell getNeigbourofCell(Cell cell, int wall) {
-//		System.out.println("WŸnsche Nachbar bei Wand: " + wall);
+		// System.out.println("WŸnsche Nachbar bei Wand: " + wall);
 		int[] currentPos = this.getPositionOfCell(cell);
 		int[] neighbourPositions;
 		{
@@ -324,9 +322,40 @@ public class Maze {
 
 	}
 
-	/**
-	 * This is just for Testing
-	 */
+	public int getRows() {
+
+		return _rows;
+	}
+
+	public int getCols() {
+		return _cols;
+	}
+
+	public List<Cell> getAllWalls() {
+		List<Cell> allWalls = new ArrayList<Cell>();
+		for (int i = 0; i < _rows; i++) {
+
+			for (int j = 0; j < _cols; j++) {
+				// System.out.println("i = " + i + "     j = " + j);
+				// System.out.println(map[1][0]);
+				String currentState = map[i][j].getState();
+				if (currentState == "U" || currentState == "B") {
+					// System.out.println("LŠnge = " + allWallCells.length +
+					// " Instanz = " + allWallCells);
+					// System.out.println("aktuelle Zelle = " + map[i][j]);
+					// System.out.println(counter);
+					allWalls.add(map[i][j]);
+					// counter ++;
+					// System.out.println(currentState);
+				}
+			}
+
+		}
+
+		return allWalls;
+
+	}
+
 	public void printMapRootsAsci() {
 		printMap();
 		printRoots();

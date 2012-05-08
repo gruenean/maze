@@ -2,6 +2,8 @@ package ioInferface;
 
 import java.util.logging.Level;
 
+import algorithms.generation.Conf;
+
 import logging.UseLogger;
 
 public class LogListener extends AListener implements IListener {
@@ -17,8 +19,12 @@ public class LogListener extends AListener implements IListener {
 		startListening();
 	}
 
+	/**
+	 * Possible Log shades: FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE
+	 */
 	public void initPossibleLogLevels() {
-		possiblesLogs = new String[] { "ALL", "SEVERE", "OFF", "INFO" };
+		possiblesLogs = new String[] { "OFF", "FINEST", "FINER", "FINE",
+				"CONFIG", "INFO", "WARNING", "SEVERE", "ALL" };
 	}
 
 	public boolean isLogLevel(String loglevel) {
@@ -73,8 +79,10 @@ public class LogListener extends AListener implements IListener {
 	}
 
 	public void getcurrentLogLevel() {
+		Conf.LOGSTRING = "The current Log Level is set to: " + getLogLevel();
 
-		System.out.println("The current Log Level is set to: " + getLogLevel());
+		System.out.println(Conf.LOGSTRING);
+		UseLogger.LOGGER.info(Conf.LOGSTRING);
 
 	}
 
@@ -86,14 +94,14 @@ public class LogListener extends AListener implements IListener {
 
 		try {
 			UseLogger.LOGGER.setLevel(Level.parse(level));
-
 		} catch (Exception e) {
 			e.printStackTrace();
-			// System.out.println("Mšgliche Log-Level: ");
 		}
+
 		System.out.println("The log level has been set successfully to '"
 				+ UseLogger.LOGGER.getLevel() + "' \n");
-		// System.out.println("string = " + stringArray[0]);
+
+		goingon = false;
 	}
 
 	@Override
@@ -104,10 +112,14 @@ public class LogListener extends AListener implements IListener {
 							+ makeStringArrayToString(stringArray)
 							+ ">> is NOT a valid input. Please use one of the following inputs...\n");
 		}
-		System.out.println("INFO:\t\t Log an INFO message.");
-		System.out.println("ALL:\t\t Log all messages.");
-		System.out.println("OFF:\t\t turn the Log off.");
-		System.out.println("SEVERE:\t\t Log a SEVERE message..");
+		
+		System.out.println("SET OFF:\t\t turn the Log off.");
+		System.out.println("SET FINEST:\t\t Log on the FINEST Log.");
+		System.out.println("SET FINER:\t\t Log on the FINERI log.");
+		System.out.println("SET FINER:\t\t Log on the FINE log.");
+		System.out.println("SET INFO:\t\t Log an INFO message.");
+		System.out.println("SET SEVERE:\t\t Log a SEVERE message..");
+		System.out.println("SET ALL:\t\t Log all messages.");
 		System.out.println("QUIT:\t\t go back to main menu.");
 		System.out.println("GET:\t\t Gives back the current Log Level");
 

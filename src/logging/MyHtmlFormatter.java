@@ -40,7 +40,7 @@ class MyHtmlFormatter extends Formatter
 
 	private String calcDate(long millisecs)
 	{
-		SimpleDateFormat date_format = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+		SimpleDateFormat date_format = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
 		Date resultdate = new Date(millisecs);
 		return date_format.format(resultdate);
 	}

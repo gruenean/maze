@@ -1,10 +1,11 @@
 package Cell_OLDOLDOLD;
 
+import java.util.List;
 import java.util.Random;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
-import logging.UseLogger;
+import GUI.MyGameGrid;
 import algorithms.generation.create.CreatingAlgorithms;
 import algorithms.generation.create.ownCreatingAlgo;
 import algorithms.generation.solve.OwnSolvingAlgo_NEW;
@@ -21,32 +22,34 @@ public class Test {
 	private SolvingAlgorithms _mysolvingAlgo;
 	private Cell _startCell;
 	private Cell _endCell;
+	private MyGameGrid _mygrid = null;
 
 	public Test() {
 
-		_rows = 5;
-		_cols = 5;
+		_rows = 7;
+		_cols = 7;
 		_maze = new Maze(_rows, _cols);
-		
+
 		/**
 		 * set _rows, _cols and _endCell new
 		 */
 		_rows = _maze.getLastPosition()[0];
 		_cols = _maze.getLastPosition()[1];
-		
-		
+
 		_startCell = _maze.getCellOnPosition(1, 1);
-		
-		
-		//_endCell = _maze.getCellOnPosition(_maze.getLastPosition()[0], _maze.getLastPosition()[1]);
-		
-		_endCell = _maze.getCellOnPosition(_cols-2, _rows-2);
-		
-		
-		System.out.println("Position Ende = " + _maze.getLastPosition()[0] + _maze.getLastPosition()[1]);
-		
-		System.out.println("Position EndCell = " + _maze.getPositionOfCell(_endCell)[0] + _maze.getPositionOfCell(_endCell)[1]);
-		
+
+		// _endCell = _maze.getCellOnPosition(_maze.getLastPosition()[0],
+		// _maze.getLastPosition()[1]);
+
+		_endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
+
+		System.out.println("Position Ende = " + _maze.getLastPosition()[0]
+				+ _maze.getLastPosition()[1]);
+
+		System.out.println("Position EndCell = "
+				+ _maze.getPositionOfCell(_endCell)[0]
+				+ _maze.getPositionOfCell(_endCell)[1]);
+
 		_possiblesCreatingAlgos = new CreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze) };
 		_possiblesSolvingAlgos = new SolvingAlgorithms[] { new OwnSolvingAlgo_NEW(
@@ -65,7 +68,6 @@ public class Test {
 		System.out.println("\n Das Labyrinth wurde mit dem "
 				+ _mycreatingAlgo.getName() + " erstellt... \n\n\n");
 
-		
 	}
 
 	public void solveMaze() {
@@ -93,5 +95,23 @@ public class Test {
 				.nextInt(_possiblesSolvingAlgos.length)];
 
 	}
+
+	public void createGUI() {
+		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols());
+		// System.out.println(_maze.getRows() + "      " + _maze.getCols());
+		List<Cell> allWalls = _maze.getAllWalls();
+		System.out.println("size von walls im test = " + allWalls.size());
+		for (int i = 0; i < allWalls.size(); i++) {
+
+			System.out.println(_maze.getPositionOfCell(allWalls.get(i))[0]
+					+ "    " + _maze.getPositionOfCell(allWalls.get(i))[1]);
+			_mygrid.setWall(_maze.getPositionOfCell(allWalls.get(i))[0], _maze.getPositionOfCell(allWalls.get(i))[1]);
+
+		}
+
+	}
+
+	// _myGUIThread = new GUIThread();
+	// _myGUIThread.run();
 
 }
