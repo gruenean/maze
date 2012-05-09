@@ -10,7 +10,11 @@ public class Commands {
 	protected static String GET = "GET";
 	protected static String SET = "SET";
 
-	protected static String OWN = "OWN";
-	protected static String GUI = "GUI";
+	protected final static String OWN = "OWN";
+	protected final static String GUI = "GUI";
+	protected final static String STEP = "SET STEP";
+	protected final static String RUN = "SET RUN";
+	protected final static String MODUS = "MODUS";
+	
 
 }

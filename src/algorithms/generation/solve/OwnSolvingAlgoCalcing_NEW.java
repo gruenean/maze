@@ -8,7 +8,7 @@ import algorithms.generation.Conf;
 public class OwnSolvingAlgoCalcing_NEW {
 	private Cell _endCell;
 	private Maze _maze;
-//	private boolean[] _isWallAllowed;
+	// private boolean[] _isWallAllowed;
 	private Cell _myCell = null;
 	private int[] possibleWays;
 	private Cell[] _alreadyChecked;
@@ -37,12 +37,11 @@ public class OwnSolvingAlgoCalcing_NEW {
 
 			_directionPossible[2] = false;
 		}
+		logString = " Ich bin Zelle " + _maze.getPositionOfCell(_myCell)[0]
+				+ _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
+				+ _myCell.getState();
 
-		logString = " Ich bin Zelle "
-				+ _maze.getPositionOfCell(_myCell)[0]
-				+ _maze.getPositionOfCell(_myCell)[1]
-				+ " und mein Status = " + _myCell.getState();
-
+//		System.out.println("my logger = " + UseLogger.LOGGER);
 		UseLogger.LOGGER.info(logString);
 
 	}
@@ -131,12 +130,10 @@ public class OwnSolvingAlgoCalcing_NEW {
 		for (int counter = 0; counter < 4; counter++) {
 
 			if (_directionPossible[counter]) {
-				UseLogger.LOGGER.info(" "
-						+ _maze.getPositionOfCell(_myCell)[0]
-						+ _maze.getPositionOfCell(_myCell)[1]
-						+ " will nach " + Conf.getWallName(counter)
-						+ " gehen. Dies ist " + _directionPossible[counter]
-						+ ".");
+				UseLogger.LOGGER.info(" " + _maze.getPositionOfCell(_myCell)[0]
+						+ _maze.getPositionOfCell(_myCell)[1] + " will nach "
+						+ Conf.getWallName(counter) + " gehen. Dies ist "
+						+ _directionPossible[counter] + ".");
 				logString = "\n Suche Nachbar " + Conf.getWallName(counter)
 						+ " von Zelle an Position: \n "
 						+ _maze.getPositionOfCell(_myCell)[0]
@@ -147,7 +144,7 @@ public class OwnSolvingAlgoCalcing_NEW {
 
 				// SolvingAlgorithms._solvingCounter =
 				// SolvingAlgorithms._solvingCounter++;
-//				_myCell = _nextCell;
+				// _myCell = _nextCell;
 
 				String _currentCellPosition = ""
 						+ _maze.getPositionOfCell(_myCell)[0]
@@ -181,7 +178,7 @@ public class OwnSolvingAlgoCalcing_NEW {
 							+ _directionPossible[2] + " "
 							+ _directionPossible[3];
 					UseLogger.LOGGER.info(logString);
-					 _directionPossible[counter] = false;
+					_directionPossible[counter] = false;
 					logString = "current Cell = "
 							+ _maze.getPositionOfCell(_myCell)[0]
 							+ _maze.getPositionOfCell(_myCell)[1] + " "

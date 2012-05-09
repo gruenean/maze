@@ -51,6 +51,10 @@ public class Console extends AListener implements IListener {
 			} else if (stringArray[0].equals(Commands.LOG)) {
 				new LogListener(stringArray);
 				System.out.println(Commands.LOG + " Menu verlassen.");
+				
+			} else if (stringArray[0].equals(Commands.MODUS)) {
+				new modusListener(stringArray, _mytest);
+				System.out.println(Commands.MODUS + " Menu verlassen.");
 
 				/**
 				 * go to the help menu and give possibilities

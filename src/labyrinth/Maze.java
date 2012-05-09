@@ -25,7 +25,10 @@ public class Maze {
 		allCells = new ArrayList<Cell>();
 		allRoots = new ArrayList<Cell>();
 
+		
 		generateMap();
+		
+		
 	}
 
 	public int[] getLastPosition() {
@@ -150,6 +153,16 @@ public class Maze {
 				}
 			}
 		}
+	}
+	
+	public void createEinundAusgang(){
+		
+		map[1][0].setState(" ");
+		map[1][0].setisBreakable(false);
+		
+		map[_rows-2][_cols-1].setState(" ");
+		map[_rows-2][_cols-1].setisBreakable(false);
+		
 	}
 
 	/**
@@ -333,20 +346,12 @@ public class Maze {
 
 	public List<Cell> getAllWalls() {
 		List<Cell> allWalls = new ArrayList<Cell>();
-		for (int i = 0; i < _rows; i++) {
+		for (int i = 0; i < map.length; i++) {
 
-			for (int j = 0; j < _cols; j++) {
-				// System.out.println("i = " + i + "     j = " + j);
-				// System.out.println(map[1][0]);
+			for (int j = 0; j < map.length; j++) {
 				String currentState = map[i][j].getState();
 				if (currentState == "U" || currentState == "B") {
-					// System.out.println("LŠnge = " + allWallCells.length +
-					// " Instanz = " + allWallCells);
-					// System.out.println("aktuelle Zelle = " + map[i][j]);
-					// System.out.println(counter);
-					allWalls.add(map[i][j]);
-					// counter ++;
-					// System.out.println(currentState);
+					allWalls.add(map[j][i]);
 				}
 			}
 

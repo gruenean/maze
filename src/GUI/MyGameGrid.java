@@ -28,7 +28,7 @@ public class MyGameGrid extends GameGrid {
 
 		// myCell = new Cell();
 
-		addActor(littleBug, new Location(0, 0));
+		addActor(littleBug, new Location(0, 1));
 
 		// for (int i = 0; i < 10; i++)
 		// addActor(new Fly(), getRandomEmptyLocation());

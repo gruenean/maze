@@ -12,11 +12,9 @@ public class solveListener extends AListener implements IListener {
 	public solveListener(String[] inputString, Test test) {
 		super();
 		_mytest = test;
-		System.out.println("solvelistener instanzierung : " + _mytest);
 		
 		stringArray = removeFirstCommand(inputString);
 
-		// System.out.println("\nWelcome in the Log-Menu\n--------------------------");
 		initPossibleAlgos();
 		startListening();
 	}
@@ -79,8 +77,9 @@ public class solveListener extends AListener implements IListener {
 							+ makeStringArrayToString(stringArray)
 							+ ">> is NOT a valid input. Please use one of the following inputs...\n");
 		}
-		System.out.println("NOT IMPLEMENTED YET THE HELP OF\n\nSOLVING ALGO");
-
+		System.out.println("SET STEP:\t\t change into the STEP Modus.");
+		System.out.println("SET RUN:\t\t change into the RUNNING Modus.");
+		System.out.println("GET:\t\t give back the current modus.");
 		reinitializeStringArray();
 		// System.out.println(goingon);
 	}

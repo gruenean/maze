@@ -14,6 +14,7 @@ public class Conf {
 	public static int STEPS = 0;
 	private MyLogger _logger;
 	public static String LOGSTRING = null;
+	public static boolean STEPMODUS = false;
 
 	public static void increseSteps() {
 		STEPS = STEPS + 1;
@@ -34,7 +35,7 @@ public class Conf {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		UseLogger.LOGGER.setLevel(Level.SEVERE);
+		UseLogger.LOGGER.setLevel(Level.ALL);
 	}
 
 	public static String getWallName(int i) {

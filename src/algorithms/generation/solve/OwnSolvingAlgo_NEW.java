@@ -15,9 +15,8 @@ public class OwnSolvingAlgo_NEW extends SolvingAlgorithms implements
 
 		_currentCell = startCell;
 		UseLogger.LOGGER.info("startCell = " + _startCell);
-		//System.out.println("Startcell = " + _startCell);
+		// System.out.println("Startcell = " + _startCell);
 
-	
 	}
 
 	@Override
@@ -25,14 +24,15 @@ public class OwnSolvingAlgo_NEW extends SolvingAlgorithms implements
 		UseLogger.LOGGER.info("Position letzte Zelle = ["
 				+ _maze.getPositionOfCell(_endCell)[0]
 				+ _maze.getPositionOfCell(_endCell)[1] + "]");
-		
+
 		UseLogger.LOGGER.info("First time calcing...");
 		_calc = new OwnSolvingAlgoCalcing_NEW(_maze, _startCell, _endCell, 99);
-boolean _soltutionfound = _calc.calc();
+		boolean _soltutionfound = _calc.calc();
 
-		if (_soltutionfound)
+		if (_soltutionfound) {
+			_maze.createEinundAusgang();
 			System.out.println("Lšsung yes...");
-		else
+		} else
 			System.out.println("keine Lšsung...");
 
 	}
