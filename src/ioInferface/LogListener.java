@@ -10,11 +10,10 @@ public class LogListener extends AListener implements IListener {
 	private String inputString = " ";
 	private String[] possiblesLogs;
 
-	public LogListener(String[] inputString) {
-		super();
+	public LogListener(String[] inputString, Conf globalConf) {
+		super(globalConf);
 		stringArray = removeFirstCommand(inputString);
 
-		// System.out.println("\nWelcome in the Log-Menu\n--------------------------");
 		initPossibleLogLevels();
 		startListening();
 	}
@@ -48,22 +47,22 @@ public class LogListener extends AListener implements IListener {
 			/**
 			 * if the input is LOG, just clear ist
 			 */
-			if (stringArray[0].equals(Commands.LOG)) {
+			if (stringArray[0].equals(ConsoleCommands.LOG)) {
 				stringArray = removeFirstCommand(stringArray);
 				if (stringArray.length == 0)
 					reinitializeStringArray();
 			}
 
-			if (stringArray[0].equals(Commands.QUIT))
+			if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;
 
-			else if (stringArray[0].equals(Commands.HELP))
+			else if (stringArray[0].equals(ConsoleCommands.HELP))
 				getHelp();
 
-			else if (stringArray[0].equals(Commands.GET)) {
+			else if (stringArray[0].equals(ConsoleCommands.GET)) {
 				getcurrentLogLevel();
 				reinitializeStringArray();
-			} else if (stringArray[0].equals(Commands.SET)
+			} else if (stringArray[0].equals(ConsoleCommands.SET)
 					&& isLogLevel(stringArray[1])) {
 				String logLevel = removeFirstCommand(stringArray)[0];
 				setLogLevel(logLevel);

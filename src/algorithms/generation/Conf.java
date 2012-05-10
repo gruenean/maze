@@ -11,15 +11,25 @@ public class Conf {
 	public final static int RIGHT_WALL = 1;
 	public final static int TOP_WALL = 2;
 	public final static int BOTTOM_WALL = 3;
+
+	// TODO wird dies noch benštigt
 	public static int STEPS = 0;
+
 	public static String LOGSTRING = null;
-	public static boolean STEPMODUS = false;
+	public boolean STEPMODUS = false;
+
+	public boolean isSTEPMODUS() {
+		return STEPMODUS;
+	}
+
+	public void setSTEPMODUS(boolean sTEPMODUS) {
+		STEPMODUS = sTEPMODUS;
+	}
+
 	private MyLogger _logger;
 
 	public Conf() {
-
 		setUpLogger();
-
 	}
 
 	public static void increseSteps() {

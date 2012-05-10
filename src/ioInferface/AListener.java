@@ -2,17 +2,18 @@ package ioInferface;
 
 import java.util.Scanner;
 
+import algorithms.generation.Conf;
+
 public abstract class AListener {
 
 	protected String inputString = " ";
 	protected Scanner _in = null;
 	protected boolean goingon;
 	public String[] stringArray;
+	protected Conf globalConf;
 
-	// protected Commands _mycommands;
-
-	public AListener() {
-		// _mycommands = new Commands();
+	public AListener(Conf globalConf) {
+		this.globalConf = globalConf;
 		stringArray = new String[] {};
 		_in = new Scanner(System.in);
 		goingon = true;

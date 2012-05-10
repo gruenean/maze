@@ -3,15 +3,14 @@ package ioInferface;
 import java.util.Scanner;
 
 import Cell_OLDOLDOLD.Test;
+import algorithms.generation.Conf;
 
 public class Console extends AListener implements IListener {
 	static Test _mytest;
 	String[] stringArray;
 
-	// private String[] inputArray = new String[] {};
-
-	public Console() {
-		super();
+	public Console(Conf globalConf) {
+		super(globalConf);
 		_in = new Scanner(System.in);
 		goingon = true;
 		_mytest = null;
@@ -23,12 +22,11 @@ public class Console extends AListener implements IListener {
 			System.out.print("MAIN: ");
 			inputString = _in.nextLine().toUpperCase();
 			stringArray = inputString.split(" ");
-			// printArray(stringArray);
 
 			/**
 			 * go to the next menue for creating a maze
 			 */
-			if (stringArray[0].equals(Commands.CREATE)) {
+			if (stringArray[0].equals(ConsoleCommands.CREATE)) {
 				_mytest = new Test();
 				_mytest.createMaze();
 
@@ -36,34 +34,34 @@ public class Console extends AListener implements IListener {
 				 * go to the next menue for solving a maze
 				 */
 
-			} else if (stringArray[0].equals(Commands.SOLVE)) {
-				new solveListener(stringArray, _mytest);
+			} else if (stringArray[0].equals(ConsoleCommands.SOLVE)) {
+				new solveListener(stringArray, _mytest, globalConf);
 
-			} else if (stringArray[0].equals(Commands.GUI)) {
-				new GUIListener(stringArray, _mytest);
+			} else if (stringArray[0].equals(ConsoleCommands.GUI)) {
+				new GUIListener(stringArray, _mytest, globalConf);
 
 				/**
 				 * go to the next menue for changing the log level
 				 */
-			} else if (stringArray[0].equals(Commands.LOG)) {
-				new LogListener(stringArray);
-				System.out.println(Commands.LOG + " Menu verlassen.");
+			} else if (stringArray[0].equals(ConsoleCommands.LOG)) {
+				new LogListener(stringArray, globalConf);
+				System.out.println(ConsoleCommands.LOG + " Menu verlassen.");
 
-			} else if (stringArray[0].equals(Commands.MODUS)) {
-				new ModusListener(stringArray, _mytest);
-				System.out.println(Commands.MODUS + " Menu verlassen.");
+			} else if (stringArray[0].equals(ConsoleCommands.MODUS)) {
+				new ModusListener(stringArray, globalConf);
+				System.out.println(ConsoleCommands.MODUS + " Menu verlassen.");
 
 				/**
 				 * go to the help menu and give possibilities
 				 */
-			} else if (stringArray[0].contains(Commands.HELP)) {
+			} else if (stringArray[0].contains(ConsoleCommands.HELP)) {
 				getHelp();
 			}
 
 			/**
 			 * if quit... just do it
 			 */
-			else if (stringArray[0].equals(Commands.QUIT))
+			else if (stringArray[0].equals(ConsoleCommands.QUIT))
 				quit();
 		}
 

@@ -5,6 +5,11 @@ import labyrinth.Maze;
 import logging.UseLogger;
 import algorithms.generation.Conf;
 
+
+/**
+ * @deprecated this Class will not be used / 11.05.2012
+ * @author micha
+ */
 public class OwnSolvingAlgoCalcing {
 	Cell _endCell;
 	Cell _cell;

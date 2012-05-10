@@ -1,6 +1,7 @@
 package ioInferface;
 
 import Cell_OLDOLDOLD.Test;
+import algorithms.generation.Conf;
 
 
 public class solveListener extends AListener implements IListener {
@@ -9,8 +10,8 @@ public class solveListener extends AListener implements IListener {
 	private String[] possiblesSolvingAlgo;
 	private Test _mytest;
 
-	public solveListener(String[] inputString, Test test) {
-		super();
+	public solveListener(String[] inputString, Test test, Conf globalConf) {
+		super(globalConf);
 		_mytest = test;
 		
 		stringArray = removeFirstCommand(inputString);
@@ -44,19 +45,19 @@ public class solveListener extends AListener implements IListener {
 			/**
 			 * if the input is SOLVE, just clear ist
 			 */
-			if (stringArray[0].equals(Commands.SOLVE)) {
+			if (stringArray[0].equals(ConsoleCommands.SOLVE)) {
 				stringArray = removeFirstCommand(stringArray);
 				if (stringArray.length == 0)
 					reinitializeStringArray();
 			}
 
-			if (stringArray[0].equals(Commands.OWN))
+			if (stringArray[0].equals(ConsoleCommands.OWN))
 				_mytest.solveMaze();
 
-			if (stringArray[0].equals(Commands.QUIT))
+			if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;
 
-			else if (stringArray[0].equals(Commands.HELP)
+			else if (stringArray[0].equals(ConsoleCommands.HELP)
 					|| stringArray.length == 0)
 				getHelp();
 
@@ -71,7 +72,7 @@ public class solveListener extends AListener implements IListener {
 	@Override
 	public void getHelp() {
 		if (!containsAlgo(stringArray[0]) || inputString.isEmpty()
-				|| !stringArray[0].equals(Commands.HELP)) {
+				|| !stringArray[0].equals(ConsoleCommands.HELP)) {
 			System.out
 					.println("<<"
 							+ makeStringArrayToString(stringArray)

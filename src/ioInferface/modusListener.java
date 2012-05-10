@@ -1,30 +1,17 @@
 package ioInferface;
 
-import Cell_OLDOLDOLD.Test;
 import algorithms.generation.Conf;
 
 public class ModusListener extends AListener implements IListener {
 	private String inputString = " ";
 
-//	private String[] possiblesmodus;
-	private Test _mytest;
-
-	public ModusListener(String[] inputString, Test test) {
-		super();
-		_mytest = test;
+	public ModusListener(String[] inputString, Conf globalConf) {
+		super(globalConf);
 
 		stringArray = removeFirstCommand(inputString);
 
 		startListening();
 	}
-
-	// public boolean containsAlgo(String loglevel) {
-	// for (int i = 0; i < possiblesmodus.length; i++) {
-	// if (possiblesmodus[i].contains(loglevel.toUpperCase()))
-	// return true;
-	// }
-	// return false;
-	// }
 
 	public void startListening() {
 		String modusString = null;
@@ -33,27 +20,29 @@ public class ModusListener extends AListener implements IListener {
 
 			if (stringArray.length == 0) {
 				inputString = _in.nextLine().toUpperCase();
-				// stringArray = inputString.toUpperCase().split(" ");
+				stringArray = inputString.toUpperCase().split(" ");
 			}
 
 			/**
 			 * if the input is MODUS, just clear ist
 			 */
-			if (stringArray[0].equals(Commands.MODUS)) {
+			if (stringArray[0].equals(ConsoleCommands.MODUS)) {
 				stringArray = removeFirstCommand(stringArray);
 				if (stringArray.length == 0)
 					reinitializeStringArray();
 			}
 
-			if (stringArray[0].equals(Commands.SET)) {
-				if (stringArray[1].equals(Commands.STEP))
-					Conf.STEPMODUS = true;
-				if (stringArray[1].equals(Commands.RUN))
-					Conf.STEPMODUS = false;
+			if (stringArray[0].equals(ConsoleCommands.SET)) {
+				System.out.println(stringArray[1]);
+				if (stringArray[1].equals(ConsoleCommands.STEP))
+					globalConf.setSTEPMODUS(true);
+				if (stringArray[1].equals(ConsoleCommands.RUN))
+					globalConf.setSTEPMODUS(false);
+				goingon = false;
 			}
 
-			if (stringArray[0].equals(Commands.GET)) {
-				if (Conf.STEPMODUS) {
+			if (stringArray[0].equals(ConsoleCommands.GET)) {
+				if (globalConf.isSTEPMODUS()) {
 					modusString = "STEP";
 					goingon = false;
 				} else {
@@ -63,12 +52,12 @@ public class ModusListener extends AListener implements IListener {
 				System.out.println("The current MODUS is : " + modusString);
 			}
 
-			else if (stringArray[0].equals(Commands.HELP)
-					|| stringArray.length == 0)
+			else if (stringArray[0].equals(ConsoleCommands.HELP)
+					|| stringArray.length == 0 || !isvalidInput())
 				getHelp();
 
-			else
-				getHelp();
+			// else
+			// getHelp();
 
 			stringArray = removeFirstCommand(stringArray);
 
@@ -77,16 +66,49 @@ public class ModusListener extends AListener implements IListener {
 
 	@Override
 	public void getHelp() {
-		if (inputString.isEmpty() || !stringArray[0].equals(Commands.HELP)) {
+		if (inputString.isEmpty()
+				|| !stringArray[0].equals(ConsoleCommands.HELP)) {
 			System.out
 					.println("<<"
 							+ makeStringArrayToString(stringArray)
 							+ ">> is NOT a valid input. Please use one of the following inputs...\n");
 		}
-		System.out.println("NOT IMPLEMENTED YET THE HELP OF\n\nSOLVING ALGO");
-
+		System.out
+				.println(ConsoleCommands.SET
+						+ " "
+						+ ConsoleCommands.STEP
+						+ ":\t changes the modus to STEP. This means every step will be shown.");
+		System.out
+				.println(ConsoleCommands.SET
+						+ " "
+						+ ConsoleCommands.RUN
+						+ ":\t changes the modus to RUN. This means just the result will be shown.");
+		System.out.println(ConsoleCommands.GET
+				+ ":\t\t will show you the current Modus");
+		System.out
+				.println(ConsoleCommands.QUIT + ":\t\t go back to main menu.");
+		goingon = true;
 		reinitializeStringArray();
-		// System.out.println(goingon);
+	}
+
+	private boolean isvalidInput() {
+
+		if (stringArray[0].equals(ConsoleCommands.GET))
+			return true;
+		if (stringArray[0].equals(ConsoleCommands.SET)) {
+
+			if (stringArray[1].equals(ConsoleCommands.STEP))
+				return true;
+			if (stringArray[1].equals(ConsoleCommands.RUN))
+				return true;
+
+		}
+
+		return false;
+	}
+
+	{
+
 	}
 
 }

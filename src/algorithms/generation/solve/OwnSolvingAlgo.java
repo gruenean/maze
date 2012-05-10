@@ -4,6 +4,10 @@ import labyrinth.Cell;
 import labyrinth.Maze;
 import logging.UseLogger;
 
+/**
+ * @deprecated this Class will not be used / 11.05.2012
+ * @author micha
+ */
 public class OwnSolvingAlgo extends SolvingAlgorithms implements
 		ISolvingAlgorithms {
 

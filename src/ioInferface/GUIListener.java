@@ -9,8 +9,8 @@ public class GUIListener extends AListener implements IListener {
 	private String inputString = " ";
 	private Test _mytest;
 
-	public GUIListener(String[] inputString, Test test) {
-		super();
+	public GUIListener(String[] inputString, Test test, Conf globalConf) {
+		super(globalConf);
 		_mytest = test;
 		stringArray = removeFirstCommand(inputString);
 		startListening();
@@ -29,19 +29,19 @@ public class GUIListener extends AListener implements IListener {
 			/**
 			 * if the input is LOG, just clear ist
 			 */
-			if (stringArray[0].equals(Commands.GUI)) {
+			if (stringArray[0].equals(ConsoleCommands.GUI)) {
 				stringArray = removeFirstCommand(stringArray);
 				if (stringArray.length == 0)
 					reinitializeStringArray();
 			}
 
-			if (stringArray[0].equals(Commands.QUIT))
+			if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;
 
-			else if (stringArray[0].equals(Commands.HELP))
+			else if (stringArray[0].equals(ConsoleCommands.HELP))
 				getHelp();
 
-			else if (stringArray[0].equals(Commands.CREATE)) {
+			else if (stringArray[0].equals(ConsoleCommands.CREATE)) {
 
 				try {
 					_mytest.createGUI();
