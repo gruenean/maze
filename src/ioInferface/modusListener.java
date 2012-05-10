@@ -3,13 +3,13 @@ package ioInferface;
 import Cell_OLDOLDOLD.Test;
 import algorithms.generation.Conf;
 
-public class modusListener extends AListener implements IListener {
+public class ModusListener extends AListener implements IListener {
 	private String inputString = " ";
 
-	private String[] possiblesmodus;
+//	private String[] possiblesmodus;
 	private Test _mytest;
 
-	public modusListener(String[] inputString, Test test) {
+	public ModusListener(String[] inputString, Test test) {
 		super();
 		_mytest = test;
 

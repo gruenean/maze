@@ -231,8 +231,6 @@ public class Maze {
 	}
 
 	/**
-	 * 
-	 * 
 	 * @param cell
 	 * @param wall
 	 * @return gives the Neigbour of the inserted Cell back. int wall defines

@@ -3,6 +3,13 @@ package algorithms.generation.create;
 import labyrinth.Cell;
 import labyrinth.Maze;
 
+
+
+
+/**
+ * @deprecated this Class will not be used / 10.05.2012
+ * @author micha
+ */
 public class ownCreatingAlgo_BACKUP extends CreatingAlgorithms implements ICreatingAlgorithms{
 
 	Cell randomCell;

@@ -1,8 +1,8 @@
 package Cell_OLDOLDOLD;
 
 /**
+ * @deprecated this Class will not be used / 10.05.2012 (micha)
  * @author green
- * 
  */
 public class Cell {
 private int hoidu;

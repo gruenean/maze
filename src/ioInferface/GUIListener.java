@@ -1,6 +1,8 @@
 package ioInferface;
 
-import labyrinth.Cell;
+import algorithms.generation.Conf;
+
+import logging.UseLogger;
 import Cell_OLDOLDOLD.Test;
 
 public class GUIListener extends AListener implements IListener {
@@ -11,7 +13,6 @@ public class GUIListener extends AListener implements IListener {
 		super();
 		_mytest = test;
 		stringArray = removeFirstCommand(inputString);
-		System.out.println("MyTest = " + _mytest + test);
 		startListening();
 	}
 
@@ -41,7 +42,16 @@ public class GUIListener extends AListener implements IListener {
 				getHelp();
 
 			else if (stringArray[0].equals(Commands.CREATE)) {
-				_mytest.createGUI();
+
+				try {
+					_mytest.createGUI();
+				} catch (Exception e) {
+					Conf.LOGSTRING = "FEHLER: GUI kann nicht erstellt werden, da es noch kein Labyrinth gibt.";
+					System.out.println(Conf.LOGSTRING);
+					UseLogger.LOGGER.warning(Conf.LOGSTRING);
+
+				}
+
 			} else
 				getHelp();
 

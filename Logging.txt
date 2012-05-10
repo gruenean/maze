@@ -1,2 +1,0 @@
-09.05.2012 22:36:43 algorithms.generation.solve.OwnSolvingAlgo_NEW <init>
-INFO: startCell = labyrinth.Cell@4d630ab9

@@ -36,11 +36,11 @@ public class Test {
 		_rows = _maze.getLastPosition()[0];
 		_cols = _maze.getLastPosition()[1];
 
+		
+		/**
+		 * define globally Position of start and end cell
+		 */
 		_startCell = _maze.getCellOnPosition(1, 1);
-
-		// _endCell = _maze.getCellOnPosition(_maze.getLastPosition()[0],
-		// _maze.getLastPosition()[1]);
-
 		_endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
 
 		System.out.println("Position Ende = " + _maze.getLastPosition()[0]

@@ -37,12 +37,9 @@ public class Console extends AListener implements IListener {
 				 */
 
 			} else if (stringArray[0].equals(Commands.SOLVE)) {
-				System.out.println("vor aufruf = " + _mytest);
 				new solveListener(stringArray, _mytest);
-//				_mytest = new Test();
-			
+
 			} else if (stringArray[0].equals(Commands.GUI)) {
-				System.out.println("vor aufruf = " + _mytest);
 				new GUIListener(stringArray, _mytest);
 
 				/**
@@ -51,9 +48,9 @@ public class Console extends AListener implements IListener {
 			} else if (stringArray[0].equals(Commands.LOG)) {
 				new LogListener(stringArray);
 				System.out.println(Commands.LOG + " Menu verlassen.");
-				
+
 			} else if (stringArray[0].equals(Commands.MODUS)) {
-				new modusListener(stringArray, _mytest);
+				new ModusListener(stringArray, _mytest);
 				System.out.println(Commands.MODUS + " Menu verlassen.");
 
 				/**
