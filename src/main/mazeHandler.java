@@ -25,6 +25,7 @@ public class mazeHandler {
 	private Cell _endCell;
 	private MyGameGrid _mygrid = null;
 
+	
 	public mazeHandler() {
 
 		_rows = 7;

@@ -7,7 +7,7 @@ import java.awt.Color;
 import ch.aplu.jgamegrid.GameGrid;
 import ch.aplu.jgamegrid.Location;
 
-public class MyGameGrid extends GameGrid {
+public class MyGameGrid extends GameGrid{
 
 	private static final long serialVersionUID = 8486057990676537058L;
 	private LittleBug littleBug;
