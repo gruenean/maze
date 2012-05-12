@@ -3,116 +3,196 @@ package algorithms.generation.solve;
 import labyrinth.Cell;
 import labyrinth.Maze;
 import logging.UseLogger;
-import algorithms.generation.Conf;
+import main.Conf;
 
-
-/**
- * @deprecated this Class will not be used / 11.05.2012
- * @author micha
- */
 public class OwnSolvingAlgoCalcing {
-	Cell _endCell;
-	Cell _cell;
-	Maze _maze;
-	boolean[] _isWallAllowed;
+	private Cell _endCell;
+	private Maze _maze;
+	// private boolean[] _isWallAllowed;
+	private Cell _myCell = null;
+//	private int[] possibleWays;
+//	private Cell[] _alreadyChecked;
+	private Cell _nextCell = null;
+	private boolean[] _directionPossible;
+	private String logString = null;
 
-	public OwnSolvingAlgoCalcing(Maze maze, Cell cell, Cell endCell,
-			int notThisWall) {
-		_cell = cell;
+	public OwnSolvingAlgoCalcing(Maze maze, Cell startCell, Cell endCell,
+			int notthisWall) {
 		_endCell = endCell;
 		_maze = maze;
-		whichWalls(notThisWall);
-		// checkIfEndCell();
-		// calc();
+		_myCell = startCell;
+		_nextCell = null;
+		_directionPossible = new boolean[] { true, true, true, true };
+
+		if (notthisWall == 0) {
+			_directionPossible[1] = false;
+		}
+		if (notthisWall == 1) {
+			_directionPossible[0] = false;
+		}
+		if (notthisWall == 2) {
+			_directionPossible[3] = false;
+		}
+		if (notthisWall == 3) {
+
+			_directionPossible[2] = false;
+		}
+		logString = " Ich bin Zelle " + _maze.getPositionOfCell(_myCell)[0]
+				+ _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
+				+ _myCell.getState();
+
+//		System.out.println("my logger = " + UseLogger.LOGGER);
+		UseLogger.LOGGER.info(logString);
+
 	}
 
-	public void whichWalls(int notThisWall) {
-		/**
-		 * create an array with 3 walls. This makes shure that there is no loop
-		 * and the algorihm can not go back to a cell which was solved before.
-		 * 
-		 */
+	/**
+	 * 
+	 * @param i
+	 *            defines which wall (left=0 / right = 1 / top = 2 / bottom = 3)
+	 * @return true if the Neigbour is a " " / false if the Neigbour is a U or B
+	 */
+	private boolean getPossibleNeigbour(int i) {
 
-		// UseLogger.LOGGER.severe("notThisWall = " + notThisWall);
-
-		/**
-		 * if the solving algo confs from the right, then do not go back left
-		 */
-		if (notThisWall == Conf.RIGHT_WALL)
-			_isWallAllowed = new boolean[] { false, true, true, true };
+		_nextCell = _maze.getNeigbourofCell(_myCell, i);
 
 		/**
-		 * if the solving algo confs from the left, then do not go back right
+		 * if the Cell is not a empty one, return null. Then it is a U or B Cell
 		 */
-		if (notThisWall == Conf.LEFT_WALL)
-			_isWallAllowed = new boolean[] { true, false, true, true };
+		if (_nextCell == null) {
+			// System.out.println("not possible: Cell = null");
+			// UseLogger.LOGGER.info("not possible: Cell = null");
+			return false;
+		}
+		if (_nextCell.getState() == "B" || _nextCell.getState() == "U") {
+			logString = "Ist nicht mšglich. Zelle hat getState: "
+					+ _nextCell.getState();
+			// System.out.println(logString);
 
-		/**
-		 * if the solving algo confs from the top, then do not go back bottom
-		 */
-		if (notThisWall == Conf.TOP_WALL)
-			_isWallAllowed = new boolean[] { true, true, true, false };
-		/**
-		 * if the solving algo confs from the bottom, then do not go top
-		 */
-		if (notThisWall == Conf.LEFT_WALL)
-			_isWallAllowed = new boolean[] { true, true, false, true };
+			UseLogger.LOGGER.info(logString);
+			return false;
+		}
 
-		/**
-		 * this is just used for the first Cell (startCell)
-		 */
-		if (notThisWall >= 3)
-			_isWallAllowed = new boolean[] { false, true, false, true };
+		return true;
+
+	}
+
+	public boolean reachedTheEndCell() {
+		String logString = "current Cell = "
+				+ _maze.getPositionOfCell(_myCell)[0]
+				+ _maze.getPositionOfCell(_myCell)[1] + "     EndCell = "
+				+ _maze.getPositionOfCell(_endCell)[0]
+				+ _maze.getPositionOfCell(_endCell)[1];
+		UseLogger.LOGGER.info(logString);
+
+		if (_myCell == _endCell)
+			return true;
+		return false;
 
 	}
 
 	public boolean calc() {
-		if (_cell == _endCell) {
-			System.out.println("Position aktuelle Zelle = ["
-					+ _maze.getPositionOfCell(_cell)[0]
-					+ _maze.getPositionOfCell(_cell)[1] + "]");
+		UseLogger.LOGGER.info("Calc von Zelle "
+				+ _maze.getPositionOfCell(_myCell)[0]
+				+ _maze.getPositionOfCell(_myCell)[1] + "aufgerufen...");
 
-			System.out.println("Position letzte Zelle = ["
-					+ _maze.getPositionOfCell(_endCell)[0]
-					+ _maze.getPositionOfCell(_endCell)[1] + "]");
-
-			System.out.println("ich bin bei der letzten Zelle ;-)");
+		if (reachedTheEndCell()) {
+			UseLogger.LOGGER.info("ENDE ERREICHT!!!!");
+			System.out.println("ENDE ERREICHT!!!!");
 			return true;
 		}
 
-		Cell newCell = null;
+		for (int i = 0; i < 4; i++) {
+			if (!getPossibleNeigbour(i))
+				_directionPossible[i] = false;
+		}
 
-		Conf.increseSteps();
-		UseLogger.LOGGER.severe("Bin bei der " + Conf.STEPS
-				+ ". Zelle. \nBerechnen wurde aufgerufen. \nAnzahl Steps = "
-				+ Conf.STEPS + "\nBin jetzt bei Zelle an Position: " + "["
-				+ _maze.getPositionOfCell(_cell)[0]
-				+ _maze.getPositionOfCell(_cell)[1] + "]");
+		return calcnow();
 
-		for (int i = 0; i <= _isWallAllowed.length - 1; i++) {
+	}
 
-			/**
-			 * if the Cell doesn't have a Wall and wallisAllowed then...
-			 */
-			System.out.println("Ist hier eine Wand? = " + _cell.isWallHere(i)
-					+ "     Erlaubt? " + _isWallAllowed[i]);
+	public boolean calcnow() {
 
-			if (!_cell.isWallHere(i) && _isWallAllowed[i]) {
+		UseLogger.LOGGER.info("Moegliche Durchgang fuer Zelle "
+				+ _maze.getPositionOfCell(_myCell)[0]
+				+ _maze.getPositionOfCell(_myCell)[1] + " "
+				+ _directionPossible[0] + "  " + _directionPossible[1] + "  "
+				+ _directionPossible[2] + "  " + _directionPossible[3]);
+		System.out.println("Mein Status: " + _myCell.getState());
 
-				newCell = _maze.getNeigbourofCell(_cell, i);
-				UseLogger.LOGGER.severe("Neue Zelle ist an Position: " + "["
-						+ _maze.getPositionOfCell(newCell)[0]
-						+ _maze.getPositionOfCell(newCell)[1] + "]");
-				UseLogger.LOGGER.severe("Mšchte zur Zelle " + i
-						+ "  Position ist " + Conf.getWallName(i));
-				OwnSolvingAlgoCalcing newOne = new OwnSolvingAlgoCalcing(_maze,
-						newCell, _endCell, i);
-				if (newOne.calc())
-					return true;
+		if (!_directionPossible[0] && !_directionPossible[1]
+				&& !_directionPossible[2] && !_directionPossible[3]) {
+			logString = "Kein Druchgang mšglich. Sorry.";
+			UseLogger.LOGGER.info(logString);
+			return false;
+		}
 
+		for (int counter = 0; counter < 4; counter++) {
+
+			if (_directionPossible[counter]) {
+				UseLogger.LOGGER.info(" " + _maze.getPositionOfCell(_myCell)[0]
+						+ _maze.getPositionOfCell(_myCell)[1] + " will nach "
+						+ Conf.getWallName(counter) + " gehen. Dies ist "
+						+ _directionPossible[counter] + ".");
+				logString = "\n Suche Nachbar " + Conf.getWallName(counter)
+						+ " von Zelle an Position: \n "
+						+ _maze.getPositionOfCell(_myCell)[0]
+						+ _maze.getPositionOfCell(_myCell)[1]
+						+ "     possible ? = " + getPossibleNeigbour(counter);
+				_nextCell = _maze.getNeigbourofCell(_myCell, counter);
+				UseLogger.LOGGER.info(logString);
+
+				// SolvingAlgorithms._solvingCounter =
+				// SolvingAlgorithms._solvingCounter++;
+				// _myCell = _nextCell;
+
+				String _currentCellPosition = ""
+						+ _maze.getPositionOfCell(_myCell)[0]
+						+ _maze.getPositionOfCell(_myCell)[1];
+
+				UseLogger.LOGGER.info(" ");
+				logString = "Rekursiver Aufruf:  Aktuelle Zelle = "
+						+ _currentCellPosition + "\n";
+				UseLogger.LOGGER.info(logString);
+
+				boolean retbool = new OwnSolvingAlgoCalcing(_maze,
+						_nextCell, _endCell, counter).calc();
+
+				if (retbool)
+					return retbool;
+
+				if (!retbool) {
+					System.out.println();
+
+					logString = "Ich bin die Zelle "
+							+ _maze.getPositionOfCell(_myCell)[0]
+							+ _maze.getPositionOfCell(_myCell)[1]
+							+ " und habe keinen Weg in die Richtung "
+							+ Conf.getWallName(counter) + " gefunden.";
+					UseLogger.LOGGER.info(logString);
+					logString = "current Cell = "
+							+ _maze.getPositionOfCell(_myCell)[0]
+							+ _maze.getPositionOfCell(_myCell)[1] + " "
+							+ _directionPossible[0] + " "
+							+ _directionPossible[1] + "  "
+							+ _directionPossible[2] + " "
+							+ _directionPossible[3];
+					UseLogger.LOGGER.info(logString);
+					_directionPossible[counter] = false;
+					logString = "current Cell = "
+							+ _maze.getPositionOfCell(_myCell)[0]
+							+ _maze.getPositionOfCell(_myCell)[1] + " "
+							+ _directionPossible[0] + " "
+							+ _directionPossible[1] + "  "
+							+ _directionPossible[2] + " "
+							+ _directionPossible[3];
+					UseLogger.LOGGER.info(logString);
+
+				}
 			}
 		}
 
 		return false;
+
 	}
 }

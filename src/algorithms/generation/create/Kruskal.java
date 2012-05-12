@@ -2,7 +2,12 @@ package algorithms.generation.create;
 
 import labyrinth.Maze;
 
-public class Kruskal extends CreatingAlgorithms implements ICreatingAlgorithms{ 
+/**
+ * this class is not implemented yet. it should show that a new algorithm can be added easily
+ * @author micha
+ *
+ */
+public class Kruskal extends ACreatingAlgorithms implements ICreatingAlgorithms{ 
 
 	
 	public Kruskal(Maze maze) {

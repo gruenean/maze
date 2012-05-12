@@ -1,23 +1,25 @@
 package ioInferface;
 
 import static org.junit.Assert.*;
+import ioInferface.console.ModusListener;
+
+import main.Conf;
 
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import algorithms.generation.Conf;
 
 public class ModusListenerTest {
 	String[] inputString = null;
 	ModusListener myListener = null;
-	static Cell_OLDOLDOLD.Test myTest = null;
+	static main.mazeHandler myTest = null;
 	static Conf globalconf = null;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		myTest = new Cell_OLDOLDOLD.Test();
+		myTest = new main.mazeHandler();
 		globalconf = new Conf();
 	}
 

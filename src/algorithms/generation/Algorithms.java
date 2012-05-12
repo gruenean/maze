@@ -1,6 +1,7 @@
 package algorithms.generation;
 
 import labyrinth.Maze;
+import main.Conf;
 
 abstract public class Algorithms implements IAlgorithms {
 

@@ -1,23 +1,25 @@
-package algorithms.generation.create;
+package notUsed;
 
+import algorithms.generation.create.ACreatingAlgorithms;
+import algorithms.generation.create.ICreatingAlgorithms;
 import labyrinth.Cell;
 import labyrinth.Maze;
 
 
+
+
 /**
- * this algorithm is a self
+ * @deprecated this Class will not be used / 10.05.2012
  * @author micha
- *
  */
-public class ownCreatingAlgo extends ACreatingAlgorithms implements
-		ICreatingAlgorithms {
+public class ownCreatingAlgo_BACKUP extends ACreatingAlgorithms implements ICreatingAlgorithms{
 
 	Cell randomCell;
 	Cell NeighbourCell;
 
-	public ownCreatingAlgo(Maze maze) {
+	public ownCreatingAlgo_BACKUP(Maze maze) {
 		super(maze);
-		setName("<<eigener CreatingAlgo>>");
+		setName("<<eigener CreatingAlgo Backup>>");
 	}
 
 	public void defineStartandEndCell() {
@@ -26,19 +28,24 @@ public class ownCreatingAlgo extends ACreatingAlgorithms implements
 
 	public void createMaze() {
 		while (_maze.hasMultipleRoots()) {
-			randomCell = _maze.getRandomCell();
-			NeighbourCell = _maze.getRandomNeighbour(randomCell);
+		//	for (int i = 1; i < (_maze.getRowsAndCols()[0] * _maze.getRowsAndCols()[1] * 10 ^ HelpInt); i++) {
+				randomCell = _maze.getRandomCell();
+				NeighbourCell = _maze.getRandomNeighbour(randomCell);				
 
-			if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
-				_maze.breakWallBetweenCells(randomCell, NeighbourCell);
-				// TODO: comment out the following four lines as these are
-				// testing only
-				_maze.printAsciiMaze();
-				System.out.println();
-			} else {
-				System.out.println("impossibru");
-			}
+				if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
+					_maze.breakWallBetweenCells(randomCell, NeighbourCell);
+//TODO: comment out the following four lines as these are testing only
+					_maze.printAsciiMaze();
+					System.out.println();
+				} else {
+					System.out.println("impossibru");
+				}				
+		//	}
 		}
+//		long EndTime = System.currentTimeMillis();
+//		System.out.println(EndTime);
+//		System.out.println(EndTime - BeginTime);
+//		System.out.println("Anzahl Duchg�nge: " + anzahlDurchg�nge);
 		System.out.println("--MAP--");
 		_maze.printMap();
 		System.out.println("--ROOTS--");
@@ -46,45 +53,62 @@ public class ownCreatingAlgo extends ACreatingAlgorithms implements
 		System.out.println("--ASCI MAP--");
 		_maze.printAsciiMaze();
 	}
-
 	public void createMaze2() {
 
 		/**
 		 * do this loop rows * cols * 5 and then look if all cell has the same
 		 * root. If yes, there is a way in the maze.
 		 */
+		// long BeginTime = System.currentTimeMillis();
+		// System.out.println(BeginTime);
 		int HelpInt = 4;
+		// int anzahlDurchg�nge = 0;
 		while (_maze.hasMultipleRoots()) {
+			// System.out.println("Exist just one Root?! = " +
+			// _maze.existJustOneRoot());
 
 			for (int i = 1; i < (_maze.getRowsAndCols()[0]
 					* _maze.getRowsAndCols()[1] * 10 ^ HelpInt); i++) {
+				// System.out.println(i + "-te Schlaufe");
 				randomCell = _maze.getRandomCell();
 				NeighbourCell = _maze.getRandomNeighbour(randomCell);
 
 				if (checkRoots()) {
 					whichWallToBreakDown();
 				}
+				// else {
+				// int help = 1;
+				// System.out.println(i+ "-te Schlaufe: gleicher Root");
 			}
 			if (HelpInt > 0)
 				HelpInt = HelpInt - 1;
+//			anzahlDurchg�nge = anzahlDurchg�nge + 1;
 		}
 		long EndTime = System.currentTimeMillis();
+//		System.out.println(EndTime);
+//		System.out.println(EndTime - BeginTime);
+//		System.out.println("Anzahl Duchg�nge: " + anzahlDurchg�nge);
 		_maze.printMap();
 		System.out.println("");
 		_maze.printRoots();
 
 	}
 
+	// }
 
-	/**
-	 * @deprecated This is now handled by maze.breakWallBetweenCells(Cell cell,
-	 *             Cell neighbourcell) TODO: Delete it!
+
+	
+	/**@deprecated
+	 * This is now handled by maze.breakWallBetweenCells(Cell cell, Cell neighbourcell)
+	 * TODO: Delete it!
 	 * 
 	 */
 	public void whichWallToBreakDown() {
 
 		int[] randomPosition = _maze.getPositionOfCell(randomCell);
 		int[] randomNeigbourPosition = _maze.getPositionOfCell(NeighbourCell);
+
+		// System.out.println(randomCell.getValue());
 
 		/**
 		 * if the Neigbour is at left, break the left Wall
@@ -123,6 +147,11 @@ public class ownCreatingAlgo extends ACreatingAlgorithms implements
 	}
 
 	public void destroyWall(int whichWall, int whichWall2) {
+//		randomCell.destroyWall(whichWall);
+//		NeighbourCell.destroyWall(whichWall2);
+//
+//		
+//		_maze.updateRoots(randomCell, NeighbourCell);
 
 		_maze.breakWallBetweenCells(randomCell, NeighbourCell);
 	}
@@ -138,5 +167,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms implements
 		return false;
 
 	}
+
+	
 
 }
