@@ -1,7 +1,6 @@
 package ioInferface;
 
 import static org.junit.Assert.*;
-import ioInferface.console.ModusListener;
 
 import main.Conf;
 
@@ -9,6 +8,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import Interfaces.console.ModusListener;
 
 
 public class ModusListenerTest {

@@ -10,5 +10,6 @@ import algorithms.generation.IAlgorithms;
 public interface ICreatingAlgorithms extends IAlgorithms {
 
 	public void createMaze();
+	
 
 }

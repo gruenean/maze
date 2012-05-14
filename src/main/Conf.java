@@ -4,6 +4,8 @@ package main;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import Interfaces.IOutput;
+
 import logging.MyLogger;
 import logging.UseLogger;
 
@@ -13,6 +15,20 @@ public class Conf {
 	public final static int TOP_WALL = 2;
 	public final static int BOTTOM_WALL = 3;
 	private MyLogger _logger;
+	private IOutput _output;
+	private mazeHandler _mymaze;
+
+	public Conf() {
+		setUpLogger();
+	}
+	
+	public IOutput get_output() {
+		return _output;
+	}
+
+	public void set_output(IOutput output) {
+		this._output = output;
+	}
 
 	// TODO wird dies noch benštigt
 	public static int STEPS = 0;
@@ -29,9 +45,6 @@ public class Conf {
 	}
 
 
-	public Conf() {
-		setUpLogger();
-	}
 
 	public static void increseSteps() {
 		STEPS = STEPS + 1;
@@ -62,5 +75,10 @@ public class Conf {
 		else
 			return "NOT A CORRECT WALL DIRECTION!!!!";
 	}
+	
+	
+	
+	
+	
 
 }

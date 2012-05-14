@@ -39,12 +39,12 @@ public class ownCreatingAlgo extends ACreatingAlgorithms implements
 				System.out.println("impossibru");
 			}
 		}
-		System.out.println("--MAP--");
-		_maze.printMap();
-		System.out.println("--ROOTS--");
-		_maze.printRoots();
-		System.out.println("--ASCI MAP--");
-		_maze.printAsciiMaze();
+//		System.out.println("--MAP--");
+//		_maze.printMap();
+//		System.out.println("--ROOTS--");
+//		_maze.printRoots();
+//		System.out.println("--ASCI MAP--");
+//		_maze.printAsciiMaze();
 	}
 
 	public void createMaze2() {

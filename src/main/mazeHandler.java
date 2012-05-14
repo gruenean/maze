@@ -28,8 +28,8 @@ public class mazeHandler {
 	
 	public mazeHandler() {
 
-		_rows = 7;
-		_cols = 7;
+		_rows = 9;
+		_cols = 9;
 		_maze = new Maze(_rows, _cols);
 
 		/**
@@ -45,12 +45,12 @@ public class mazeHandler {
 		_startCell = _maze.getCellOnPosition(1, 1);
 		_endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
 
-		System.out.println("Position Ende = " + _maze.getLastPosition()[0]
-				+ _maze.getLastPosition()[1]);
-
-		System.out.println("Position EndCell = "
-				+ _maze.getPositionOfCell(_endCell)[0]
-				+ _maze.getPositionOfCell(_endCell)[1]);
+//		System.out.println("Position Ende = " + _maze.getLastPosition()[0]
+//				+ _maze.getLastPosition()[1]);
+//
+//		System.out.println("Position EndCell = "
+//				+ _maze.getPositionOfCell(_endCell)[0]
+//				+ _maze.getPositionOfCell(_endCell)[1]);
 
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze) };

@@ -11,10 +11,6 @@ class Cell extends Actor {
 	this.setCollisionImage();
 	
 	}
-
-	
-	
-	
 	
 	
 	
