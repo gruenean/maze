@@ -2,6 +2,6 @@ bin
 .metadata
 .DS_Store
 .classpath
-Logging.html
-Logging.txt
+Logging.html*
+Logging.txt*
 Logging
