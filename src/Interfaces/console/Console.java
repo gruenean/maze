@@ -20,7 +20,7 @@ public class Console extends AConsoleListener {
 				new LogListener(_globalConf),
 				new solveListener(_globalConf, _mymaze),
 				new createListener(_globalConf, _mymaze),
-				new GUIListener(_globalConf, _mymaze) };
+				new GUIListener(_globalConf, _mymaze)};
 
 		startListening();
 	}
