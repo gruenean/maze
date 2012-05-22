@@ -7,7 +7,7 @@ import labyrinth.Maze;
  * @author micha
  *
  */
-public class Kruskal extends ACreatingAlgorithms implements ICreatingAlgorithms{ 
+public class Kruskal extends ACreatingAlgorithms{ 
 
 	
 	public Kruskal(Maze maze) {

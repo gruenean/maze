@@ -4,8 +4,7 @@ import labyrinth.Cell;
 import labyrinth.Maze;
 import logging.UseLogger;
 
-public class OwnSolvingAlgo extends ASolvingAlgorithms implements
-		ISolvingAlgorithms {
+public class OwnSolvingAlgo extends ASolvingAlgorithms {
 
 	OwnSolvingAlgoCalcing _calc;
 

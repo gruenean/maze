@@ -9,8 +9,7 @@ import labyrinth.Maze;
  * @author micha
  *
  */
-public class ownCreatingAlgo extends ACreatingAlgorithms implements
-		ICreatingAlgorithms {
+public class ownCreatingAlgo extends ACreatingAlgorithms  {
 
 	Cell randomCell;
 	Cell NeighbourCell;

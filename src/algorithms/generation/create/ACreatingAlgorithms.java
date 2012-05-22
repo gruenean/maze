@@ -3,8 +3,7 @@ package algorithms.generation.create;
 import labyrinth.Maze;
 import algorithms.generation.Algorithms;
 
-abstract public class ACreatingAlgorithms extends Algorithms implements
-		ICreatingAlgorithms {
+abstract public class ACreatingAlgorithms extends Algorithms implements ICreatingAlgorithms{
 
 	/**
 	 * Constructor for all Creating Algorithms
