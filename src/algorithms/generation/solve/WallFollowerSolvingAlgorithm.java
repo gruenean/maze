@@ -2,18 +2,15 @@ package algorithms.generation.solve;
 
 import java.util.Arrays;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import labyrinth.Cell;
 import labyrinth.Maze;
 
 
-/**
- * NOT IMPLEMENTED YET
- * @author micha
- *
- */
 public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
-	int[] currentCellPos;
-	Direction direction;
+	private int[] currentCellPos;
+	private Direction direction;
 
 	private enum Direction {
 		NORTH,EAST,SOUTH,WEST;
@@ -27,80 +24,106 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	@Override
 	public void resolveMaze() {
 		
+		System.out.println("\n###########################\nstarting with wall follower\n###########################\n\n");
+		
 		currentCellPos = _maze.getPositionOfCell(_startCell);
 		while(! Arrays.equals(currentCellPos, _maze.getPositionOfCell(_endCell))) {
-			System.out.println("My current Position is: " + Arrays.toString(currentCellPos));
+			System.out.println("My current Position is: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
 			
-			if (isValidCellPosition(getRighterCell())) { System.out.println("turning right"); turnRight(); 
-			} else if (isValidCellPosition(getCellAhead())) { System.out.println("doing nothing");
-			} else if (isValidCellPosition(getLefterCell())) { System.out.println("turning left"); turnLeft(); 
+			if (isValidCellPosition(getRighterCell(currentCellPos))) { System.out.println("turning right"); turnRight(); 
+			} else if (isValidCellPosition(getCellAhead(currentCellPos))) { System.out.println("doing nothing");
+			} else if (isValidCellPosition(getLefterCell(currentCellPos))) { System.out.println("turning left"); turnLeft(); 
 			} else {System.out.println("turning around"); turnAround(); }
-			moveForward();
+			//moveForward();
 		}
 	}
 
 	private boolean isValidCellPosition(int[] cellPos) {
-		return (_maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "B" && _maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "U");
+		System.out.println("testing cell on position "+ cellPos[0] + " " + cellPos[1]);
+		if (_maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "B" && _maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "U")  {
+			currentCellPos[0]= cellPos[0];
+			currentCellPos[1]= cellPos[1];	
+			return true;
+		}
+		return false;
 	}
 	
-	private int[] getCellAhead() {
+	private int[] getCellAhead(int[] tempCellPos) {
+		System.out.println("getting cell ahead of " + Arrays.toString(tempCellPos));
 		switch(direction) {
 		case NORTH:
-			return new int[] { currentCellPos[0]--, currentCellPos[1] };
+			tempCellPos[0]--;
+			break;
 		case EAST:
-			return new int[] { currentCellPos[0], currentCellPos[1]++ };
+			tempCellPos[1]++;
+			break;
 		case SOUTH:
-			return new int[] { currentCellPos[0]++, currentCellPos[1] };
+			tempCellPos[0]++;
+			break;
 		case WEST:
-			return new int[] { currentCellPos[0], currentCellPos[1]-- };
+			tempCellPos[1]--;
+			break;
 		}
-		return new int[] {0,0};
+		System.out.println("cell ahead is " + Arrays.toString(tempCellPos));
+		return tempCellPos;
 	}
 	
-	private int[] getRighterCell() {
+	private int[] getRighterCell(int[] tempCellPos) {
+		System.out.println("getting righter cell of " + Arrays.toString(tempCellPos));
 		switch(direction) {
 		case NORTH:
-			return new int[] { currentCellPos[0], currentCellPos[1]++ };
+			tempCellPos[1]++;
+			break;
 		case EAST:
-			return new int[] { currentCellPos[0]++, currentCellPos[1] };
+			tempCellPos[0]++;
+			break;
 		case SOUTH:
-			return new int[] { currentCellPos[0], currentCellPos[1]-- };
+			tempCellPos[1]--;
+			break;
 		case WEST:
-			return new int[] { currentCellPos[0]--, currentCellPos[1] };
+			tempCellPos[0]--;
+			break;
 		}
-		return new int[] {0,0};
+		System.out.println("righter cell is " + Arrays.toString(tempCellPos));
+		return tempCellPos;
 	}
 	
-	private int[] getLefterCell() {
+	private int[] getLefterCell(int[] tempCellPos) {
+		System.out.println("getting lefter cell of " + Arrays.toString(tempCellPos));
 		switch(direction) {
 		case NORTH:
-			return new int[] { currentCellPos[0], currentCellPos[1]-- };
+			tempCellPos[1]--;
+			break;
 		case EAST:
-			return new int[] { currentCellPos[0]--, currentCellPos[1] };
+			tempCellPos[0]--;
+			break;
 		case SOUTH:
-			return new int[] { currentCellPos[0], currentCellPos[1]++ };
+			tempCellPos[1]++;
+			break;
 		case WEST:
-			return new int[] { currentCellPos[0]++, currentCellPos[1] };
+			tempCellPos[0]++;
+			break;
 		}
-		return new int[] {0,0};
+		System.out.println("lefter cell is " + Arrays.toString(tempCellPos));
+		return tempCellPos;
 	}
 	
 	private void moveForward() {
 		switch(direction) {
 			case NORTH:
-				if (currentCellPos[0]-- > _maze.getRows() && currentCellPos[0]-- < 0) 
+				//if (currentCellPos[0]-- > _maze.getRows() && currentCellPos[0]-- < 0) 
 					currentCellPos[0]--;
 				break;
 			case EAST:
-				if (currentCellPos[1]++ > _maze.getCols() && currentCellPos[1]++ < 0) 
+				//if (currentCellPos[1]++ > _maze.getCols() && currentCellPos[1]++ < 0) 
 					currentCellPos[1]++;
 				break;
 			case SOUTH:
-				if (currentCellPos[0]++ > _maze.getRows() && currentCellPos[0]++ < 0)
+				//if (currentCellPos[0]++ > _maze.getRows() && currentCellPos[0]++ < 0)
 					currentCellPos[0]++;
 				break;
 			case WEST:
-				if (currentCellPos[1]-- > _maze.getCols() && currentCellPos[1]-- < 0)
+				//if (currentCellPos[1]-- > _maze.getCols() && currentCellPos[1]-- < 0)
 					currentCellPos[1]--;
 				break;
 		}
@@ -121,6 +144,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			direction = Direction.NORTH;
 			break;
 		}		
+		System.out.println("[turnRight] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
 	}
 
 	private void turnLeft() {
@@ -137,7 +161,8 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			direction = Direction.SOUTH;
 			break;
-		}		
+		}
+		System.out.println("[turnLeft] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
 	}
 	
 	private void turnAround() {
@@ -155,6 +180,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			direction = Direction.EAST;
 			break;
 		}		
+		System.out.println("[turnAround] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
 	}
 	
 	@Override
