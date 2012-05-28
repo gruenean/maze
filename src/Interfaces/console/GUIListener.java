@@ -32,7 +32,7 @@ public class GUIListener extends AConsoleListener {
 				getHelp();
 
 			else if (stringArray[0].equals(ConsoleCommands.CREATE)) {
-				_mymaze.getMaze().createEinundAusgang();
+				//_mymaze.getMaze().createEinundAusgang();
 				try {
 
 					_mymaze.createGUI();
