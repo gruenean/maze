@@ -35,7 +35,7 @@ public class LogListener extends AConsoleListener {
 	public void startListening(String[] input) {
 		stringArray = input;
 		while (goingon) {
-			System.out.print("MAIN(LOG): ");
+			_myoutput.printLine("MAIN(LOG): ");
 
 			if (stringArray.length == 0) {
 				inputString = _in.nextLine().toUpperCase();
@@ -78,7 +78,7 @@ public class LogListener extends AConsoleListener {
 	public void getcurrentLogLevel() {
 		Conf.LOGSTRING = "The current Log Level is set to: " + getLogLevel();
 
-		System.out.println(Conf.LOGSTRING);
+		_myoutput.printLine(Conf.LOGSTRING);
 		UseLogger.LOGGER.info(Conf.LOGSTRING);
 
 	}
@@ -95,7 +95,7 @@ public class LogListener extends AConsoleListener {
 			e.printStackTrace();
 		}
 
-		System.out.println("The log level has been set successfully to '"
+		_myoutput.printLine("The log level has been set successfully to '"
 				+ UseLogger.LOGGER.getLevel() + "' \n");
 
 		goingon = false;
@@ -104,8 +104,7 @@ public class LogListener extends AConsoleListener {
 	@Override
 	public void getHelp() {
 		if (!isLogLevel(stringArray[0]) || inputString.isEmpty()) {
-			System.out
-					.println("<<"
+			_myoutput.printLine("<<"
 							+ makeStringArrayToString(stringArray)
 							+ ">> is NOT a valid input. Please use one of the following inputs...\n");
 		}

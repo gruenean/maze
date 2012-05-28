@@ -12,7 +12,7 @@ public class UseLogger {
 	 * Deprecated IS THIS USED?! 28.05.2012 / Micha
 	 */
 	public void writeLog() {
-		LOGGER.setLevel(Level.ALL);
+//		LOGGER.setLevel(Level.ALL);
 		LOGGER.finest("First message \n --------------------------- \n");
 
 	}

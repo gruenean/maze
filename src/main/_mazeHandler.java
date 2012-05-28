@@ -5,34 +5,32 @@ import ioInferface.gui.MyGameGrid;
 import java.util.List;
 import java.util.Random;
 
-import com.sun.org.apache.xml.internal.security.algorithms.Algorithm;
-
 import labyrinth.Cell;
 import labyrinth.Maze;
 import algorithms.generation.create.ACreatingAlgorithms;
 import algorithms.generation.create.ownCreatingAlgo;
-import algorithms.generation.solve.OwnSolvingAlgo;
 import algorithms.generation.solve.ASolvingAlgorithms;
+import algorithms.generation.solve.OwnSolvingAlgo;
 
-public class mazeHandler {
+public class _mazeHandler {
 
 	private ACreatingAlgorithms[] _possiblesCreatingAlgos = null;
 	private ASolvingAlgorithms[] _possiblesSolvingAlgos = null;
 	private int _rows;
 	private int _cols;
 	private Maze _maze;
+	private Conf _globalConf;
 	// private ACreatingAlgorithms _mycreatingAlgo;
 	// private ASolvingAlgorithms _mysolvingAlgo;
-	private algorithms.generation.Algorithms _myAlogs;
 	// private Cell _startCell;
 	// private Cell _endCell;
 	private MyGameGrid _mygrid = null;
 
-	public mazeHandler() {
-
+	public _mazeHandler(Conf globalConf) {
+		_globalConf = globalConf;
 		_rows = 9;
 		_cols = 9;
-		_maze = new Maze(_rows, _cols);
+		_maze = new Maze(_rows, _cols, _globalConf);
 
 		/**
 		 * set _rows, _cols and _endCell new
@@ -47,9 +45,9 @@ public class mazeHandler {
 		// _endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
 
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
-				_maze) };
+				_maze, _globalConf) };
 		_possiblesSolvingAlgos = new ASolvingAlgorithms[] { new OwnSolvingAlgo(
-				_maze, _maze.getStartCell(), _maze.getEndCell()) };
+				_maze, _maze.getStartCell(), _maze.getEndCell(), _globalConf) };
 
 	}
 
@@ -61,8 +59,9 @@ public class mazeHandler {
 		 */
 		_mycreatingAlgo.createMaze();
 
-		System.out.println("\n Das Labyrinth wurde mit dem "
-				+ _mycreatingAlgo.getName() + " erstellt... \n\n\n");
+		_globalConf.get_output().printLine(
+				"\n Das Labyrinth wurde mit dem " + _mycreatingAlgo.getName()
+						+ " erstellt... \n\n\n");
 
 	}
 

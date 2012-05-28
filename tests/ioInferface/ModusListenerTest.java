@@ -15,12 +15,12 @@ import Interfaces.console.ModusListener;
 public class ModusListenerTest {
 	String[] inputString = null;
 	ModusListener myListener = null;
-	static main.mazeHandler myTest = null;
+	static main._mazeHandler myTest = null;
 	static Conf globalconf = null;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		myTest = new main.mazeHandler();
+		myTest = new main._mazeHandler();
 		globalconf = new Conf();
 	}
 

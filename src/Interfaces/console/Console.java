@@ -3,10 +3,10 @@ package Interfaces.console;
 import java.util.Scanner;
 
 import main.Conf;
-import main.mazeHandler;
+import main._mazeHandler;
 
 public class Console extends AConsoleListener {
-	static mazeHandler _mymaze;
+	static _mazeHandler _mymaze;
 	String[] stringArray;
 	IConsoleListener[] _listenerCommands = null;
 
@@ -14,20 +14,21 @@ public class Console extends AConsoleListener {
 		super(globalConf);
 		_in = new Scanner(System.in);
 		goingon = true;
-		_mymaze = new mazeHandler();
+		_mymaze = new _mazeHandler(globalConf);
 
 		_listenerCommands = new IConsoleListener[] {
 				new LogListener(_globalConf),
 				new solveListener(_globalConf, _mymaze),
 				new createListener(_globalConf, _mymaze),
-				new GUIListener(_globalConf, _mymaze)};
+				new GUIListener(_globalConf, _mymaze),
+				new StepModusListener(_globalConf, _mymaze)};
 
 		startListening();
 	}
 
 	public void startListening() {
 		while (goingon) {
-			System.out.print("MAIN: ");
+			_myoutput.print("MAIN: ");
 			inputString = _in.nextLine().toUpperCase();
 			stringArray = inputString.split(" ");
 
@@ -44,6 +45,8 @@ public class Console extends AConsoleListener {
 					String[] newString = removeFirstCommand(stringArray);
 					listener.startListening(newString);
 					reinitializeStringArray();
+					
+					System.out.println(stringArray[0]);
 				}
 			}
 

@@ -12,9 +12,11 @@ public class OwnSolvingAlgoCalcing {
 	private Cell _nextCell = null;
 	private boolean[] _directionPossible;
 	private String logString = null;
+	private Conf _globalConf;
 
 	public OwnSolvingAlgoCalcing(Maze maze, Cell startCell, Cell endCell,
-			int notthisWall) {
+			int notthisWall, Conf conf) {
+		_globalConf = conf;
 		_endCell = endCell;
 		_maze = maze;
 		_myCell = startCell;
@@ -50,11 +52,12 @@ public class OwnSolvingAlgoCalcing {
 
 			_directionPossible[2] = false;
 		}
-		logString = " Ich bin Zelle " + _maze.getPositionOfCell(_myCell)[0]
-				+ _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
-				+ _myCell.getState();
-
-		UseLogger.LOGGER.info(logString);
+		System.out.println("aktuelle Zelle = " + _myCell);
+		// logString = " Ich bin Zelle " + _maze.getPositionOfCell(_myCell)[0]
+		// + _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
+		// + _myCell.getState();
+		//
+		// UseLogger.LOGGER.info(logString);
 
 	}
 
@@ -110,6 +113,7 @@ public class OwnSolvingAlgoCalcing {
 
 		if (reachedTheEndCell()) {
 			UseLogger.LOGGER.info("ENDE ERREICHT!!!!");
+			_globalConf.get_output().printLine("ENDE ERREICHT!!!!");
 			return true;
 		}
 
@@ -129,7 +133,8 @@ public class OwnSolvingAlgoCalcing {
 				+ _maze.getPositionOfCell(_myCell)[1] + " "
 				+ _directionPossible[0] + "  " + _directionPossible[1] + "  "
 				+ _directionPossible[2] + "  " + _directionPossible[3]);
-		System.out.println("Mein Status: " + _myCell.getState());
+		_globalConf.get_output()
+				.printLine("Mein Status: " + _myCell.getState());
 
 		if (!_directionPossible[0] && !_directionPossible[1]
 				&& !_directionPossible[2] && !_directionPossible[3]) {
@@ -163,13 +168,13 @@ public class OwnSolvingAlgoCalcing {
 				UseLogger.LOGGER.info(logString);
 
 				boolean retbool = new OwnSolvingAlgoCalcing(_maze, _nextCell,
-						_endCell, counter).calc();
+						_endCell, counter, _globalConf).calc();
 
 				if (retbool)
 					return retbool;
 
 				if (!retbool) {
-					System.out.println();
+					_globalConf.get_output().printLine(" ");
 
 					logString = "Ich bin die Zelle "
 							+ _maze.getPositionOfCell(_myCell)[0]

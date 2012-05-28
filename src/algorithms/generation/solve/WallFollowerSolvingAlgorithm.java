@@ -6,34 +6,34 @@ import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
-
+import main.Conf;
 
 public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	private int[] currentCellPos;
 	private Direction direction;
 
 	private enum Direction {
-		NORTH,EAST,SOUTH,WEST;
+		NORTH, EAST, SOUTH, WEST;
 	}
-	public WallFollowerSolvingAlgorithm(Maze maze, Cell startCell, Cell endCell) {
-		super(maze, startCell, endCell);
+
+	public WallFollowerSolvingAlgorithm(Maze maze, Cell startCell, Cell endCell, Conf configs) {
+		super(maze, startCell, endCell, configs);
 		setName("<<WallFollowerAlgorithm>>");
 		direction = Direction.EAST;
 	}
 
 	@Override
-	public void resolveMaze() {
-		
-		System.out.println("\n###########################\nstarting with wall follower\n###########################\n\n");
+	public void resolveMaze() {	
+		_configs.get_output().printLine("\n###########################\nstarting with wall follower\n###########################\n\n");
 		
 		currentCellPos = _maze.getPositionOfCell(_startCell);
 		while(! Arrays.equals(currentCellPos, _maze.getPositionOfCell(_endCell))) {
-			System.out.println("My current Position is: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
+			_configs.get_output().printLine("My current Position is: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
 			
-			if (isValidCellPosition(getRighterCell(currentCellPos))) { System.out.println("turning right"); turnRight(); 
-			} else if (isValidCellPosition(getCellAhead(currentCellPos))) { System.out.println("doing nothing");
-			} else if (isValidCellPosition(getLefterCell(currentCellPos))) { System.out.println("turning left"); turnLeft(); 
-			} else {System.out.println("turning around"); turnAround(); }
+			if (isValidCellPosition(getRighterCell(currentCellPos))) { _configs.get_output().printLine("turning right"); turnRight(); 
+			} else if (isValidCellPosition(getCellAhead(currentCellPos))) { _configs.get_output().printLine("doing nothing");
+			} else if (isValidCellPosition(getLefterCell(currentCellPos))) { _configs.get_output().printLine("turning left"); turnLeft(); 
+			} else {_configs.get_output().printLine("turning around"); turnAround(); }
 			//moveForward();
 		}
 	}
@@ -51,86 +51,86 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	private int[] getCellAhead(int[] tempCellPos) {
 		System.out.println("getting cell ahead of " + Arrays.toString(tempCellPos));
 		switch(direction) {
-		case NORTH:
-			tempCellPos[0]--;
-			break;
-		case EAST:
-			tempCellPos[1]++;
-			break;
-		case SOUTH:
-			tempCellPos[0]++;
-			break;
-		case WEST:
-			tempCellPos[1]--;
-			break;
+			case NORTH:
+				tempCellPos[0]--;
+				break;
+			case EAST:
+				tempCellPos[1]++;
+				break;
+			case SOUTH:
+				tempCellPos[0]++;
+				break;
+			case WEST:
+				tempCellPos[1]--;
+				break;
 		}
-		System.out.println("cell ahead is " + Arrays.toString(tempCellPos));
+		_configs.get_output().printLine("cell ahead is " + Arrays.toString(tempCellPos));
 		return tempCellPos;
 	}
 	
 	private int[] getRighterCell(int[] tempCellPos) {
-		System.out.println("getting righter cell of " + Arrays.toString(tempCellPos));
-		switch(direction) {
-		case NORTH:
-			tempCellPos[1]++;
-			break;
-		case EAST:
-			tempCellPos[0]++;
-			break;
-		case SOUTH:
-			tempCellPos[1]--;
-			break;
-		case WEST:
-			tempCellPos[0]--;
-			break;
+		switch (direction) {	
+			case NORTH:
+				tempCellPos[1]++;
+				break;
+			case EAST:
+				tempCellPos[0]++;
+				break;
+			case SOUTH:
+				tempCellPos[1]--;
+				break;
+			case WEST:
+				tempCellPos[0]--;
+				break;
 		}
-		System.out.println("righter cell is " + Arrays.toString(tempCellPos));
+		_configs.get_output().printLine("righter cell is " + Arrays.toString(tempCellPos));
 		return tempCellPos;
 	}
 	
 	private int[] getLefterCell(int[] tempCellPos) {
 		System.out.println("getting lefter cell of " + Arrays.toString(tempCellPos));
-		switch(direction) {
-		case NORTH:
-			tempCellPos[1]--;
-			break;
-		case EAST:
-			tempCellPos[0]--;
-			break;
-		case SOUTH:
-			tempCellPos[1]++;
-			break;
-		case WEST:
-			tempCellPos[0]++;
-			break;
+		switch (direction) {
+			case NORTH:
+				tempCellPos[1]--;
+				break;
+			case EAST:
+				tempCellPos[0]--;
+				break;
+			case SOUTH:
+				tempCellPos[1]++;
+				break;
+			case WEST:
+				tempCellPos[0]++;
+				break;
 		}
-		System.out.println("lefter cell is " + Arrays.toString(tempCellPos));
+
+		_configs.get_output().printLine("lefter cell is " + Arrays.toString(tempCellPos));
 		return tempCellPos;
 	}
-	
+
 	private void moveForward() {
 		switch(direction) {
 			case NORTH:
 				//if (currentCellPos[0]-- > _maze.getRows() && currentCellPos[0]-- < 0) 
-					currentCellPos[0]--;
+				currentCellPos[0]--;
 				break;
 			case EAST:
 				//if (currentCellPos[1]++ > _maze.getCols() && currentCellPos[1]++ < 0) 
-					currentCellPos[1]++;
+				currentCellPos[1]++;
 				break;
 			case SOUTH:
 				//if (currentCellPos[0]++ > _maze.getRows() && currentCellPos[0]++ < 0)
-					currentCellPos[0]++;
+				currentCellPos[0]++;
 				break;
 			case WEST:
 				//if (currentCellPos[1]-- > _maze.getCols() && currentCellPos[1]-- < 0)
-					currentCellPos[1]--;
+				currentCellPos[1]--;
 				break;
 		}
 	}
-	
+
 	private void turnRight() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			direction = Direction.EAST;
 			break;
@@ -144,11 +144,11 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			direction = Direction.NORTH;
 			break;
 		}		
-		System.out.println("[turnRight] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
+		_configs.get_output().printLine("[turnRight] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
 	}
 
 	private void turnLeft() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			direction = Direction.WEST;
 			break;
@@ -162,11 +162,11 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			direction = Direction.SOUTH;
 			break;
 		}
-		System.out.println("[turnLeft] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
+		_configs.get_output().printLine("[turnLeft] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
 	}
-	
+
 	private void turnAround() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			direction = Direction.SOUTH;
 			break;
@@ -179,10 +179,9 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			direction = Direction.EAST;
 			break;
-		}		
-		System.out.println("[turnAround] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
+		}
+		_configs.get_output().printLine("[turnAround] my current position is now: " + Arrays.toString(currentCellPos) + "and my direction is " + direction);
 	}
-	
 	@Override
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub

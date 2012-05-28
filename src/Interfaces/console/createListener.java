@@ -1,14 +1,14 @@
 package Interfaces.console;
 
 import main.Conf;
-import main.mazeHandler;
+import main._mazeHandler;
 
 public class createListener extends AConsoleListener {
 	private String inputString = " ";
 
-	private mazeHandler _mymaze;
+	private _mazeHandler _mymaze;
 
-	public createListener(Conf globalConf, mazeHandler mymaze) {
+	public createListener(Conf globalConf, _mazeHandler mymaze) {
 		super(globalConf);
 		_mymaze = mymaze;
 
@@ -19,7 +19,7 @@ public class createListener extends AConsoleListener {
 		stringArray = input;
 
 		while (goingon) {
-			System.out.print("MAIN(CREATE): ");
+			_myoutput.printLine("MAIN(CREATE): ");
 
 			if (stringArray.length == 0) {
 				inputString = _in.nextLine().toUpperCase();

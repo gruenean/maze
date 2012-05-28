@@ -54,17 +54,17 @@ public abstract class AConsoleListener implements IConsoleListener {
 	}
 
 	public void printArray(String[] thisArray) {
-		System.out.println("verbleibende Zeichen");
+		_myoutput.printLine("verbleibende Zeichen");
 		for (int i = 0; i < thisArray.length; i++) {
 
-			System.out.print(thisArray[i] + " ");
+			_myoutput.printLine(thisArray[i] + " ");
 		}
-		System.out.print("\n");
+		_myoutput.printLine("\n");
 
 	}
 
 	public void reinitializeStringArray() {
-		stringArray = new String[] { "" };
+		stringArray = new String[] {""};
 
 	}
 

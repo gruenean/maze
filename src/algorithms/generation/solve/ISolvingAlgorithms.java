@@ -1,9 +1,8 @@
 package algorithms.generation.solve;
 
-import algorithms.generation.IAlgorithms;
 
 
-public interface ISolvingAlgorithms extends IAlgorithms{
+public interface ISolvingAlgorithms{
 
 	
 	
