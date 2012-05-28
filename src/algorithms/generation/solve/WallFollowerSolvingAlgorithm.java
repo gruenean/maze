@@ -1,6 +1,7 @@
 package algorithms.generation.solve;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
@@ -38,7 +39,6 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			} else if (isValidCellPosition(getCellAhead(currentCellPos))) { _configs.get_output().printLine("doing nothing");
 			} else if (isValidCellPosition(getLefterCell(currentCellPos))) { _configs.get_output().printLine("turning left"); turnLeft(); 
 			} else {_configs.get_output().printLine("turning around"); turnAround(); }
-			//moveForward();
 		}
 	}
 
