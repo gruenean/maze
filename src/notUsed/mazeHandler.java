@@ -1,4 +1,4 @@
-package main;
+package notUsed;
 
 import ioInferface.gui.MyGameGrid;
 
