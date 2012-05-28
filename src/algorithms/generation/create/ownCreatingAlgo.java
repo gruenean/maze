@@ -11,19 +11,20 @@ import labyrinth.Maze;
  */
 public class ownCreatingAlgo extends ACreatingAlgorithms {
 
-	Cell randomCell;
-	Cell NeighbourCell;
+	
 
 	public ownCreatingAlgo(Maze maze) {
 		super(maze);
 		setName("<<eigener CreatingAlgo>>");
 	}
 
-	private void defineStartandEndCell() {
-		_maze.createEinundAusgang();
-	}
+//	private void defineStartandEndCell() {
+//	//	_maze.createEinundAusgang();
+//	}
 
 	public void createMaze() {
+		Cell randomCell;
+		Cell NeighbourCell;
 		while (_maze.hasMultipleRoots()) {
 			randomCell = _maze.getRandomCell();
 			NeighbourCell = _maze.getRandomNeighbour(randomCell);
@@ -38,7 +39,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 				System.out.println("impossibru");
 			}
 		}
-		defineStartandEndCell();
+//		defineStartandEndCell();
 	}
 
 }

@@ -1,5 +1,6 @@
 package algorithms.generation;
 
+import labyrinth.Cell;
 import labyrinth.Maze;
 import main.Conf;
 
@@ -8,6 +9,8 @@ abstract public class Algorithms implements IAlgorithms {
 	protected String _algoName;
 	protected Maze _maze;
 	protected Conf _configs;
+	protected Cell _startCell;
+	protected Cell _endCell;
 
 	/**
 	 * default constructor (is needed for Solving Algos. The solving Algos

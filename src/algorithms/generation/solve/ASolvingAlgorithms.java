@@ -7,8 +7,6 @@ import algorithms.generation.Algorithms;
 abstract public class ASolvingAlgorithms extends Algorithms implements
 		ISolvingAlgorithms {
 
-	protected Cell _startCell;
-	protected Cell _endCell;
 	protected Cell _currentCell;
 	protected static int _solvingCounter = 0;
 

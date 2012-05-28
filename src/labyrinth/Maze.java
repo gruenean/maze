@@ -1,6 +1,5 @@
 package labyrinth;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,13 +9,14 @@ import java.util.Random;
 
 import main.Conf;
 
-
 public class Maze {
 	private int _rows, _cols;
 	private Cell[][] map;
 	private Map<Cell, int[]> positions;
 	private List<Cell> allCells;
 	private List<Cell> allRoots;
+private Cell _startCell;
+private Cell _endCell;
 
 	public Maze(int rows, int cols) {
 		_rows = 2 * rows + 1;
@@ -26,11 +26,10 @@ public class Maze {
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		allCells = new ArrayList<Cell>();
 		allRoots = new ArrayList<Cell>();
+	
 
-		
 		generateMap();
-		
-		
+
 	}
 
 	public int[] getLastPosition() {
@@ -38,6 +37,16 @@ public class Maze {
 		return temp;
 	}
 
+	public Cell getStartCell(){
+		
+		return getCellOnPosition(1, 1);
+	}
+	
+	public Cell getEndCell(){
+		return getCellOnPosition(_cols - 2, _rows - 2);
+	}
+	
+	
 	/**
 	 * @param rows
 	 * @param cols
@@ -156,15 +165,15 @@ public class Maze {
 			}
 		}
 	}
-	
-	public void createEinundAusgang(){
-		
+
+	public void createEinundAusgang() {
+
 		map[1][0].setState(" ");
 		map[1][0].setisBreakable(false);
-		
-		map[_rows-2][_cols-1].setState(" ");
-		map[_rows-2][_cols-1].setisBreakable(false);
-		
+
+		map[_rows - 2][_cols - 1].setState(" ");
+		map[_rows - 2][_cols - 1].setisBreakable(false);
+
 	}
 
 	/**
@@ -182,6 +191,8 @@ public class Maze {
 	 * @return position of the given cell
 	 */
 	public int[] getPositionOfCell(Cell cell) {
+		// System.out.println("positions = " + positions.get(cell)[0] +
+		// positions.get(cell)[1]);
 		return positions.get(cell);
 	}
 

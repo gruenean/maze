@@ -50,6 +50,7 @@ public class OwnSolvingAlgoCalcing {
 
 			_directionPossible[2] = false;
 		}
+
 		logString = " Ich bin Zelle " + _maze.getPositionOfCell(_myCell)[0]
 				+ _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
 				+ _myCell.getState();

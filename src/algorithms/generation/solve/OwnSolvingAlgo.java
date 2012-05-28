@@ -19,6 +19,7 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 
 	@Override
 	public void resolveMaze() {
+		
 		UseLogger.LOGGER.info("Position letzte Zelle = ["
 				+ _maze.getPositionOfCell(_endCell)[0]
 				+ _maze.getPositionOfCell(_endCell)[1] + "]");

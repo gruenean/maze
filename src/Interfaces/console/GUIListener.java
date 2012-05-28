@@ -25,7 +25,6 @@ public class GUIListener extends AConsoleListener {
 				stringArray = inputString.toUpperCase().split(" ");
 			}
 
-
 			if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;
 
@@ -33,13 +32,13 @@ public class GUIListener extends AConsoleListener {
 				getHelp();
 
 			else if (stringArray[0].equals(ConsoleCommands.CREATE)) {
-
+				_mymaze.getMaze().createEinundAusgang();
 				try {
 
 					_mymaze.createGUI();
 				} catch (Exception e) {
 					Conf.LOGSTRING = "FEHLER: GUI kann nicht erstellt werden, da es noch kein Labyrinth gibt.";
-					System.out.println(Conf.LOGSTRING);
+					_myoutput.printLine(Conf.LOGSTRING);
 					UseLogger.LOGGER.warning(Conf.LOGSTRING);
 
 				}
