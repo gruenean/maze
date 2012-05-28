@@ -1,12 +1,9 @@
 package main;
 
-import ioInferface.gui.Ghost;
 import ioInferface.gui.MyGameGrid;
 
 import java.util.List;
 import java.util.Random;
-
-import ch.aplu.jgamegrid.Location;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
@@ -15,6 +12,7 @@ import algorithms.generation.create.ownCreatingAlgo;
 import algorithms.generation.solve.ASolvingAlgorithms;
 import algorithms.generation.solve.OwnSolvingAlgo;
 import algorithms.generation.solve.WallFollowerSolvingAlgorithm;
+import ch.aplu.jgamegrid.Location;
 
 public class _mazeHandler {
 
@@ -119,7 +117,8 @@ public class _mazeHandler {
 	
 	public void updateGUI(int[] oldPosition,int[] newPosition) {
 		_mygrid.removeActorsAt(new Location(oldPosition[0], oldPosition[1]));
-		_mygrid.setGhost(newPosition[0],newPosition[1]);
+		//_mygrid.setGhost(newPosition[0],newPosition[1]);
+		_mygrid.addActor(new ioInferface.gui.Ghost(), new Location(newPosition[0],newPosition[1]));
 		
 	}
 

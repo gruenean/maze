@@ -25,9 +25,11 @@ public class MyGameGrid extends GameGrid {
 	}
 
 	public void setWall(int row, int col) {
-
 		addActor(new Cell(), new Location(row, col));
-
+	}
+	
+	public void setGhost(int row, int col) {
+		addActor(new Ghost(), new Location(row, col));
 	}
 
 }
