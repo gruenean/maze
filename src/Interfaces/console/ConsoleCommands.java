@@ -11,6 +11,7 @@ public class ConsoleCommands {
 	protected static String SET = "SET";
 
 	protected final static String OWN = "OWN";
+	protected final static String WALLFOLLOWER = "WALLFOLLOWER";
 	protected final static String GUI = "GUI";
 	protected final static String STEP = "STEP";
 	protected final static String RUN = "RUN";
