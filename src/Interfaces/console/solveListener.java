@@ -40,7 +40,14 @@ public class solveListener extends AConsoleListener {
 				stringArray = inputString.toUpperCase().split(" ");
 			}
 
-			if (stringArray[0].equals(ConsoleCommands.OWN)) {
+			if (stringArray[0].equals(ConsoleCommands.OWN)){ 
+				_mymaze.solveMaze();
+				reinitializeStringArray();
+				goingon = false;	
+				System.out.println("input string = " + inputString);
+				System.out.println("array = ");
+				printArray(stringArray);
+			} else if  (stringArray[0].equals(ConsoleCommands.WALLFOLLOWER)) {
 				_mymaze.solveMaze();
 				reinitializeStringArray();
 				goingon = false;	
