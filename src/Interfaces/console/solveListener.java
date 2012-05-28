@@ -17,7 +17,7 @@ public class solveListener extends AConsoleListener {
 	}
 
 	public void initPossibleAlgos() {
-		possiblesSolvingAlgo = new String[] { "OWN", "HELP" };
+		possiblesSolvingAlgo = new String[] { "OWN", "WALLFOLLOWER", "HELP" };
 	}
 
 	public boolean containsAlgo(String loglevel) {
@@ -41,6 +41,9 @@ public class solveListener extends AConsoleListener {
 			}
 
 			if (stringArray[0].equals(ConsoleCommands.OWN)) {
+				_mymaze.solveMaze();
+				goingon = false;
+			} else if (stringArray[0].equals(ConsoleCommands.WALLFOLLOWER)) {
 				_mymaze.solveMaze();
 				goingon = false;
 			} else if (stringArray[0].equals(ConsoleCommands.QUIT))
@@ -70,9 +73,13 @@ public class solveListener extends AConsoleListener {
 
 		}
 
+		_myoutput.printLine("Algorithms");
+		_myoutput.printLine("**********");
+		_myoutput.printLine("OWN:\t\t\t solve maze with our OWN algorithm.");
+		_myoutput.printLine("WALLFOLLOWER:\t\t solve maze with WALL FOLLOWER algorithm.\n");
 		_myoutput.printLine("SET STEP:\t\t change into the STEP Modus.");
 		_myoutput.printLine("SET RUN:\t\t change into the RUNNING Modus.");
-		_myoutput.printLine("GET:\t\t give back the current modus.");
+		_myoutput.printLine("GET:\t\t\t give back the current modus.");
 		reinitializeStringArray();
 	}
 
