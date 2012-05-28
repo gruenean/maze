@@ -20,7 +20,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 	}
 
 	private void defineStartandEndCell() {
-		_maze.createEinundAusgang();
+		_maze.createEntranceAndExit();
 	}
 
 	public void createMaze() {
@@ -39,6 +39,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 			}
 		}
 		defineStartandEndCell();
+		_maze.printAsciiMaze();
 	}
 
 }
