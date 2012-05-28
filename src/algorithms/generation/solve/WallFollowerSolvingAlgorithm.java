@@ -2,8 +2,6 @@ package algorithms.generation.solve;
 
 import java.util.Arrays;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 import labyrinth.Cell;
 import labyrinth.Maze;
 import main.Conf;
@@ -16,6 +14,12 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		NORTH, EAST, SOUTH, WEST;
 	}
 
+	/**
+	 * @param maze
+	 * @param startCell
+	 * @param endCell
+	 * @param configs
+	 */
 	public WallFollowerSolvingAlgorithm(Maze maze, Cell startCell, Cell endCell, Conf configs) {
 		super(maze, startCell, endCell, configs);
 		setName("<<WallFollowerAlgorithm>>");
@@ -38,6 +42,12 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		}
 	}
 
+	/**
+	 * This method checks whether a cell is a valid room.
+	 * $
+	 * @param Position of a cell which needs to be checked
+	 * @return true if given cell is neither a breakable wall nor a unbreakable wall otherwise false.
+	 */
 	private boolean isValidCellPosition(int[] cellPos) {
 		_configs.get_output().printLine("testing cell on position "+ cellPos[0] + " " + cellPos[1]);
 		if (_maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "B" && _maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "U")  {
@@ -48,6 +58,12 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		return false;
 	}
 	
+	/**
+	 * This method returns the position of the cell in front of a given cell.
+	 * 
+	 * @param Cell of which the cell ahead should be returned 
+	 * @return	position of the cell ahead.
+	 */
 	private int[] getCellAhead(int[] currentCellPos) {
 		int[] tempCellPos = new int[] {currentCellPos[0], currentCellPos[1]};
 		System.out.println("getting cell ahead of " + Arrays.toString(tempCellPos));
@@ -69,6 +85,12 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		return tempCellPos;
 	}
 	
+	/**
+	 * This method returns the position of the cell on the right side of a given cell.
+	 * 
+	 * @param Cell of which the cell on the ride side should be returned 
+	 * @return	position of the cell on the right side.
+	 */
 	private int[] getRighterCell(int[] currentCellPos) {
 		int[] tempCellPos = new int[] {currentCellPos[0], currentCellPos[1]};
 		_configs.get_output().printLine("getting righter cell of " + Arrays.toString(tempCellPos));
@@ -90,6 +112,12 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		return tempCellPos;
 	}
 	
+	/**
+	 * This method returns the position of the cell on the left side of a given cell.
+	 * 
+	 * @param Cell of which the cell on the ride side should be returned 
+	 * @return	position of the cell on the left side.
+	 */
 	private int[] getLefterCell(int[] currentCellPos) {
 		int[] tempCellPos = new int[] {currentCellPos[0], currentCellPos[1]};
 		System.out.println("getting lefter cell of " + Arrays.toString(tempCellPos));
@@ -111,27 +139,10 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		return tempCellPos;
 	}
 
-	private void moveForward() {
-		switch(direction) {
-			case NORTH:
-				//if (currentCellPos[0]-- > _maze.getRows() && currentCellPos[0]-- < 0) 
-				currentCellPos[0]--;
-				break;
-			case EAST:
-				//if (currentCellPos[1]++ > _maze.getCols() && currentCellPos[1]++ < 0) 
-				currentCellPos[1]++;
-				break;
-			case SOUTH:
-				//if (currentCellPos[0]++ > _maze.getRows() && currentCellPos[0]++ < 0)
-				currentCellPos[0]++;
-				break;
-			case WEST:
-				//if (currentCellPos[1]-- > _maze.getCols() && currentCellPos[1]-- < 0)
-				currentCellPos[1]--;
-				break;
-		}
-	}
-
+	
+	/**
+	 * Changes the direction of the follower to right
+	 */
 	private void turnRight() {
 		switch (direction) {
 		case NORTH:
@@ -150,6 +161,9 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		_configs.get_output().printLine("[turnRight] my current position is now: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
 	}
 
+	/**
+	 * Changes the direction of the follower to left
+	 */
 	private void turnLeft() {
 		switch (direction) {
 		case NORTH:
@@ -168,6 +182,9 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		_configs.get_output().printLine("[turnLeft] my current position is now: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
 	}
 
+	/**
+	 * Turns around the direction of the follower
+	 */
 	private void turnAround() {
 		switch (direction) {
 		case NORTH:
@@ -188,7 +205,6 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	@Override
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub
-
 	}
 
 }
