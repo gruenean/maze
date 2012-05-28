@@ -17,9 +17,6 @@ public class Maze {
 	private List<Cell> allRoots;
 	private Conf _globalConf;
 
-	// private Cell _startCell;
-	// private Cell _endCell;
-
 	public Maze(int rows, int cols, Conf globalConf) {
 		this._globalConf = globalConf;
 		_rows = 2 * rows + 1;
@@ -32,7 +29,8 @@ public class Maze {
 		generateMap();
 	}
 
-	/**TODO: wird die noch verwendet?
+	/**
+	 * TODO: still used?
 	 * @return
 	 */
 	public int[] getLastPosition() {
@@ -40,16 +38,31 @@ public class Maze {
 		return temp;
 	}
 
+	
+	/**
+	 * TODO: still used?
+	 * Returns the start cell
+	 * 
+	 * @return start of maze
+	 */
 	public Cell getStartCell() {
-
 		return getCellOnPosition(1, 1);
 	}
 
+	
+	/**
+	 * TODO: still used?
+	 * Returns the end cell
+	 *  
+	 * @return end of maze
+	 */
 	public Cell getEndCell() {
 		return getCellOnPosition(_cols - 2, _rows - 2);
 	}
 
 	/**
+	 * Returns the cell on a given Position
+	 * 
 	 * @param rows
 	 * @param cols
 	 * @return
