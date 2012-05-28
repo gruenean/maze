@@ -55,10 +55,10 @@ public class Maze {
 	 * @return
 	 */
 	public Cell getCellOnPosition(int rows, int cols) {
-		_globalConf.get_output().printLine(
-				"Will Zelle an Position " + rows + " + " + cols);
-
-		_globalConf.get_output().printLine("Map Length = " + map.length);
+//		_globalConf.get_output().printLine(
+//				"Will Zelle an Position " + rows + " + " + cols);
+//
+//		_globalConf.get_output().printLine("Map Length = " + map.length);
 		return map[rows][cols];
 
 	}
