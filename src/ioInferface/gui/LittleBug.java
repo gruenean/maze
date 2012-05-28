@@ -1,7 +1,8 @@
 package ioInferface.gui;
 
-
 import java.awt.event.KeyEvent;
+
+import logging.UseLogger;
 
 import ch.aplu.jgamegrid.Actor;
 import ch.aplu.jgamegrid.GGKeyListener;
@@ -11,6 +12,11 @@ class LittleBug extends Actor implements GGKeyListener {
 		super(true, "sprites/smallbug.gif");
 	}
 
+	/**
+	 * key event for the "littlebug":
+	 * 
+	 * UP = 270 / RIGHT = 0 / LEFT = 180 / DOWN = 90
+	 */
 	public boolean keyPressed(KeyEvent evt) {
 		switch (evt.getKeyCode()) {
 		case KeyEvent.VK_UP:
@@ -27,7 +33,6 @@ class LittleBug extends Actor implements GGKeyListener {
 			break;
 		}
 		canIgoOn();
-		// act();
 
 		return true;
 	}
@@ -38,12 +43,20 @@ class LittleBug extends Actor implements GGKeyListener {
 
 	public void canIgoOn() {
 
+		/**
+		 * get the actor of the cell you want to move to
+		 */
 		Actor actor = gameGrid.getOneActorAt(getNextMoveLocation(), Cell.class);
 
-		System.out.println("aktor = " + actor);
+		UseLogger.LOGGER.finer("aktor = " + actor);
+		/**
+		 * if there is not a actor, it is allowed to move
+		 */
 		if (actor == null) {
 			move();
-
+			/**
+			 * oterwhise go back (if move left, go right... and so on)
+			 */
 		} else
 			setHorzMirror(!isHorzMirror());
 	}

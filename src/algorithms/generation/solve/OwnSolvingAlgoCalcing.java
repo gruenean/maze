@@ -8,10 +8,7 @@ import main.Conf;
 public class OwnSolvingAlgoCalcing {
 	private Cell _endCell;
 	private Maze _maze;
-	// private boolean[] _isWallAllowed;
 	private Cell _myCell = null;
-//	private int[] possibleWays;
-//	private Cell[] _alreadyChecked;
 	private Cell _nextCell = null;
 	private boolean[] _directionPossible;
 	private String logString = null;
@@ -24,15 +21,31 @@ public class OwnSolvingAlgoCalcing {
 		_nextCell = null;
 		_directionPossible = new boolean[] { true, true, true, true };
 
+		/**
+		 * if the Solver choosed from the last Cell to go Left, it is now not
+		 * allowed to go back to right.
+		 */
 		if (notthisWall == 0) {
 			_directionPossible[1] = false;
 		}
+		/**
+		 * if the Solver choosed from the last Cell to go right, it is now not
+		 * allowed to go back to left.
+		 */
 		if (notthisWall == 1) {
 			_directionPossible[0] = false;
 		}
+		/**
+		 * if the Solver choosed from the last Cell to go top, it is now not
+		 * allowed to go back to bottom.
+		 */
 		if (notthisWall == 2) {
 			_directionPossible[3] = false;
 		}
+		/**
+		 * if the Solver choosed from the last Cell to go bottom, it is now not
+		 * allowed to go back to top.
+		 */
 		if (notthisWall == 3) {
 
 			_directionPossible[2] = false;
@@ -41,7 +54,6 @@ public class OwnSolvingAlgoCalcing {
 				+ _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
 				+ _myCell.getState();
 
-//		System.out.println("my logger = " + UseLogger.LOGGER);
 		UseLogger.LOGGER.info(logString);
 
 	}
@@ -60,15 +72,11 @@ public class OwnSolvingAlgoCalcing {
 		 * if the Cell is not a empty one, return null. Then it is a U or B Cell
 		 */
 		if (_nextCell == null) {
-			// System.out.println("not possible: Cell = null");
-			// UseLogger.LOGGER.info("not possible: Cell = null");
 			return false;
 		}
 		if (_nextCell.getState() == "B" || _nextCell.getState() == "U") {
 			logString = "Ist nicht mšglich. Zelle hat getState: "
 					+ _nextCell.getState();
-			// System.out.println(logString);
-
 			UseLogger.LOGGER.info(logString);
 			return false;
 		}
@@ -77,6 +85,10 @@ public class OwnSolvingAlgoCalcing {
 
 	}
 
+	/**
+	 * 
+	 * @return true if the solver reached the endCell, otherwise return false
+	 */
 	public boolean reachedTheEndCell() {
 		String logString = "current Cell = "
 				+ _maze.getPositionOfCell(_myCell)[0]
@@ -98,7 +110,6 @@ public class OwnSolvingAlgoCalcing {
 
 		if (reachedTheEndCell()) {
 			UseLogger.LOGGER.info("ENDE ERREICHT!!!!");
-			System.out.println("ENDE ERREICHT!!!!");
 			return true;
 		}
 
@@ -142,10 +153,6 @@ public class OwnSolvingAlgoCalcing {
 				_nextCell = _maze.getNeigbourofCell(_myCell, counter);
 				UseLogger.LOGGER.info(logString);
 
-				// SolvingAlgorithms._solvingCounter =
-				// SolvingAlgorithms._solvingCounter++;
-				// _myCell = _nextCell;
-
 				String _currentCellPosition = ""
 						+ _maze.getPositionOfCell(_myCell)[0]
 						+ _maze.getPositionOfCell(_myCell)[1];
@@ -155,8 +162,8 @@ public class OwnSolvingAlgoCalcing {
 						+ _currentCellPosition + "\n";
 				UseLogger.LOGGER.info(logString);
 
-				boolean retbool = new OwnSolvingAlgoCalcing(_maze,
-						_nextCell, _endCell, counter).calc();
+				boolean retbool = new OwnSolvingAlgoCalcing(_maze, _nextCell,
+						_endCell, counter).calc();
 
 				if (retbool)
 					return retbool;

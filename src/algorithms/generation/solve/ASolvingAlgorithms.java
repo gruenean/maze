@@ -13,7 +13,7 @@ abstract public class ASolvingAlgorithms extends Algorithms implements
 	protected static int _solvingCounter = 0;
 
 	/**
-	 * Constructor for all Solving Algorithms
+	 * Constructor for all Solving Algorithms.
 	 */
 	public ASolvingAlgorithms(Maze maze, Cell startCell, Cell endCell) {
 		super(maze);

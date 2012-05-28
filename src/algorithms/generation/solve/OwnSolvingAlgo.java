@@ -14,7 +14,6 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 
 		_currentCell = startCell;
 		UseLogger.LOGGER.info("startCell = " + _startCell);
-		// System.out.println("Startcell = " + _startCell);
 
 	}
 
