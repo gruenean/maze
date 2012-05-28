@@ -56,8 +56,7 @@ public class Cell {
 		this.value = value;
 	}
 
-	public String getValue() {
-		
+	protected String getValue() {
 		return value;
 	}
 	

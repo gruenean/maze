@@ -27,12 +27,12 @@ public class Maze {
 		allCells = new ArrayList<Cell>();
 		allRoots = new ArrayList<Cell>();
 
-		
 		generateMap();
-		
-		
 	}
 
+	/**TODO: wird die noch verwendet?
+	 * @return
+	 */
 	public int[] getLastPosition() {
 		int[] temp = { _rows, _cols };
 		return temp;
@@ -116,9 +116,7 @@ public class Maze {
 	public void printMap() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-
-				String currentCell = map[i][j].getValue();
-
+//				String currentCell = map[i][j].getValue();
 				System.out.print("[" + map[i][j].getValue() + "]");
 
 				if (j == map.length - 1) {
@@ -157,14 +155,14 @@ public class Maze {
 		}
 	}
 	
-	public void createEinundAusgang(){
-		
+	/**
+	 * Marks the first cell as entrance (top-left) and the last as exit (bottom-right)
+	 */
+	public void createEntranceAndExit(){
 		map[1][0].setState(" ");
 		map[1][0].setisBreakable(false);
-		
 		map[_rows-2][_cols-1].setState(" ");
 		map[_rows-2][_cols-1].setisBreakable(false);
-		
 	}
 
 	/**
@@ -239,9 +237,8 @@ public class Maze {
 	 *         which Neibour. (0=left,
 	 */
 	public Cell getNeigbourofCell(Cell cell, int wall) {
-		// System.out.println("WŸnsche Nachbar bei Wand: " + wall);
+		// System.out.println("Wï¿½nsche Nachbar bei Wand: " + wall);
 		int[] currentPos = this.getPositionOfCell(cell);
-		int[] neighbourPositions;
 		{
 			// System.out.println("Suche Nachbar bei Walls = " + wall);
 			if (Conf.LEFT_WALL == wall)
@@ -263,13 +260,12 @@ public class Maze {
 	}
 
 	/**
-	 * TODO: rename NOTE: This method will be set to private soon This method
-	 * takes care of cells belonging to the same root.
+	 * This method takes care of cells belonging to the same root.
 	 * 
 	 * @param cell1
 	 * @param cell2
 	 */
-	private void updateRoots2(Cell cell1, Cell cell2) {
+	private void updateRoots(Cell cell1, Cell cell2) {
 		Cell obsoleteRoot = cell2.getRoot();
 		Cell root = cell1.getRoot();
 
@@ -277,20 +273,8 @@ public class Maze {
 			if (entry.getRoot().equals(obsoleteRoot)) {
 				entry.setRoot(root);
 				allRoots.remove(obsoleteRoot);
-
 			}
 		}
-	}
-
-	/**
-	 * @deprecated This method is deprecated and will be removed form Maze soon.
-	 *             please do not use it anymore! TODO: delete method!!!!
-	 * 
-	 * @param cell1
-	 * @param cell2
-	 */
-	public void updateRoots(Cell cell1, Cell cell2) {
-		breakWallBetweenCells(cell1, cell2);
 	}
 
 	/**
@@ -312,7 +296,7 @@ public class Maze {
 			wall.setisBreakable(false);
 		}
 
-		updateRoots2(cell1, cell2);
+		updateRoots(cell1, cell2);
 	}
 
 	/**
@@ -336,7 +320,6 @@ public class Maze {
 	}
 
 	public int getRows() {
-
 		return _rows;
 	}
 
