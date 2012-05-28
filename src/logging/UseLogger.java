@@ -5,13 +5,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UseLogger {
-	// Always use the classname, this way you can refactor
 	public final static Logger LOGGER = Logger.getLogger(UseLogger.class
 			.getName());
 
-	
+	/**
+	 * Deprecated IS THIS USED?! 28.05.2012 / Micha
+	 */
 	public void writeLog() {
-		// Set the LogLevel to Severe, only severe Messages will be written
 		LOGGER.setLevel(Level.ALL);
 		LOGGER.finest("First message \n --------------------------- \n");
 
