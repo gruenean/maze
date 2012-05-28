@@ -15,7 +15,7 @@ public class ModusListener extends AConsoleListener {
 		String modusString = null;
 
 		while (goingon) {
-			System.out.print("MAIN(MODUS): ");
+			_myoutput.printLine("MAIN(MODUS): ");
 
 			if (stringArray.length == 0) {
 				inputString = _in.nextLine().toUpperCase();
@@ -23,7 +23,7 @@ public class ModusListener extends AConsoleListener {
 			}
 
 			if (stringArray[0].equals(ConsoleCommands.SET)) {
-				System.out.println(stringArray[1]);
+				_myoutput.printLine(stringArray[1]);
 				if (stringArray[1].equals(ConsoleCommands.STEP))
 					_globalConf.setSTEPMODUS(true);
 				if (stringArray[1].equals(ConsoleCommands.RUN))
@@ -39,7 +39,7 @@ public class ModusListener extends AConsoleListener {
 					modusString = "RUN";
 					goingon = false;
 				}
-				System.out.println("The current MODUS is : " + modusString);
+				_myoutput.printLine("The current MODUS is : " + modusString);
 			}
 
 			else if (stringArray[0].equals(ConsoleCommands.HELP)

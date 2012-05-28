@@ -2,6 +2,7 @@ package algorithms.generation.solve;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
+import main.Conf;
 
 
 /**
@@ -11,8 +12,8 @@ import labyrinth.Maze;
  */
 public class PledgeSolvingAlgorithm extends ASolvingAlgorithms {
 
-	public PledgeSolvingAlgorithm(Maze maze, Cell startCell, Cell endCell) {
-		super(maze, startCell, endCell);
+	public PledgeSolvingAlgorithm(Maze maze, Cell startCell, Cell endCell, Conf configs) {
+		super(maze, startCell, endCell, configs);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -2,6 +2,7 @@ package algorithms.generation.solve;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
+import main.Conf;
 import algorithms.generation.Algorithms;
 
 abstract public class ASolvingAlgorithms extends Algorithms implements
@@ -13,8 +14,9 @@ abstract public class ASolvingAlgorithms extends Algorithms implements
 	/**
 	 * Constructor for all Solving Algorithms.
 	 */
-	public ASolvingAlgorithms(Maze maze, Cell startCell, Cell endCell) {
+	public ASolvingAlgorithms(Maze maze, Cell startCell, Cell endCell, Conf configs) {
 		super(maze);
+_configs = configs;
 		_startCell = startCell;
 		_endCell = endCell;
 

@@ -12,11 +12,14 @@ abstract public class Algorithms implements IAlgorithms {
 	protected Cell _startCell;
 	protected Cell _endCell;
 
+	// protected IOutput _myOutput = null;
+
 	/**
 	 * default constructor (is needed for Solving Algos. The solving Algos
 	 * mustn't know the maze!
 	 */
 	public Algorithms() {
+		// _myOutput = _configs.get_output();
 	}
 
 	/**
@@ -24,6 +27,7 @@ abstract public class Algorithms implements IAlgorithms {
 	 */
 	public Algorithms(Maze maze) {
 		_maze = maze;
+		// _myOutput = _configs.get_output();
 	}
 
 	public void setName(String name) {

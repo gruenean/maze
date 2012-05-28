@@ -1,6 +1,5 @@
 package main;
 
-
 import java.io.IOException;
 import java.util.logging.Level;
 
@@ -14,14 +13,16 @@ public class Conf {
 	public final static int RIGHT_WALL = 1;
 	public final static int TOP_WALL = 2;
 	public final static int BOTTOM_WALL = 3;
+	private boolean _isStepModus;
 	private MyLogger _logger;
 	private IOutput _output;
-	private mazeHandler _mymaze;
+
+	// private mazeHandler _mymaze;
 
 	public Conf() {
 		setUpLogger();
 	}
-	
+
 	public IOutput get_output() {
 		return _output;
 	}
@@ -44,7 +45,13 @@ public class Conf {
 		STEPMODUS = sTEPMODUS;
 	}
 
+	public boolean isStepModus() {
+		return _isStepModus;
+	}
 
+	public void setStepModus(boolean isStepModus) {
+		this._isStepModus = isStepModus;
+	}
 
 	public static void increseSteps() {
 		STEPS = STEPS + 1;
@@ -75,10 +82,5 @@ public class Conf {
 		else
 			return "NOT A CORRECT WALL DIRECTION!!!!";
 	}
-	
-	
-	
-	
-	
 
 }

@@ -3,13 +3,13 @@ package Interfaces.console;
 import main.Conf;
 import main._mazeHandler;
 
-public class solveListener extends AConsoleListener {
+public class StepModusListener extends AConsoleListener {
 	private String inputString = " ";
 
 	private String[] possiblesSolvingAlgo;
 	private _mazeHandler _mymaze;
 
-	public solveListener(Conf globalConf, _mazeHandler mymaze) {
+	public StepModusListener(Conf globalConf, _mazeHandler mymaze) {
 		super(globalConf);
 		_mymaze = mymaze;
 
@@ -42,11 +42,7 @@ public class solveListener extends AConsoleListener {
 
 			if (stringArray[0].equals(ConsoleCommands.OWN)) {
 				_mymaze.solveMaze();
-				reinitializeStringArray();
 				goingon = false;
-				System.out.println("input string = " + inputString);
-				System.out.println("array = ");
-				printArray(stringArray);
 			} else if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;
 

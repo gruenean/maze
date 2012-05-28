@@ -2,14 +2,14 @@ package Interfaces.console;
 
 import logging.UseLogger;
 import main.Conf;
-import main.mazeHandler;
+import main._mazeHandler;
 
 public class GUIListener extends AConsoleListener {
 	private String inputString = " ";
 
-	private mazeHandler _mymaze;
+	private _mazeHandler _mymaze;
 
-	public GUIListener(Conf globalConf, mazeHandler mymaze) {
+	public GUIListener(Conf globalConf, _mazeHandler mymaze) {
 		super(globalConf);
 		_mymaze = mymaze;
 	}
@@ -18,7 +18,7 @@ public class GUIListener extends AConsoleListener {
 		stringArray = string;
 
 		while (goingon) {
-			System.out.print("MAIN(GUI): ");
+			_myoutput.printLine("MAIN(GUI): ");
 
 			if (stringArray.length == 0) {
 				inputString = _in.nextLine().toUpperCase();

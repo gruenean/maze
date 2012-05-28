@@ -4,47 +4,61 @@ import java.util.Arrays;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
-
+import main.Conf;
 
 /**
  * NOT IMPLEMENTED YET
+ * 
  * @author micha
- *
+ * 
  */
 public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	int[] currentCellPos;
 	Direction direction;
 
 	private enum Direction {
-		NORTH,EAST,SOUTH,WEST;
+		NORTH, EAST, SOUTH, WEST;
 	}
-	public WallFollowerSolvingAlgorithm(Maze maze, Cell startCell, Cell endCell) {
-		super(maze, startCell, endCell);
+
+	public WallFollowerSolvingAlgorithm(Maze maze, Cell startCell, Cell endCell, Conf configs) {
+		super(maze, startCell, endCell, configs);
 		setName("<<WallFollowerAlgorithm>>");
 		direction = Direction.EAST;
 	}
 
 	@Override
 	public void resolveMaze() {
-		
+
 		currentCellPos = _maze.getPositionOfCell(_startCell);
-		while(! Arrays.equals(currentCellPos, _maze.getPositionOfCell(_endCell))) {
-			System.out.println("My current Position is: " + Arrays.toString(currentCellPos));
-			
-			if (isValidCellPosition(getRighterCell())) { System.out.println("turning right"); turnRight(); 
-			} else if (isValidCellPosition(getCellAhead())) { System.out.println("doing nothing");
-			} else if (isValidCellPosition(getLefterCell())) { System.out.println("turning left"); turnLeft(); 
-			} else {System.out.println("turning around"); turnAround(); }
+		while (!Arrays
+				.equals(currentCellPos, _maze.getPositionOfCell(_endCell))) {
+			_configs.get_output().printLine(
+					"My current Position is: "
+							+ Arrays.toString(currentCellPos));
+
+			if (isValidCellPosition(getRighterCell())) {
+				_configs.get_output().printLine("turning right");
+				turnRight();
+			} else if (isValidCellPosition(getCellAhead())) {
+				_configs.get_output().printLine("doing nothing");
+			} else if (isValidCellPosition(getLefterCell())) {
+				_configs.get_output().printLine("turning left");
+				turnLeft();
+			} else {
+				_configs.get_output().printLine("turning around");
+				turnAround();
+			}
 			moveForward();
 		}
 	}
 
 	private boolean isValidCellPosition(int[] cellPos) {
-		return (_maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "B" && _maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "U");
+		return (_maze.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "B" && _maze
+				.getCellOnPosition(cellPos[0], cellPos[1]).getState() != "U");
 	}
-	
+
 	private int[] getCellAhead() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			return new int[] { currentCellPos[0]--, currentCellPos[1] };
 		case EAST:
@@ -54,11 +68,11 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			return new int[] { currentCellPos[0], currentCellPos[1]-- };
 		}
-		return new int[] {0,0};
+		return new int[] { 0, 0 };
 	}
-	
+
 	private int[] getRighterCell() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			return new int[] { currentCellPos[0], currentCellPos[1]++ };
 		case EAST:
@@ -68,11 +82,11 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			return new int[] { currentCellPos[0]--, currentCellPos[1] };
 		}
-		return new int[] {0,0};
+		return new int[] { 0, 0 };
 	}
-	
+
 	private int[] getLefterCell() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			return new int[] { currentCellPos[0], currentCellPos[1]-- };
 		case EAST:
@@ -82,32 +96,36 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			return new int[] { currentCellPos[0]++, currentCellPos[1] };
 		}
-		return new int[] {0,0};
+		return new int[] { 0, 0 };
 	}
-	
+
 	private void moveForward() {
-		switch(direction) {
-			case NORTH:
-				if (currentCellPos[0]-- > _maze.getRows() && currentCellPos[0]-- < 0) 
-					currentCellPos[0]--;
-				break;
-			case EAST:
-				if (currentCellPos[1]++ > _maze.getCols() && currentCellPos[1]++ < 0) 
-					currentCellPos[1]++;
-				break;
-			case SOUTH:
-				if (currentCellPos[0]++ > _maze.getRows() && currentCellPos[0]++ < 0)
-					currentCellPos[0]++;
-				break;
-			case WEST:
-				if (currentCellPos[1]-- > _maze.getCols() && currentCellPos[1]-- < 0)
-					currentCellPos[1]--;
-				break;
+		switch (direction) {
+		case NORTH:
+			if (currentCellPos[0]-- > _maze.getRows()
+					&& currentCellPos[0]-- < 0)
+				currentCellPos[0]--;
+			break;
+		case EAST:
+			if (currentCellPos[1]++ > _maze.getCols()
+					&& currentCellPos[1]++ < 0)
+				currentCellPos[1]++;
+			break;
+		case SOUTH:
+			if (currentCellPos[0]++ > _maze.getRows()
+					&& currentCellPos[0]++ < 0)
+				currentCellPos[0]++;
+			break;
+		case WEST:
+			if (currentCellPos[1]-- > _maze.getCols()
+					&& currentCellPos[1]-- < 0)
+				currentCellPos[1]--;
+			break;
 		}
 	}
-	
+
 	private void turnRight() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			direction = Direction.EAST;
 			break;
@@ -120,11 +138,11 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			direction = Direction.NORTH;
 			break;
-		}		
+		}
 	}
 
 	private void turnLeft() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			direction = Direction.WEST;
 			break;
@@ -137,11 +155,11 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			direction = Direction.SOUTH;
 			break;
-		}		
+		}
 	}
-	
+
 	private void turnAround() {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			direction = Direction.SOUTH;
 			break;
@@ -154,9 +172,9 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		case WEST:
 			direction = Direction.EAST;
 			break;
-		}		
+		}
 	}
-	
+
 	@Override
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub

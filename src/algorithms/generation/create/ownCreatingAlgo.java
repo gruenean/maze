@@ -2,9 +2,11 @@ package algorithms.generation.create;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
+import main.Conf;
 
 /**
- * this algorithm is a creating algotihm with a own created algorithm, which is near to the kruscal algorithm
+ * this algorithm is a creating algotihm with a own created algorithm, which is
+ * near to the kruscal algorithm
  * 
  * @author micha
  * 
@@ -12,15 +14,13 @@ import labyrinth.Maze;
 public class ownCreatingAlgo extends ACreatingAlgorithms {
 
 	
-
-	public ownCreatingAlgo(Maze maze) {
+	
+	
+	public ownCreatingAlgo(Maze maze, Conf globalConf) {
 		super(maze);
+		_configs = globalConf;
 		setName("<<eigener CreatingAlgo>>");
 	}
-
-//	private void defineStartandEndCell() {
-//	//	_maze.createEinundAusgang();
-//	}
 
 	public void createMaze() {
 		Cell randomCell;
@@ -33,13 +33,13 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 				_maze.breakWallBetweenCells(randomCell, NeighbourCell);
 				// TODO: comment out the following four lines as these are
 				// testing only
+				System.out.println("asdfasdf " + _configs);
 				_maze.printAsciiMaze();
-				System.out.println();
+				_configs.get_output().printLine(" ");
 			} else {
-				System.out.println("impossibru");
+				_configs.get_output().printLine("impossibru");
 			}
 		}
-//		defineStartandEndCell();
 	}
 
 }

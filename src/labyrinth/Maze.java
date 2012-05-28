@@ -15,18 +15,19 @@ public class Maze {
 	private Map<Cell, int[]> positions;
 	private List<Cell> allCells;
 	private List<Cell> allRoots;
-private Cell _startCell;
-private Cell _endCell;
+	private Conf _globalConf;
 
-	public Maze(int rows, int cols) {
+	// private Cell _startCell;
+	// private Cell _endCell;
+
+	public Maze(int rows, int cols, Conf globalConf) {
+		this._globalConf = globalConf;
 		_rows = 2 * rows + 1;
 		_cols = 2 * cols + 1;
-
 		map = new Cell[_rows][_cols];
 		positions = new HashMap<Cell, int[]>(); // cell, position
 		allCells = new ArrayList<Cell>();
 		allRoots = new ArrayList<Cell>();
-	
 
 		generateMap();
 
@@ -37,25 +38,25 @@ private Cell _endCell;
 		return temp;
 	}
 
-	public Cell getStartCell(){
-		
+	public Cell getStartCell() {
+
 		return getCellOnPosition(1, 1);
 	}
-	
-	public Cell getEndCell(){
+
+	public Cell getEndCell() {
 		return getCellOnPosition(_cols - 2, _rows - 2);
 	}
-	
-	
+
 	/**
 	 * @param rows
 	 * @param cols
 	 * @return
 	 */
 	public Cell getCellOnPosition(int rows, int cols) {
-		System.out.println("Will Zelle an Position " + rows + " + " + cols);
+		_globalConf.get_output().printLine(
+				"Will Zelle an Position " + rows + " + " + cols);
 
-		System.out.println("Map Length = " + map.length);
+		_globalConf.get_output().printLine("Map Length = " + map.length);
 		return map[rows][cols];
 
 	}
@@ -128,10 +129,11 @@ private Cell _endCell;
 
 				String currentCell = map[i][j].getValue();
 
-				System.out.print("[" + map[i][j].getValue() + "]");
+				_globalConf.get_output().printLine(
+						"[" + map[i][j].getValue() + "]");
 
 				if (j == map.length - 1) {
-					System.out.println();
+					_globalConf.get_output().printLine(" ");
 				}
 			}
 		}
@@ -143,9 +145,10 @@ private Cell _endCell;
 	public void printRoots() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-				System.out.print("[" + map[i][j].getRoot().getValue() + "]");
+				_globalConf.get_output().printLine(
+						"[" + map[i][j].getRoot().getValue() + "]");
 				if (j == map.length - 1) {
-					System.out.println();
+					_globalConf.get_output().printLine(" ");
 				}
 			}
 		}
@@ -158,9 +161,9 @@ private Cell _endCell;
 	public void printAsciiMaze() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-				System.out.print(map[i][j].getState());
+				_globalConf.get_output().print(map[i][j].getState());
 				if (j == map.length - 1) {
-					System.out.println();
+					_globalConf.get_output().printLine(" ");
 				}
 			}
 		}
