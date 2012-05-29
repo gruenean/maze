@@ -60,7 +60,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	/**
 	 * This method returns the position of the cell in front of a given cell.
 	 * 
-	 * @param Cell of which the cell ahead should be returned 
+	 * @param Wall of which the cell ahead should be returned 
 	 * @return	position of the cell ahead.
 	 */
 	private int[] getCellAhead(int[] currentCellPos) {
@@ -87,7 +87,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	/**
 	 * This method returns the position of the cell on the right side of a given cell.
 	 * 
-	 * @param Cell of which the cell on the ride side should be returned 
+	 * @param Wall of which the cell on the ride side should be returned 
 	 * @return	position of the cell on the right side.
 	 */
 	private int[] getRighterCell(int[] currentCellPos) {
@@ -114,7 +114,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	/**
 	 * This method returns the position of the cell on the left side of a given cell.
 	 * 
-	 * @param Cell of which the cell on the ride side should be returned 
+	 * @param Wall of which the cell on the ride side should be returned 
 	 * @return	position of the cell on the left side.
 	 */
 	private int[] getLefterCell(int[] currentCellPos) {
