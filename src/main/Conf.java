@@ -51,15 +51,15 @@ public class Conf {
 	public static int STEPS = 0;
 
 	public static String LOGSTRING = null;
-	public boolean STEPMODUS = false;
+//	public boolean STEPMODUS = false;
 
-	public boolean isSTEPMODUS() {
-		return STEPMODUS;
-	}
-
-	public void setSTEPMODUS(boolean sTEPMODUS) {
-		STEPMODUS = sTEPMODUS;
-	}
+//	public boolean isSTEPMODUS() {
+//		return STEPMODUS;
+//	}
+//
+//	public void setSTEPMODUS(boolean sTEPMODUS) {
+//		STEPMODUS = sTEPMODUS;
+//	}
 
 	public boolean isStepModus() {
 		return _isStepModus;

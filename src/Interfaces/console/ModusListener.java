@@ -26,14 +26,14 @@ public class ModusListener extends AConsoleListener {
 			if (stringArray[0].equals(ConsoleCommands.SET)) {
 				_myoutput.printLine(stringArray[1]);
 				if (stringArray[1].equals(ConsoleCommands.STEP))
-					_globalConf.setSTEPMODUS(true);
+					_globalConf.setStepModus(true);
 				if (stringArray[1].equals(ConsoleCommands.RUN))
-					_globalConf.setSTEPMODUS(false);
+					_globalConf.setStepModus(false);
 				goingon = false;
 			}
 
 			if (stringArray[0].equals(ConsoleCommands.GET)) {
-				if (_globalConf.isSTEPMODUS()) {
+				if (_globalConf.isStepModus()) {
 					modusString = "STEP";
 					goingon = false;
 				} else {
