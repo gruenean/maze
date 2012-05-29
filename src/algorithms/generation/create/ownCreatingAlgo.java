@@ -45,7 +45,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 				_configs.get_output().printLine("impossibru");
 			}
 		}
-		defineStartandEndCell();
+//		defineStartandEndCell();
 		_maze.printAsciiMaze();
 	}
 

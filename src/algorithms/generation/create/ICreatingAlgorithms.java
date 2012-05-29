@@ -10,4 +10,5 @@ public interface ICreatingAlgorithms {
 
 	public void createMaze();
 
+	public String getName();
 }

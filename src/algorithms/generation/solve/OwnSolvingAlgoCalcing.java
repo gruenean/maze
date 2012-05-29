@@ -52,7 +52,10 @@ public class OwnSolvingAlgoCalcing {
 
 			_directionPossible[2] = false;
 		}
-		System.out.println("aktuelle Zelle = " + _myCell);
+		//System.out.println("aktuelle Zelle = " + _myCell);
+		
+		
+		
 		// logString = " Ich bin Zelle " + _maze.getPositionOfCell(_myCell)[0]
 		// + _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
 		// + _myCell.getState();
@@ -133,8 +136,8 @@ public class OwnSolvingAlgoCalcing {
 				+ _maze.getPositionOfCell(_myCell)[1] + " "
 				+ _directionPossible[0] + "  " + _directionPossible[1] + "  "
 				+ _directionPossible[2] + "  " + _directionPossible[3]);
-		_globalConf.get_output()
-				.printLine("Mein Status: " + _myCell.getState());
+//		_globalConf.get_output()
+//				.printLine("Mein Status: " + _myCell.getState());
 
 		if (!_directionPossible[0] && !_directionPossible[1]
 				&& !_directionPossible[2] && !_directionPossible[3]) {

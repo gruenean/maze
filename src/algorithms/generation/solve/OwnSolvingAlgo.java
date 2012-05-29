@@ -32,19 +32,13 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 		boolean _soltutionfound = _calc.calc();
 
 		if (_soltutionfound) {
-			_configs.get_output().printLine("Lï¿½sung yes...");
+			_configs.get_output().printLine("Lšsung yes...");
 
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		} else {
-			_configs.get_output().printLine("keine Lï¿½sung gefunden ;-( ...");
+			_configs.get_output().printLine("keine Lšsung gefunden ;-( ...");
 			_configs.get_output()
 					.printLine(
-							"Erstellungs- und Lï¿½sungsalgorithmus passen nicht zusammen...");
+							"Erstellungs- und Lšsungsalgorithmus passen nicht zusammen...");
 		}
 	}
 
@@ -54,4 +48,8 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 
 	}
 
+	@Override
+	public String getCommand() {
+		return "OWN";
+	}
 }

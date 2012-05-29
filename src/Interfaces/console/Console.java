@@ -21,7 +21,7 @@ public class Console extends AConsoleListener {
 				new solveListener(_globalConf, _mymaze),
 				new createListener(_globalConf, _mymaze),
 				new GUIListener(_globalConf, _mymaze),
-				new StepModusListener(_globalConf, _mymaze)};
+				new StepModusListener(_globalConf, _mymaze) };
 
 		startListening();
 	}
@@ -45,11 +45,9 @@ public class Console extends AConsoleListener {
 					String[] newString = removeFirstCommand(stringArray);
 					listener.startListening(newString);
 					reinitializeStringArray();
-					
-					System.out.println(stringArray[0]);
+					stringArray[0]="asdfasdfasdf";
 				}
 			}
-
 
 			/**
 			 * go to the help menu and give possibilities

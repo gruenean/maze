@@ -1,7 +1,6 @@
 package algorithms.generation.solve;
 
 import java.util.Arrays;
-import java.util.logging.Logger;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
@@ -205,6 +204,11 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	@Override
 	public void defineStartandEndCell() {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getCommand() {
+		return "WALLFOLLOWER";
 	}
 
 }

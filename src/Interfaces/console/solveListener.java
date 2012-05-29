@@ -41,18 +41,16 @@ public class solveListener extends AConsoleListener {
 			}
 
 			if (stringArray[0].equals(ConsoleCommands.OWN)){ 
-				_mymaze.solveMaze();
+				_mymaze.solveMaze(ConsoleCommands.OWN);
+				System.out.println("1st string array = " + stringArray[0]);
 				reinitializeStringArray();
+				stringArray = new String[] {"QUIT"};
+				System.out.println("1st string array after calcing = " + stringArray[0]);
 				goingon = false;	
-				System.out.println("input string = " + inputString);
-				System.out.println("array = ");
-				printArray(stringArray);
 			} else if  (stringArray[0].equals(ConsoleCommands.WALLFOLLOWER)) {
-				_mymaze.solveMaze();
+				_mymaze.solveMaze(ConsoleCommands.WALLFOLLOWER);
 				reinitializeStringArray();
 				goingon = false;	
-				System.out.println("input string = " + inputString);
-				System.out.println("array = ");
 				printArray(stringArray);
 			} else if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;

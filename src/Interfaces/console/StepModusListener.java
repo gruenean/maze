@@ -41,7 +41,7 @@ public class StepModusListener extends AConsoleListener {
 			}
 
 			if (stringArray[0].equals(ConsoleCommands.OWN)) {
-				_mymaze.solveMaze();
+				_mymaze.solveMaze(ConsoleCommands.OWN);
 				goingon = false;
 			} else if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;
@@ -78,7 +78,7 @@ public class StepModusListener extends AConsoleListener {
 
 	@Override
 	public String getCommand() {
-		return "SOLVE";
+		return "STEP";
 	}
 
 }

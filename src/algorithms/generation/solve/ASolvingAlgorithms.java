@@ -14,9 +14,10 @@ abstract public class ASolvingAlgorithms extends Algorithms implements
 	/**
 	 * Constructor for all Solving Algorithms.
 	 */
-	public ASolvingAlgorithms(Maze maze, Cell startCell, Cell endCell, Conf configs) {
+	public ASolvingAlgorithms(Maze maze, Cell startCell, Cell endCell,
+			Conf configs) {
 		super(maze);
-_configs = configs;
+		_configs = configs;
 		_startCell = startCell;
 		_endCell = endCell;
 
