@@ -36,7 +36,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 
 			if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
 				_maze.breakWallBetweenCells(randomCell, NeighbourCell);
-				_globalConf.getGUI().setWall(_maze.getPositionOfCell(randomCell)[0], _maze.getPositionOfCell(randomCell)[1]);
+//				_globalConf.getGUI().setWall(_maze.getPositionOfCell(randomCell)[0], _maze.getPositionOfCell(randomCell)[1]);
 				// TODO: comment out the following four lines as these are
 				// testing only
 //				System.out.println("asdfasdf " + _configs);

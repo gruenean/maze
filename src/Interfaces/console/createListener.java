@@ -15,7 +15,7 @@ public class createListener extends AConsoleListener {
 	}
 
 	public void startListening(String[] input) {
-
+		goingon = true;
 		stringArray = input;
 
 		while (goingon) {

@@ -2,6 +2,8 @@ package Interfaces.console;
 
 import java.util.Scanner;
 
+import notUsed.GUIListener;
+
 import main.Conf;
 import main._mazeHandler;
 
@@ -20,8 +22,7 @@ public class Console extends AConsoleListener {
 				new LogListener(_globalConf),
 				new solveListener(_globalConf, _mymaze),
 				new createListener(_globalConf, _mymaze),
-				new GUIListener(_globalConf, _mymaze),
-				new StepModusListener(_globalConf, _mymaze) };
+				new ModusListener(_globalConf) };
 
 		startListening();
 	}
@@ -45,7 +46,7 @@ public class Console extends AConsoleListener {
 					String[] newString = removeFirstCommand(stringArray);
 					listener.startListening(newString);
 					reinitializeStringArray();
-					stringArray[0]="asdfasdfasdf";
+					// stringArray = new String[] {""};
 				}
 			}
 
