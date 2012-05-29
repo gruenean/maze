@@ -2,6 +2,7 @@ package algorithms.generation.create;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
+import logging.UseLogger;
 import main.Conf;
 
 /**
@@ -36,7 +37,20 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 
 			if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
 				_maze.breakWallBetweenCells(randomCell, NeighbourCell);
-				_globalConf.getGUI().setWall(_maze.getPositionOfCell(randomCell)[0], _maze.getPositionOfCell(randomCell)[1]);
+//				_globalConf.getGUI().setRoom(_maze.getWallBetweenCells(randomCell, NeighbourCell));
+				
+				if (_globalConf.isStepModus()) {
+					try {
+						Thread.sleep(_globalConf.TIME);
+					} catch (InterruptedException e) {
+						UseLogger.LOGGER.warning("Warning: I can't get no sleep"); 
+						e.printStackTrace();
+					}
+				}
+				
+				
+				
+				_globalConf.getGUI().removeWall(_maze.getWallBetweenCells(randomCell, NeighbourCell));
 				// TODO: comment out the following four lines as these are
 				// testing only
 //				System.out.println("asdfasdf " + _configs);
@@ -49,5 +63,4 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 //		defineStartandEndCell();
 		_maze.printAsciiMaze();
 	}
-
 }

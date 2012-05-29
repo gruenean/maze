@@ -15,6 +15,7 @@ public class Conf {
 	public final static int RIGHT_WALL = 1;
 	public final static int TOP_WALL = 2;
 	public final static int BOTTOM_WALL = 3;
+	public final static int TIME=1000;
 	private boolean _isStepModus;
 	private MyLogger _logger;
 	private IOutput _output;
@@ -46,7 +47,7 @@ public class Conf {
 		this._output = output;
 	}
 
-	// TODO wird dies noch benštigt
+	// TODO wird dies noch benï¿½tigt
 	public static int STEPS = 0;
 
 	public static String LOGSTRING = null;
