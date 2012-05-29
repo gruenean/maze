@@ -46,7 +46,7 @@ public class Maze {
 	 * @return start of maze
 	 */
 	public Cell getStartCell() {
-		return getCellOnPosition(1, 1);
+		return getCellOnPosition(1, 0);
 	}
 
 	
@@ -57,7 +57,7 @@ public class Maze {
 	 * @return end of maze
 	 */
 	public Cell getEndCell() {
-		return getCellOnPosition(_cols - 2, _rows - 2);
+		return getCellOnPosition(_cols - 2, _rows - 1);
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class Maze {
 	public void printMap() {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
-				String currentCell = map[i][j].getValue();
+//				String currentCell = map[i][j].getValue();
 				_globalConf.get_output().printLine("[" + map[i][j].getValue() + "]");
 
 				if (j == map.length - 1) {

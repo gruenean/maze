@@ -15,7 +15,6 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 		setName("<<eigener CreatingAlgo>>");
 
 		_currentCell = startCell;
-		UseLogger.LOGGER.info("startCell = " + _startCell);
 
 	}
 

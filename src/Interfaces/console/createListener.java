@@ -19,7 +19,7 @@ public class createListener extends AConsoleListener {
 		stringArray = input;
 
 		while (goingon) {
-			_myoutput.printLine("MAIN(CREATE): ");
+			_myoutput.print("MAIN(CREATE): ");
 
 			if (stringArray.length == 0) {
 				inputString = _in.nextLine().toUpperCase();
@@ -65,7 +65,7 @@ public class createListener extends AConsoleListener {
 							+ ">> is NOT a valid input. Please use one of the following inputs...\n");
 			_myoutput
 					.printLine("OWN:\t\t creates a new maze with the 'own' algorithm.");
-			_myoutput.printLine("QUIT:\t\t go back to the main menu.");
+			_myoutput.printLine("QUIT:\t\t go back to the main menu. \n");
 
 			reinitializeStringArray();
 		}

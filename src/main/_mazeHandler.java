@@ -66,6 +66,9 @@ public class _mazeHandler {
 		 */
 		_mycreatingAlgo.createMaze();
 
+		_maze.createEntranceAndExit();
+		_globalConf.get_output().printLine(" ");
+_maze.printAsciiMaze();
 		_globalConf.get_output().printLine(
 				"\n Das Labyrinth wurde mit dem " + _mycreatingAlgo.getName()
 						+ " erstellt... \n\n\n");

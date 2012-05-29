@@ -52,6 +52,14 @@ public class OwnSolvingAlgoCalcing {
 
 			_directionPossible[2] = false;
 		}
+		
+		/**
+		 * if the Solver choosed from the last Cell to go Left, it is now not
+		 * allowed to go back to right.
+		 */
+		if (notthisWall == 99) {
+			_directionPossible[0] = false;
+		}
 		//System.out.println("aktuelle Zelle = " + _myCell);
 		
 		
