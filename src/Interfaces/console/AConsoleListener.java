@@ -14,6 +14,7 @@ public abstract class AConsoleListener implements IConsoleListener {
 	protected String[] stringArray;
 	protected Conf _globalConf = null;
 	protected IOutput _myoutput = null;
+	protected String _inputString = null;
 
 	public AConsoleListener() {
 		// TODO Auto-generated constructor stub

@@ -14,19 +14,15 @@ import main.Conf;
  */
 public class ownCreatingAlgo extends ACreatingAlgorithms {
 
-	
-	
-	
 	public ownCreatingAlgo(Maze maze, Conf globalConf) {
 		super(maze);
 		_globalConf = globalConf;
 		setName("<<eigener CreatingAlgo>>");
 	}
 
-
-//	private void defineStartandEndCell() {
-//		_maze.createEntranceAndExit();
-//	}
+	// private void defineStartandEndCell() {
+	// _maze.createEntranceAndExit();
+	// }
 
 	public void createMaze() {
 		Cell randomCell;
@@ -37,28 +33,34 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 
 			if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
 				_maze.breakWallBetweenCells(randomCell, NeighbourCell);
-				
+
 				if (_globalConf.isStepModus()) {
 					try {
 						System.out.println("jetzt dauert es an...");
 						Thread.sleep(_globalConf.TIME);
 					} catch (InterruptedException e) {
-						UseLogger.LOGGER.warning("Warning: I can't get no sleep"); 
+						UseLogger.LOGGER
+								.warning("Warning: I can't get no sleep");
 						e.printStackTrace();
 					}
-				}			
-				_globalConf.getGUI().removeWall(_maze.getWallBetweenCells(randomCell, NeighbourCell));
+				}
+				_globalConf.getGUI().removeWall(
+						_maze.getWallBetweenCells(randomCell, NeighbourCell));
 
 				// TODO: comment out the following four lines as these are
 				// testing only
-//				System.out.println("asdfasdf " + _configs);
+				// System.out.println("asdfasdf " + _configs);
 				_maze.printAsciiMaze();
 				_globalConf.get_output().printLine(" ");
 			} else {
 				_globalConf.get_output().printLine("impossibru");
 			}
 		}
-//		defineStartandEndCell();
+		// defineStartandEndCell();
+		_maze.createEntranceAndExit();
+		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
+		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
+		_globalConf.getGUI().configLitteBug(_maze.getPositionOfCell(_maze.getStartCell()));
 		_maze.printAsciiMaze();
 	}
 }

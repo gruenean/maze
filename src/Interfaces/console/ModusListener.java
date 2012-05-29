@@ -3,7 +3,6 @@ package Interfaces.console;
 import main.Conf;
 
 public class ModusListener extends AConsoleListener {
-	private String inputString = " ";
 
 	public ModusListener(Conf globalConf) {
 		super(globalConf);
@@ -42,7 +41,9 @@ public class ModusListener extends AConsoleListener {
 				}
 				_myoutput.printLine("The current MODUS is : " + modusString);
 			}
-
+			if (stringArray[0].equals(ConsoleCommands.QUIT))
+				goingon = false;
+			
 			else if (stringArray[0].equals(ConsoleCommands.HELP)
 					|| stringArray.length == 0 || !isvalidInput())
 				getHelp();

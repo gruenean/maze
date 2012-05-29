@@ -4,7 +4,6 @@ import main.Conf;
 import main._mazeHandler;
 
 public class createListener extends AConsoleListener {
-	private String inputString = " ";
 
 	private _mazeHandler _mymaze;
 

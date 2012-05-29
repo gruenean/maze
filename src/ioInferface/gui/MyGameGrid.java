@@ -13,15 +13,18 @@ public class MyGameGrid extends GameGrid {
 	public MyGameGrid(int rows, int cols) {
 		super(rows, cols, 30, Color.black,
 				"sprites/white_background_601x601.png", false);
-		littleBug = new LittleBug();
-
-		addActor(littleBug, new Location(0, 1));
-
-		addKeyListener(littleBug);
+		
 
 		show();
 
 		doRun();
+	}
+	
+	public void configLitteBug(int[] pos){
+		littleBug = new LittleBug();
+		addActor(littleBug, new Location(pos[1], pos[0]));
+		addKeyListener(littleBug);
+		
 	}
 
 	public void setWall(int row, int col) {
@@ -29,7 +32,7 @@ public class MyGameGrid extends GameGrid {
 	}
 	
 	public void removeWall(int[] pos) {
-		removeActorsAt(new Location(pos[0], pos[1]));
+		removeActorsAt(new Location(pos[1], pos[0]));
 	}
 	public void setGhost(int row, int col) {
 		addActor(new Ghost(), new Location(row, col));

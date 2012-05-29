@@ -6,9 +6,7 @@ import logging.UseLogger;
 import main.Conf;
 
 public class LogListener extends AConsoleListener {
-	private String inputString = " ";
-	private String[] possiblesLogs;
-
+private String[] _possiblesLogs = null;
 	public LogListener(Conf globalConf) {
 
 		super(globalConf);
@@ -20,13 +18,13 @@ public class LogListener extends AConsoleListener {
 	 * Possible Log shades: FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE
 	 */
 	public void initPossibleLogLevels() {
-		possiblesLogs = new String[] { "OFF", "FINEST", "FINER", "FINE",
+		_possiblesLogs = new String[] { "OFF", "FINEST", "FINER", "FINE",
 				"CONFIG", "INFO", "WARNING", "SEVERE", "ALL" };
 	}
 
 	public boolean isLogLevel(String loglevel) {
-		for (int i = 0; i < possiblesLogs.length; i++) {
-			if (possiblesLogs[i].contains(loglevel.toUpperCase()))
+		for (int i = 0; i < _possiblesLogs.length; i++) {
+			if (_possiblesLogs[i].contains(loglevel.toUpperCase()))
 				return true;
 		}
 		return false;

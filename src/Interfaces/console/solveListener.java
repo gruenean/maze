@@ -4,7 +4,6 @@ import main.Conf;
 import main._mazeHandler;
 
 public class solveListener extends AConsoleListener {
-	private String inputString = " ";
 
 	private String[] possiblesSolvingAlgo;
 	private _mazeHandler _mymaze;

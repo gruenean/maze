@@ -2,14 +2,11 @@ package Interfaces.console;
 
 import java.util.Scanner;
 
-import notUsed.GUIListener;
-
 import main.Conf;
 import main._mazeHandler;
 
 public class Console extends AConsoleListener {
 	static _mazeHandler _mymaze;
-	String[] stringArray;
 	IConsoleListener[] _listenerCommands = null;
 
 	public Console(Conf globalConf) {
