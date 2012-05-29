@@ -7,15 +7,12 @@ import java.util.Random;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
-import Interfaces.console.GUIListener;
-import Interfaces.console.IConsoleListener;
 import algorithms.generation.create.ACreatingAlgorithms;
 import algorithms.generation.create.ownCreatingAlgo;
 import algorithms.generation.solve.ASolvingAlgorithms;
 import algorithms.generation.solve.ISolvingAlgorithms;
 import algorithms.generation.solve.OwnSolvingAlgo;
 import algorithms.generation.solve.WallFollowerSolvingAlgorithm;
-import ch.aplu.jgamegrid.Location;
 
 public class _mazeHandler {
 
@@ -50,6 +47,7 @@ public class _mazeHandler {
 		// _endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
 
 		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols());
+		showWalls();
 		_globalConf.setGUI(_mygrid);
 		
 		
@@ -73,7 +71,7 @@ public class _mazeHandler {
 
 		_maze.createEntranceAndExit();
 		_globalConf.get_output().printLine(" ");
-_maze.printAsciiMaze();
+		_maze.printAsciiMaze();
 		_globalConf.get_output().printLine(
 				"\n Das Labyrinth wurde mit dem " + _mycreatingAlgo.getName()
 						+ " erstellt... \n\n\n");
@@ -124,8 +122,7 @@ _maze.printAsciiMaze();
 	 * create a GUI which is implemented with a external Framework called
 	 * JGameGrid
 	 */
-	public void createGUI() {
-//		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols());
+	public void showWalls() {
 		List<Cell> allWalls = _maze.getAllWalls();
 		for (int i = 0; i < allWalls.size(); i++) {
 
@@ -135,13 +132,4 @@ _maze.printAsciiMaze();
 		}
 
 	}
-
-	public void updateGUI(int[] oldPosition, int[] newPosition) {
-		_mygrid.removeActorsAt(new Location(oldPosition[0], oldPosition[1]));
-		// _mygrid.setGhost(newPosition[0],newPosition[1]);
-		_mygrid.addActor(new ioInferface.gui.Ghost(), new Location(
-				newPosition[0], newPosition[1]));
-
-	}
-
 }

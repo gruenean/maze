@@ -107,7 +107,7 @@ public class mazeHandler {
 		List<Cell> allWalls = _maze.getAllWalls();
 		for (int i = 0; i < allWalls.size(); i++) {
 
-			_mygrid.setWall(_maze.getPositionOfCell(allWalls.get(i))[0],
+			_mygrid.setRoom(_maze.getPositionOfCell(allWalls.get(i))[0],
 					_maze.getPositionOfCell(allWalls.get(i))[1]);
 
 		}

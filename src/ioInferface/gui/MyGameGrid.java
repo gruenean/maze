@@ -25,11 +25,19 @@ public class MyGameGrid extends GameGrid {
 	}
 
 	public void setWall(int row, int col) {
-		addActor(new Cell(), new Location(row, col));
+		addActor(new Wall(), new Location(row, col));
 	}
 	
+	public void removeWall(int[] pos) {
+		removeActorsAt(new Location(pos[0], pos[1]));
+	}
 	public void setGhost(int row, int col) {
 		addActor(new Ghost(), new Location(row, col));
+	}
+	
+	public void moveMovingDot(int[] oldPosition, int[] newPosition) {
+		removeActorsAt(new Location(oldPosition[0], oldPosition[1]));
+		addActor(new ioInferface.gui.Ghost(), new Location(newPosition[0], newPosition[1]));
 	}
 
 }

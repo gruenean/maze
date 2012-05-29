@@ -304,6 +304,17 @@ public class Maze {
 		}
 	}
 
+	public int[] getWallBetweenCells(Cell cell1, Cell cell2) {
+		int[] pos1 = getPositionOfCell(cell1);
+		int[] pos2 = getPositionOfCell(cell2);
+
+		int[] wallPos = new int[] { (pos1[0] + pos2[0]) / 2,
+				(pos1[1] + pos2[1]) / 2 };
+		return wallPos;
+	}
+	
+	
+	
 	/**
 	 * This method handles the deletion of a wall between to cells
 	 * 

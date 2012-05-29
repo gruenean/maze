@@ -46,7 +46,7 @@ class LittleBug extends Actor implements GGKeyListener {
 		/**
 		 * get the actor of the cell you want to move to
 		 */
-		Actor actor = gameGrid.getOneActorAt(getNextMoveLocation(), Cell.class);
+		Actor actor = gameGrid.getOneActorAt(getNextMoveLocation(), Wall.class);
 
 		UseLogger.LOGGER.finer("aktor = " + actor);
 		/**
