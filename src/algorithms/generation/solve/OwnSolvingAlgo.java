@@ -27,15 +27,15 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 
 		UseLogger.LOGGER.info("First time calcing...");
 		_calc = new OwnSolvingAlgoCalcing(_maze, _startCell, _endCell, 99,
-				_configs);
+				_globalConf);
 		boolean _soltutionfound = _calc.calc();
 
 		if (_soltutionfound) {
-			_configs.get_output().printLine("Lšsung yes...");
+			_globalConf.get_output().printLine("Lšsung yes...");
 
 		} else {
-			_configs.get_output().printLine("keine Lšsung gefunden ;-( ...");
-			_configs.get_output()
+			_globalConf.get_output().printLine("keine Lšsung gefunden ;-( ...");
+			_globalConf.get_output()
 					.printLine(
 							"Erstellungs- und Lšsungsalgorithmus passen nicht zusammen...");
 		}

@@ -8,7 +8,7 @@ abstract public class Algorithms implements IAlgorithms {
 
 	protected String _algoName;
 	protected Maze _maze;
-	protected Conf _configs;
+	protected Conf _globalConf;
 	protected Cell _startCell;
 	protected Cell _endCell;
 

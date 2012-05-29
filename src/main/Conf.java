@@ -1,5 +1,7 @@
 package main;
 
+import ioInferface.gui.MyGameGrid;
+
 import java.io.IOException;
 import java.util.logging.Level;
 
@@ -16,9 +18,22 @@ public class Conf {
 	private boolean _isStepModus;
 	private MyLogger _logger;
 	private IOutput _output;
+	private MyGameGrid _myGui;
 
 	// private mazeHandler _mymaze;
 
+	public void setGUI(MyGameGrid myGUI){
+		_myGui = myGUI;
+		
+	}
+	
+	
+	public MyGameGrid getGUI(){
+		return _myGui;
+	}
+	
+	
+	
 	public Conf() {
 		setUpLogger();
 	}

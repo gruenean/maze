@@ -7,6 +7,7 @@ import java.util.Random;
 
 import labyrinth.Cell;
 import labyrinth.Maze;
+import Interfaces.console.GUIListener;
 import Interfaces.console.IConsoleListener;
 import algorithms.generation.create.ACreatingAlgorithms;
 import algorithms.generation.create.ownCreatingAlgo;
@@ -48,6 +49,10 @@ public class _mazeHandler {
 		// _startCell = _maze.getCellOnPosition(1, 1);
 		// _endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
 
+		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols());
+		_globalConf.setGUI(_mygrid);
+		
+		
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze, _globalConf) };
 		_possiblesSolvingAlgos = new ASolvingAlgorithms[] {
@@ -120,7 +125,7 @@ _maze.printAsciiMaze();
 	 * JGameGrid
 	 */
 	public void createGUI() {
-		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols());
+//		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols());
 		List<Cell> allWalls = _maze.getAllWalls();
 		for (int i = 0; i < allWalls.size(); i++) {
 

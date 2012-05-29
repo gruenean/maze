@@ -17,7 +17,7 @@ abstract public class ASolvingAlgorithms extends Algorithms implements
 	public ASolvingAlgorithms(Maze maze, Cell startCell, Cell endCell,
 			Conf configs) {
 		super(maze);
-		_configs = configs;
+		_globalConf = configs;
 		_startCell = startCell;
 		_endCell = endCell;
 
