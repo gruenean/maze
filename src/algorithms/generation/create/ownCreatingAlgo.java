@@ -37,7 +37,6 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 
 			if (!randomCell.getRoot().equals(NeighbourCell.getRoot())) {
 				_maze.breakWallBetweenCells(randomCell, NeighbourCell);
-//				_globalConf.getGUI().setRoom(_maze.getWallBetweenCells(randomCell, NeighbourCell));
 				
 				if (_globalConf.isStepModus()) {
 					try {
@@ -46,11 +45,9 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 						UseLogger.LOGGER.warning("Warning: I can't get no sleep"); 
 						e.printStackTrace();
 					}
-				}
-				
-				
-				
+				}			
 				_globalConf.getGUI().removeWall(_maze.getWallBetweenCells(randomCell, NeighbourCell));
+
 				// TODO: comment out the following four lines as these are
 				// testing only
 //				System.out.println("asdfasdf " + _configs);

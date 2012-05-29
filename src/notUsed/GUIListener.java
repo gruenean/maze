@@ -1,5 +1,7 @@
-package Interfaces.console;
+package notUsed;
 
+import Interfaces.console.AConsoleListener;
+import Interfaces.console.ConsoleCommands;
 import logging.UseLogger;
 import main.Conf;
 import main._mazeHandler;

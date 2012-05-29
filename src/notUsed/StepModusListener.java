@@ -1,5 +1,7 @@
-package Interfaces.console;
+package notUsed;
 
+import Interfaces.console.AConsoleListener;
+import Interfaces.console.ConsoleCommands;
 import main.Conf;
 import main._mazeHandler;
 
@@ -78,7 +80,7 @@ public class StepModusListener extends AConsoleListener {
 
 	@Override
 	public String getCommand() {
-		return "STEP";
+		return "MODUS";
 	}
 
 }

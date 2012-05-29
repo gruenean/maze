@@ -33,6 +33,7 @@ public class LogListener extends AConsoleListener {
 	}
 
 	public void startListening(String[] input) {
+		goingon = true;
 		stringArray = input;
 		while (goingon) {
 			_myoutput.printLine("MAIN(LOG): ");
