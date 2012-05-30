@@ -14,7 +14,7 @@ import algorithms.generation.solve.ISolvingAlgorithms;
 import algorithms.generation.solve.OwnSolvingAlgo;
 import algorithms.generation.solve.WallFollowerSolvingAlgorithm;
 
-public class _mazeHandler {
+public class MazeHandler {
 
 	private ACreatingAlgorithms[] _possiblesCreatingAlgos = null;
 	private ASolvingAlgorithms[] _possiblesSolvingAlgos = null;
@@ -28,8 +28,9 @@ public class _mazeHandler {
 	// private Cell _endCell;
 	private MyGameGrid _mygrid = null;
 
-	public _mazeHandler(Conf globalConf) {
+	public MazeHandler(Conf globalConf) {
 		_globalConf = globalConf;
+		_globalConf.setMazeHandler(this);
 		_rows = 9;
 		_cols = 9;
 		_maze = new Maze(_rows, _cols, _globalConf);
@@ -46,10 +47,9 @@ public class _mazeHandler {
 		// _startCell = _maze.getCellOnPosition(1, 1);
 		// _endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
 
-		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols());
+		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols(), _globalConf);
 		showWalls();
 		_globalConf.setGUI(_mygrid);
-		
 		
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze, _globalConf) };
@@ -61,6 +61,12 @@ public class _mazeHandler {
 
 	}
 
+	public void createNewGUI(){
+		_mygrid.stop();
+		//_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols(), _globalConf);
+	}
+	
+	
 	public void createMaze() {
 		ACreatingAlgorithms _mycreatingAlgo = chooseOneRandomCreatingAlgo();
 

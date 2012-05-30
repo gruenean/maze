@@ -9,6 +9,8 @@ public class ConsoleCommands {
 	protected static String HELP = "HELP";
 	protected static String GET = "GET";
 	protected static String SET = "SET";
+	protected static String NEW = "NEW";
+	
 
 	protected final static String OWN = "OWN";
 	protected final static String WALLFOLLOWER = "WALLFOLLOWER";

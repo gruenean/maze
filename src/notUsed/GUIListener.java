@@ -4,14 +4,14 @@ import Interfaces.console.AConsoleListener;
 import Interfaces.console.ConsoleCommands;
 import logging.UseLogger;
 import main.Conf;
-import main._mazeHandler;
+import main.MazeHandler;
 
 public class GUIListener extends AConsoleListener {
 	private String inputString = " ";
 
-	private _mazeHandler _mymaze;
+	private MazeHandler _mymaze;
 
-	public GUIListener(Conf globalConf, _mazeHandler mymaze) {
+	public GUIListener(Conf globalConf, MazeHandler mymaze) {
 		super(globalConf);
 		_mymaze = mymaze;
 	}

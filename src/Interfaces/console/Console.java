@@ -1,25 +1,27 @@
 package Interfaces.console;
 
+import ioInferface.gui.MyGameGrid;
+
 import java.util.Scanner;
 
 import main.Conf;
-import main._mazeHandler;
+import main.MazeHandler;
 
 public class Console extends AConsoleListener {
-	static _mazeHandler _mymaze;
+	static MazeHandler _mymaze;
 	IConsoleListener[] _listenerCommands = null;
 
 	public Console(Conf globalConf) {
 		super(globalConf);
 		_in = new Scanner(System.in);
 		goingon = true;
-		_mymaze = new _mazeHandler(globalConf);
+		_mymaze = new MazeHandler(globalConf);
 
 		_listenerCommands = new IConsoleListener[] {
 				new LogListener(_globalConf),
 				new solveListener(_globalConf, _mymaze),
 				new createListener(_globalConf, _mymaze),
-				new ModusListener(_globalConf) };
+				new ModusListener(_globalConf), new GuiListener(_globalConf) };
 
 		startListening();
 	}
@@ -53,6 +55,8 @@ public class Console extends AConsoleListener {
 			if (stringArray[0].contains(ConsoleCommands.HELP)) {
 				getHelp();
 			}
+			
+			
 
 			/**
 			 * if quit... just do it

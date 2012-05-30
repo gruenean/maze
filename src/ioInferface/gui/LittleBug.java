@@ -3,13 +3,18 @@ package ioInferface.gui;
 import java.awt.event.KeyEvent;
 
 import logging.UseLogger;
-
+import main.Conf;
 import ch.aplu.jgamegrid.Actor;
 import ch.aplu.jgamegrid.GGKeyListener;
 
 class LittleBug extends Actor implements GGKeyListener {
-	public LittleBug() {
+	
+	Conf _globalConf = null;
+	
+	
+	public LittleBug(Conf globalConf) {
 		super(true, "sprites/smallbug.gif");
+		_globalConf = globalConf;
 	}
 
 	/**
@@ -30,6 +35,9 @@ class LittleBug extends Actor implements GGKeyListener {
 			break;
 		case KeyEvent.VK_DOWN:
 			setDirection(90);
+			break;
+		case KeyEvent.VK_R:
+			_globalConf.setStepModus(false);
 			break;
 		}
 		canIgoOn();
