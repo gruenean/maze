@@ -5,6 +5,8 @@ import ioInferface.gui.MyGameGrid;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import notUsed.mazeHandler;
+
 import Interfaces.IOutput;
 
 import logging.MyLogger;
@@ -15,26 +17,28 @@ public class Conf {
 	public final static int RIGHT_WALL = 1;
 	public final static int TOP_WALL = 2;
 	public final static int BOTTOM_WALL = 3;
-	public final static int TIME=1000;
+	public static int TIME = 1000;
 	private boolean _isStepModus;
 	private MyLogger _logger;
 	private IOutput _output;
 	private MyGameGrid _myGui;
+	private MazeHandler _mazeHandler;
 
 	// private mazeHandler _mymaze;
 
-	public void setGUI(MyGameGrid myGUI){
+	public void setGUI(MyGameGrid myGUI) {
 		_myGui = myGUI;
-		
+
 	}
+
+public void setTime(int time){
+	TIME = time;
+}
 	
-	
-	public MyGameGrid getGUI(){
+	public MyGameGrid getGUI() {
 		return _myGui;
 	}
-	
-	
-	
+
 	public Conf() {
 		setUpLogger();
 	}
@@ -51,15 +55,16 @@ public class Conf {
 	public static int STEPS = 0;
 
 	public static String LOGSTRING = null;
-//	public boolean STEPMODUS = false;
 
-//	public boolean isSTEPMODUS() {
-//		return STEPMODUS;
-//	}
-//
-//	public void setSTEPMODUS(boolean sTEPMODUS) {
-//		STEPMODUS = sTEPMODUS;
-//	}
+	// public boolean STEPMODUS = false;
+
+	// public boolean isSTEPMODUS() {
+	// return STEPMODUS;
+	// }
+	//
+	// public void setSTEPMODUS(boolean sTEPMODUS) {
+	// STEPMODUS = sTEPMODUS;
+	// }
 
 	public boolean isStepModus() {
 		return _isStepModus;
@@ -97,6 +102,14 @@ public class Conf {
 			return "BOTTOM";
 		else
 			return "NOT A CORRECT WALL DIRECTION!!!!";
+	}
+
+	public MazeHandler getMazeHandler() {
+	return _mazeHandler;
+	}
+
+	public void setMazeHandler(MazeHandler mazeHandler) {
+		this._mazeHandler = mazeHandler;
 	}
 
 }

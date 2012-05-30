@@ -3,15 +3,15 @@ package notUsed;
 import Interfaces.console.AConsoleListener;
 import Interfaces.console.ConsoleCommands;
 import main.Conf;
-import main._mazeHandler;
+import main.MazeHandler;
 
 public class StepModusListener extends AConsoleListener {
 	private String inputString = " ";
 
 	private String[] possiblesSolvingAlgo;
-	private _mazeHandler _mymaze;
+	private MazeHandler _mymaze;
 
-	public StepModusListener(Conf globalConf, _mazeHandler mymaze) {
+	public StepModusListener(Conf globalConf, MazeHandler mymaze) {
 		super(globalConf);
 		_mymaze = mymaze;
 
