@@ -61,11 +61,6 @@ public class MazeHandler {
 
 	}
 
-	public void createNewGUI(){
-		_mygrid.stop();
-		//_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols(), _globalConf);
-	}
-	
 	
 	public void createMaze() {
 		ACreatingAlgorithms _mycreatingAlgo = chooseOneRandomCreatingAlgo();

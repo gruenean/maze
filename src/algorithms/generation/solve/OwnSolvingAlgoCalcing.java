@@ -111,8 +111,11 @@ public class OwnSolvingAlgoCalcing {
 				+ _maze.getPositionOfCell(_endCell)[1];
 		UseLogger.LOGGER.info(logString);
 
-		if (_myCell == _endCell)
+		if (_myCell == _endCell) {
+			//note: rows and columns are switched here!!!!
+			_globalConf.getGUI().setDot(_maze.getPositionOfCell(_myCell)[1], _maze.getPositionOfCell(_myCell)[0]);
 			return true;
+		}
 		return false;
 
 	}
@@ -151,6 +154,8 @@ public class OwnSolvingAlgoCalcing {
 				&& !_directionPossible[2] && !_directionPossible[3]) {
 			logString = "Kein Druchgang m�glich. Sorry.";
 			UseLogger.LOGGER.info(logString);
+			//note: rows and columns are switched here!!!!
+			_globalConf.getGUI().setDot(_maze.getPositionOfCell(_myCell)[1], _maze.getPositionOfCell(_myCell)[0],"blue");
 			return false;
 		}
 
@@ -195,7 +200,7 @@ public class OwnSolvingAlgoCalcing {
 				boolean retbool = new OwnSolvingAlgoCalcing(_maze, _nextCell,
 						_endCell, counter, _globalConf).calc();
 
-				if (retbool)
+				if (retbool)				
 					return retbool;
 
 				if (!retbool) {
@@ -228,9 +233,8 @@ public class OwnSolvingAlgoCalcing {
 				}
 			}
 		}
-
+		//note: rows and columns are switched here!!!!
 		_globalConf.getGUI().setDot(_maze.getPositionOfCell(_myCell)[1], _maze.getPositionOfCell(_myCell)[0],"blue");
 		return false;
-
 	}
 }
