@@ -44,7 +44,9 @@ class LittleBug extends Actor implements GGKeyListener {
 			break;
 			
 		case KeyEvent.VK_M:
+			if (_globalConf.TIME>=100){
 			_globalConf.TIME = _globalConf.TIME - 100;
+			}
 			break;
 		}
 		canIgoOn();
