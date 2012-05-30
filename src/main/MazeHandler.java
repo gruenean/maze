@@ -22,7 +22,6 @@ public class MazeHandler {
 	private int _cols;
 	private Maze _maze;
 	private Conf _globalConf;
-	private MyGameGrid _mygrid = null;
 
 	public MazeHandler(Conf globalConf) {
 		_globalConf = globalConf;
@@ -37,17 +36,11 @@ public class MazeHandler {
 		_rows = _maze.getLastPosition()[0];
 		_cols = _maze.getLastPosition()[1];
 
-		/**
-		 * define globally Position of start and end cell
-		 */
-		// _startCell = _maze.getCellOnPosition(1, 1);
-		// _endCell = _maze.getCellOnPosition(_cols - 2, _rows - 2);
+		createNewGui();
+		createAlgos();
+	}
 
-		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols(), _globalConf);
-		showWalls();
-
-		_globalConf.setGUI(_mygrid);
-
+	private void createAlgos() {
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze, _globalConf) };
 		_possiblesSolvingAlgos = new ASolvingAlgorithms[] {
@@ -55,6 +48,17 @@ public class MazeHandler {
 						_maze.getEndCell(), _globalConf),
 				new WallFollowerSolvingAlgorithm(_maze, _maze.getStartCell(),
 						_maze.getEndCell(), _globalConf) };
+	}
+
+	public void createNewGui() {
+
+		if (_globalConf.getGUI() != null)
+			_globalConf.getGUI().hide();
+		_globalConf.setGUI(new MyGameGrid(_maze.getRows(), _maze.getCols(),
+				_globalConf));
+		showWalls();
+		_globalConf.getGUI().configLitteBug(
+				_maze.getPositionOfCell(_maze.getStartCell()));
 
 	}
 
@@ -123,7 +127,8 @@ public class MazeHandler {
 		List<Cell> allWalls = _maze.getAllWalls();
 		for (int i = 0; i < allWalls.size(); i++) {
 
-			_mygrid.setWall(_maze.getPositionOfCell(allWalls.get(i))[0],
+			_globalConf.getGUI().setWall(
+					_maze.getPositionOfCell(allWalls.get(i))[0],
 					_maze.getPositionOfCell(allWalls.get(i))[1]);
 
 		}

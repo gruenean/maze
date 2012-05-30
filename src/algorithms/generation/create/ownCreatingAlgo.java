@@ -56,11 +56,5 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 				_globalConf.get_output().printLine("impossibru");
 			}
 		}
-		// defineStartandEndCell();
-//		_maze.createEntranceAndExit();
-//		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
-//		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
-		_globalConf.getGUI().configLitteBug(_maze.getPositionOfCell(_maze.getStartCell()));
-		_maze.printAsciiMaze();
 	}
 }

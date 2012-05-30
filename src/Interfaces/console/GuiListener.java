@@ -1,5 +1,6 @@
 package Interfaces.console;
 
+import ioInferface.gui.MyGameGrid;
 import main.Conf;
 
 public class GuiListener extends AConsoleListener {
@@ -12,7 +13,8 @@ public class GuiListener extends AConsoleListener {
 	public void startListening(String[] input) {
 		goingon = true;
 		stringArray = input;
-
+		_globalConf.getMazeHandler().createNewGui();
+		
 //		_globalConf.getMazeHandler().createNewGUI();
 //		while (goingon) {
 //			_myoutput.print("MAIN(GUI): ");
