@@ -39,6 +39,13 @@ class LittleBug extends Actor implements GGKeyListener {
 		case KeyEvent.VK_R:
 			_globalConf.setStepModus(false);
 			break;
+		case KeyEvent.VK_P:
+			_globalConf.TIME = _globalConf.TIME + 100;
+			break;
+			
+		case KeyEvent.VK_M:
+			_globalConf.TIME = _globalConf.TIME - 100;
+			break;
 		}
 		canIgoOn();
 

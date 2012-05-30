@@ -50,7 +50,7 @@ public class MazeHandler {
 		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols(), _globalConf);
 		showWalls();
 		_globalConf.setGUI(_mygrid);
-		
+
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze, _globalConf) };
 		_possiblesSolvingAlgos = new ASolvingAlgorithms[] {
@@ -61,7 +61,6 @@ public class MazeHandler {
 
 	}
 
-	
 	public void createMaze() {
 		ACreatingAlgorithms _mycreatingAlgo = chooseOneRandomCreatingAlgo();
 
