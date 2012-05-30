@@ -39,7 +39,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			if (_globalConf.isStepModus()) {
 				try {
 					System.out.println("jetzt dauert es an...");
-					Thread.sleep(_globalConf.TIME);
+					Thread.sleep(main.Conf.TIME);
 				} catch (InterruptedException e) {
 					UseLogger.LOGGER
 							.warning("Warning: I can't get no sleep");
@@ -217,10 +217,6 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			break;
 		}
 		_globalConf.get_output().printLine("[turnAround] my current position is now: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
-	}
-	@Override
-	public void defineStartandEndCell() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override

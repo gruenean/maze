@@ -24,12 +24,6 @@ public class PledgeSolvingAlgorithm extends ASolvingAlgorithms {
 	}
 
 	@Override
-	public void defineStartandEndCell() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public String getCommand() {
 		return "PLEDGE";
 	}

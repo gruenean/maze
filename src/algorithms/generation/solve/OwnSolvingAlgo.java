@@ -31,22 +31,16 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 		boolean _soltutionfound = _calc.calc();
 
 		if (_soltutionfound) {
-			_globalConf.get_output().printLine("Lšsung yes...");
+			_globalConf.get_output().printLine("Lï¿½sung yes...");
 
 		} else {
-			_globalConf.get_output().printLine("keine Lšsung gefunden ;-( ...");
+			_globalConf.get_output().printLine("keine Lï¿½sung gefunden ;-( ...");
 			_globalConf.get_output()
 					.printLine(
-							"Erstellungs- und Lšsungsalgorithmus passen nicht zusammen...");
+							"Erstellungs- und Lï¿½sungsalgorithmus passen nicht zusammen...");
 		}
 	}
-
-	@Override
-	public void defineStartandEndCell() {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public String getCommand() {
 		return "OWN";
