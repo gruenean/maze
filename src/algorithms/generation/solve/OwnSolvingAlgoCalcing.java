@@ -164,7 +164,7 @@ public class OwnSolvingAlgoCalcing {
 			if (_globalConf.isStepModus()) {
 				try {
 					System.out.println("jetzt dauert es an...");
-					Thread.sleep(_globalConf.TIME);
+					Thread.sleep(main.Conf.TIME);
 				} catch (InterruptedException e) {
 					UseLogger.LOGGER
 							.warning("Warning: I can't get no sleep");
