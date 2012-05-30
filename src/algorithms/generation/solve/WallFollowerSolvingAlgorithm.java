@@ -47,7 +47,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 				}	
 			}
 			//note: rows and columns are switched here!!!!
-			_globalConf.getGUI().setGhost(currentCellPos[1], currentCellPos[0]);
+			_globalConf.getGUI().setDot(currentCellPos[1], currentCellPos[0]);
 			_globalConf.get_output().printLine("My current Position is: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
 			
 			if (isValidCellPosition(getRighterCell(currentCellPos))) { _globalConf.get_output().printLine("turning right"); turnRight(); 
@@ -55,7 +55,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 			} else if (isValidCellPosition(getLefterCell(currentCellPos))) { _globalConf.get_output().printLine("turning left"); turnLeft(); 
 			} else {_globalConf.get_output().printLine("turning around"); turnAround(); }
 		}
-		_globalConf.getGUI().setGhost(currentCellPos[1], currentCellPos[0]);
+		_globalConf.getGUI().setDot(currentCellPos[1], currentCellPos[0]);
 	}
 
 	/**

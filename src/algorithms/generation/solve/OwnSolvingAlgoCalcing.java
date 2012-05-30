@@ -89,7 +89,7 @@ public class OwnSolvingAlgoCalcing {
 			return false;
 		}
 		if (_nextCell.getState() == "B" || _nextCell.getState() == "U") {
-			logString = "Ist nicht mšglich. Zelle hat getState: "
+			logString = "Ist nicht mï¿½glich. Zelle hat getState: "
 					+ _nextCell.getState();
 			UseLogger.LOGGER.info(logString);
 			return false;
@@ -149,13 +149,26 @@ public class OwnSolvingAlgoCalcing {
 
 		if (!_directionPossible[0] && !_directionPossible[1]
 				&& !_directionPossible[2] && !_directionPossible[3]) {
-			logString = "Kein Druchgang mšglich. Sorry.";
+			logString = "Kein Druchgang mï¿½glich. Sorry.";
 			UseLogger.LOGGER.info(logString);
 			return false;
 		}
 
 		for (int counter = 0; counter < 4; counter++) {
 
+			if (_globalConf.isStepModus()) {
+				try {
+					System.out.println("jetzt dauert es an...");
+					Thread.sleep(_globalConf.TIME);
+				} catch (InterruptedException e) {
+					UseLogger.LOGGER
+							.warning("Warning: I can't get no sleep");
+					e.printStackTrace();
+				}	
+			}
+			//note: rows and columns are switched here!!!!
+			_globalConf.getGUI().setDot(_maze.getPositionOfCell(_myCell)[1], _maze.getPositionOfCell(_myCell)[0]);
+	
 			if (_directionPossible[counter]) {
 				UseLogger.LOGGER.info(" " + _maze.getPositionOfCell(_myCell)[0]
 						+ _maze.getPositionOfCell(_myCell)[1] + " will nach "
@@ -178,6 +191,7 @@ public class OwnSolvingAlgoCalcing {
 						+ _currentCellPosition + "\n";
 				UseLogger.LOGGER.info(logString);
 
+				
 				boolean retbool = new OwnSolvingAlgoCalcing(_maze, _nextCell,
 						_endCell, counter, _globalConf).calc();
 
@@ -215,6 +229,7 @@ public class OwnSolvingAlgoCalcing {
 			}
 		}
 
+		_globalConf.getGUI().setDot(_maze.getPositionOfCell(_myCell)[1], _maze.getPositionOfCell(_myCell)[0],"blue");
 		return false;
 
 	}
