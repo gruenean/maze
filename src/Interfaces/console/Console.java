@@ -1,7 +1,5 @@
 package Interfaces.console;
 
-import ioInferface.gui.MyGameGrid;
-
 import java.util.Scanner;
 
 import main.Conf;

@@ -60,7 +60,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 		_maze.createEntranceAndExit();
 		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
 		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
-		_globalConf.getGUI().configLitteBug(_maze.getPositionOfCell(_maze.getStartCell()));
+		
 		_maze.printAsciiMaze();
 	}
 }
