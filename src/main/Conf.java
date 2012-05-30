@@ -5,8 +5,6 @@ import ioInferface.gui.MyGameGrid;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import notUsed.mazeHandler;
-
 import Interfaces.IOutput;
 
 import logging.MyLogger;
