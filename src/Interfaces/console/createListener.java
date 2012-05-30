@@ -1,13 +1,13 @@
 package Interfaces.console;
 
 import main.Conf;
-import main._mazeHandler;
+import main.MazeHandler;
 
 public class createListener extends AConsoleListener {
 
-	private _mazeHandler _mymaze;
+	private MazeHandler _mymaze;
 
-	public createListener(Conf globalConf, _mazeHandler mymaze) {
+	public createListener(Conf globalConf, MazeHandler mymaze) {
 		super(globalConf);
 		_mymaze = mymaze;
 
