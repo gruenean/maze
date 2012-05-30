@@ -37,7 +37,7 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 				if (_globalConf.isStepModus()) {
 					try {
 						System.out.println("jetzt dauert es an...");
-						Thread.sleep(_globalConf.TIME);
+						Thread.sleep(main.Conf.TIME);
 					} catch (InterruptedException e) {
 						UseLogger.LOGGER
 								.warning("Warning: I can't get no sleep");
@@ -57,9 +57,9 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 			}
 		}
 		// defineStartandEndCell();
-		_maze.createEntranceAndExit();
-		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
-		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
+//		_maze.createEntranceAndExit();
+//		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
+//		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
 		_globalConf.getGUI().configLitteBug(_maze.getPositionOfCell(_maze.getStartCell()));
 		_maze.printAsciiMaze();
 	}

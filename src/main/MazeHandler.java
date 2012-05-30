@@ -22,10 +22,6 @@ public class MazeHandler {
 	private int _cols;
 	private Maze _maze;
 	private Conf _globalConf;
-	// private ACreatingAlgorithms _mycreatingAlgo;
-	// private ASolvingAlgorithms _mysolvingAlgo;
-	// private Cell _startCell;
-	// private Cell _endCell;
 	private MyGameGrid _mygrid = null;
 
 	public MazeHandler(Conf globalConf) {
@@ -49,6 +45,7 @@ public class MazeHandler {
 
 		_mygrid = new MyGameGrid(_maze.getRows(), _maze.getCols(), _globalConf);
 		showWalls();
+
 		_globalConf.setGUI(_mygrid);
 
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
@@ -68,8 +65,12 @@ public class MazeHandler {
 		 * creates all possibles Algorithms
 		 */
 		_mycreatingAlgo.createMaze();
-
+		
+		//Set and draw Entrance / Exit
 		_maze.createEntranceAndExit();
+		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
+		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
+		
 		_globalConf.get_output().printLine(" ");
 		_maze.printAsciiMaze();
 		_globalConf.get_output().printLine(
@@ -91,9 +92,6 @@ public class MazeHandler {
 				System.out.println("test");
 			}
 		}
-
-		// ASolvingAlgorithms _mysolvingAlgo = chooseOneRandomSolvingAlgo();
-
 		// TODO this is in TESING MODE
 
 	}
@@ -119,10 +117,9 @@ public class MazeHandler {
 	}
 
 	/**
-	 * create a GUI which is implemented with a external Framework called
-	 * JGameGrid
+	 * displays all walls on the maze
 	 */
-	public void showWalls() {
+	private void showWalls() {
 		List<Cell> allWalls = _maze.getAllWalls();
 		for (int i = 0; i < allWalls.size(); i++) {
 
