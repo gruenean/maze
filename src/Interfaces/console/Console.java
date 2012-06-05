@@ -43,7 +43,6 @@ public class Console extends AConsoleListener {
 					String[] newString = removeFirstCommand(stringArray);
 					listener.startListening(newString);
 					reinitializeStringArray();
-					// stringArray = new String[] {""};
 				}
 			}
 
@@ -53,8 +52,6 @@ public class Console extends AConsoleListener {
 			if (stringArray[0].contains(ConsoleCommands.HELP)) {
 				getHelp();
 			}
-			
-			
 
 			/**
 			 * if quit... just do it
