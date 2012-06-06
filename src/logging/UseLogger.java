@@ -1,7 +1,6 @@
 package logging;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UseLogger {
@@ -9,14 +8,18 @@ public class UseLogger {
 			.getName());
 
 	/**
-	 * Deprecated IS THIS USED?! 28.05.2012 / Micha
+	 * TODO: Deprecated IS THIS USED?! 28.05.2012 / Micha
 	 */
-	public void writeLog() {
-//		LOGGER.setLevel(Level.ALL);
+	private void writeLog() {
 		LOGGER.finest("First message \n --------------------------- \n");
 
 	}
 
+	/**
+	 * start a new logger
+	 * TODO: IS THIS USED?
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		UseLogger logger = new UseLogger();
 		try {

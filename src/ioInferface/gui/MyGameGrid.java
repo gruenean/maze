@@ -6,6 +6,10 @@ import main.Conf;
 import ch.aplu.jgamegrid.GameGrid;
 import ch.aplu.jgamegrid.Location;
 
+/**
+ * @author green
+ *
+ */
 public class MyGameGrid extends GameGrid {
 
 	private static final long serialVersionUID = 8486057990676537058L;
@@ -34,7 +38,7 @@ public class MyGameGrid extends GameGrid {
 	}
 
 	/**
-	 * 
+	 * brings the little bug actor to front
 	 */
 	public void setLittleBugOnTop() {
 		littleBug.setOnTop();
@@ -62,6 +66,13 @@ public class MyGameGrid extends GameGrid {
 		removeActorsAt(new Location(pos[1], pos[0]));
 	}
 
+	/**
+	 * Sets a colored dot into the maze
+	 * 
+	 * @param row	destination row in maze
+	 * @param col	destination column in maze
+	 * @param color	the dot's color (currently only blue or black (default))
+	 */
 	public void setDot(int row, int col, String color) {
 		if (color == "blue") {
 			BlueDot blue = new BlueDot();
@@ -71,14 +82,24 @@ public class MyGameGrid extends GameGrid {
 			addActor(new BlackDot(), new Location(row, col));
 	}
 
+	/**
+	 * Sets a black dot into the maze
+	 * 
+	 * @param row	destination row in maze
+	 * @param col	destination column in maze	 
+	 * */
 	public void setDot(int row, int col) {
 		addActor(new BlackDot(), new Location(row, col));
 	}
 
-	// public void moveMovingDot(int[] oldPosition, int[] newPosition) {
-	// removeActorsAt(new Location(oldPosition[0], oldPosition[1]));
-	// addActor(new ioInferface.gui.BlackDot(), new Location(newPosition[0],
-	// newPosition[1]));
-	// }
-
+	 /**
+	  * Simulates a moving dot 
+	 * @param oldPosition position of the current/ old cell
+	 * @param newPosition position of the next/new cell
+	 */
+	public void moveMovingDot(int[] oldPosition, int[] newPosition) {
+	 removeActorsAt(new Location(oldPosition[0], oldPosition[1]));
+	 addActor(new ioInferface.gui.BlackDot(), new Location(newPosition[0],
+	 newPosition[1]));
+	 }
 }

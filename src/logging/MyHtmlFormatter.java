@@ -10,6 +10,9 @@ import java.util.logging.LogRecord;
 //This custom formatter formats parts of a log record to a single line
 class MyHtmlFormatter extends Formatter
 {
+	/* (non-Javadoc)
+	 * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
+	 */
 	// This method is called for every log records
 	public String format(LogRecord rec)
 	{
@@ -38,6 +41,10 @@ class MyHtmlFormatter extends Formatter
 		return buf.toString();
 	}
 
+	/**
+	 * @param millisecs
+	 * @return
+	 */
 	private String calcDate(long millisecs)
 	{
 		SimpleDateFormat date_format = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
@@ -45,6 +52,9 @@ class MyHtmlFormatter extends Formatter
 		return date_format.format(resultdate);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.logging.Formatter#getHead(java.util.logging.Handler)
+	 */
 	// This method is called just after the handler using this
 	// formatter is created
 	public String getHead(Handler h)
@@ -54,6 +64,9 @@ class MyHtmlFormatter extends Formatter
 				+ "<tr><th>Time</th><th>Log Message</th></tr>\n";
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.logging.Formatter#getTail(java.util.logging.Handler)
+	 */
 	// This method is called just after the handler using this
 	// formatter is closed
 	public String getTail(Handler h)

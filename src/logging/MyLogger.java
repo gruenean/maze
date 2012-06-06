@@ -14,6 +14,10 @@ public class MyLogger {
 	static private FileHandler fileHTML;
 	static private Formatter formatterHTML;
 
+	/**
+	 * Creates the logger itslef
+	 * @throws IOException
+	 */
 	static public void setup() throws IOException {
 		/**
 		 *  Create Logger
