@@ -66,7 +66,6 @@ public class MazeHandler {
 	public void createMaze(String creatingAlgoName) {
 		for (ICreatingAlgorithms creatingAlgo : _possiblesCreatingAlgos) {
 			if (creatingAlgo.getName().equals(creatingAlgoName)) {
-				System.out.println(creatingAlgo.getName());
 				creatingAlgo.createMaze();
 				
 				//Set and draw Entrance / Exit
@@ -92,7 +91,6 @@ public class MazeHandler {
 	public void solveMaze(String solvingAlgoName) {
 		for (ISolvingAlgorithms solvingAlgo : _possiblesSolvingAlgos) {
 			if (solvingAlgo.getName().equals(solvingAlgoName)) {
-				System.out.println(solvingAlgo.getName());
 				solvingAlgo.resolveMaze();
 			}
 		}
