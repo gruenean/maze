@@ -1,47 +1,26 @@
 package Interfaces.console;
 
-import ioInferface.gui.MyGameGrid;
 import main.Conf;
 
 public class GuiListener extends AConsoleListener {
 
 	public GuiListener(Conf globalConf) {
 		super(globalConf);
-
 	}
 
+	/* (non-Javadoc)
+	 * @see Interfaces.console.IConsoleListener#startListening(java.lang.String[])
+	 */
 	public void startListening(String[] input) {
 		goingon = true;
 		stringArray = input;
 		_globalConf.getMazeHandler().createNewGui();
 		
-//		_globalConf.getMazeHandler().createNewGUI();
-//		while (goingon) {
-//			_myoutput.print("MAIN(GUI): ");
-//
-//			if (stringArray.length == 0) {
-//				inputString = _in.nextLine().toUpperCase();
-//				stringArray = inputString.toUpperCase().split(" ");
-//			}
-//
-//			if (stringArray[0].contains(ConsoleCommands.NEW)) {
-//				new MyGameGrid(5, 5, _globalConf);
-//				reinitializeStringArray();
-//			}
-//
-//		}
-//
-//		if (stringArray[0].equals(ConsoleCommands.QUIT))
-//			goingon = false;
-//
-//		else if (stringArray[0].equals(ConsoleCommands.HELP)
-//				|| stringArray.length == 0 || !isvalidInput())
-//			getHelp();
-//
-//		stringArray = new String[] {};
-
 	}
 
+	/* (non-Javadoc)
+	 * @see Interfaces.console.IConsoleListener#getHelp()
+	 */
 	@Override
 	public void getHelp() {
 		if (inputString.isEmpty()
@@ -72,29 +51,11 @@ public class GuiListener extends AConsoleListener {
 		reinitializeStringArray();
 	}
 
-	private boolean isvalidInput() {
-
-		if (stringArray[0].equals(ConsoleCommands.GET))
-			return true;
-		if (stringArray[0].equals(ConsoleCommands.SET)) {
-
-			if (stringArray[1].equals(ConsoleCommands.STEP))
-				return true;
-			if (stringArray[1].equals(ConsoleCommands.RUN))
-				return true;
-
-		}
-
-		return false;
-	}
-
-	{
-
-	}
-
+	/* (non-Javadoc)
+	 * @see Interfaces.console.IConsoleListener#getCommand()
+	 */
 	@Override
 	public String getCommand() {
 		return "GUI";
 	}
-
 }

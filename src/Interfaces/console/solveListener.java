@@ -44,7 +44,6 @@ public class solveListener extends AConsoleListener {
 				System.out.println("1st string array = " + stringArray[0]);
 				reinitializeStringArray();
 				stringArray = new String[] {"QUIT"};
-				System.out.println("1st string array after calcing = " + stringArray[0]);
 				goingon = false;	
 			} else if  (stringArray[0].equals(ConsoleCommands.WALLFOLLOWER)) {
 				_mymaze.solveMaze(ConsoleCommands.WALLFOLLOWER);

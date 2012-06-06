@@ -25,32 +25,25 @@ public class createListener extends AConsoleListener {
 				stringArray = inputString.toUpperCase().split(" ");
 			}
 
-
-			if (stringArray[0].equals(ConsoleCommands.OWN)) {
-
-				_mymaze.createMaze();
-				goingon = false;
-			}
-
-			else if (stringArray[0].equals(ConsoleCommands.QUIT))
+			if (stringArray[0].equals(ConsoleCommands.OWN)){ 
+				_mymaze.createMaze(ConsoleCommands.OWN);
+				System.out.println("1st string array = " + stringArray[0]);
+				reinitializeStringArray();
+				stringArray = new String[] {"QUIT"};
+				goingon = false;	
+			} else if (stringArray[0].equals(ConsoleCommands.QUIT))
 				goingon = false;
 
 			else if (stringArray[0].equals(ConsoleCommands.HELP)
-					|| !isValidInput() || stringArray.length == 0)
-
+					|| stringArray.length == 0)
 				getHelp();
 
+			else
+				getHelp();
+			
 			stringArray = removeFirstCommand(stringArray);
 
 		}
-	}
-
-	private boolean isValidInput() {
-		if (stringArray[0].contains("OWN") || stringArray[0] == "QUIT")
-			return true;
-
-		return false;
-
 	}
 
 	@Override
