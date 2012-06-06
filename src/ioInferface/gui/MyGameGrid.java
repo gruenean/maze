@@ -25,9 +25,14 @@ public class MyGameGrid extends GameGrid {
 
 	public void configLitteBug(int[] pos) {
 		littleBug = new LittleBug(_globalConf);
-		addActor(littleBug, new Location(pos[1], pos[0]));
+		addActor(littleBug, new Location(pos[0], pos[0]));
 		addKeyListener(littleBug);
 
+	}
+
+	public void setLittleBugOnTop() {
+		littleBug.setOnTop();
+		setPaintOrder(LittleBug.class);  // Rocket in foreground
 	}
 
 	public void setWall(int row, int col) {
@@ -39,11 +44,15 @@ public class MyGameGrid extends GameGrid {
 	}
 
 	public void setDot(int row, int col, String color) {
-		if (color == "red")
-			addActor(new RedDot(), new Location(row, col));
-		else if (color == "blue")
-			addActor(new BlueDot(), new Location(row, col));
-		else
+		if (color == "red") {
+			RedDot red = new RedDot();
+			addActor(red, new Location(row, col));
+			red.setOnBottom();
+		} else if (color == "blue") {
+			BlueDot blue = new BlueDot();
+			addActor(blue, new Location(row, col));
+			blue.setOnBottom();
+		} else
 			addActor(new BlackDot(), new Location(row, col));
 	}
 
@@ -51,10 +60,10 @@ public class MyGameGrid extends GameGrid {
 		addActor(new BlackDot(), new Location(row, col));
 	}
 
-	public void moveMovingDot(int[] oldPosition, int[] newPosition) {
-		removeActorsAt(new Location(oldPosition[0], oldPosition[1]));
-		addActor(new ioInferface.gui.BlackDot(), new Location(newPosition[0],
-				newPosition[1]));
-	}
+	// public void moveMovingDot(int[] oldPosition, int[] newPosition) {
+	// removeActorsAt(new Location(oldPosition[0], oldPosition[1]));
+	// addActor(new ioInferface.gui.BlackDot(), new Location(newPosition[0],
+	// newPosition[1]));
+	// }
 
 }

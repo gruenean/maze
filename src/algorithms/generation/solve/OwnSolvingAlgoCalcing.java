@@ -152,7 +152,7 @@ public class OwnSolvingAlgoCalcing {
 
 		if (!_directionPossible[0] && !_directionPossible[1]
 				&& !_directionPossible[2] && !_directionPossible[3]) {
-			logString = "Kein Druchgang mï¿½glich. Sorry.";
+			logString = "Kein Druchgang mšglich. Sorry.";
 			UseLogger.LOGGER.info(logString);
 			//note: rows and columns are switched here!!!!
 			_globalConf.getGUI().setDot(_maze.getPositionOfCell(_myCell)[1], _maze.getPositionOfCell(_myCell)[0],"blue");

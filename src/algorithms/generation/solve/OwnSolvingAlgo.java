@@ -32,12 +32,13 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 
 		if (_soltutionfound) {
 			_globalConf.get_output().printLine("Lï¿½sung yes...");
+			_globalConf.getGUI().setLittleBugOnTop();
 
 		} else {
-			_globalConf.get_output().printLine("keine Lï¿½sung gefunden ;-( ...");
+			_globalConf.get_output().printLine("keine Lšsung gefunden ;-( ...");
 			_globalConf.get_output()
 					.printLine(
-							"Erstellungs- und Lï¿½sungsalgorithmus passen nicht zusammen...");
+							"Erstellungs- und Lšsungsalgorithmus passen nicht zusammen...");
 		}
 	}
 	
