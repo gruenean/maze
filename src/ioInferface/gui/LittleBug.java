@@ -13,7 +13,9 @@ class LittleBug extends Actor implements GGKeyListener {
 	
 	
 	public LittleBug(Conf globalConf) {
+		//super(true, "sprites/smallbug.gif");
 		super(true, "sprites/smallbug.gif");
+		
 		_globalConf = globalConf;
 	}
 
