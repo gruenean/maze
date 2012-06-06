@@ -20,10 +20,6 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 		setName("<<eigener CreatingAlgo>>");
 	}
 
-	// private void defineStartandEndCell() {
-	// _maze.createEntranceAndExit();
-	// }
-
 	public void createMaze() {
 		Cell randomCell;
 		Cell NeighbourCell;
@@ -47,9 +43,6 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 				_globalConf.getGUI().removeWall(
 						_maze.getWallBetweenCells(randomCell, NeighbourCell));
 
-				// TODO: comment out the following four lines as these are
-				// testing only
-				// System.out.println("asdfasdf " + _configs);
 				_maze.printAsciiMaze();
 				_globalConf.get_output().printLine(" ");
 			} else {
