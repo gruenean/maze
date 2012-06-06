@@ -107,7 +107,7 @@ public class OwnSolvingAlgoCalcing {
 	}
 
 	/**
-	 * @return
+	 * @return true if the solver reached the endCell, otherwise return false
 	 */
 	protected boolean calc() {
 		UseLogger.LOGGER.info("Calc von Zelle "
@@ -124,9 +124,7 @@ public class OwnSolvingAlgoCalcing {
 			if (!getPossibleNeigbour(i))
 				_directionPossible[i] = false;
 		}
-
 		return calcnow();
-
 	}
 
 	/**

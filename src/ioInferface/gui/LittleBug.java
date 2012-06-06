@@ -9,15 +9,15 @@ import ch.aplu.jgamegrid.GGKeyListener;
 
 class LittleBug extends Actor implements GGKeyListener {
 	
-	Conf _globalConf = null;
-	
+	private Conf _globalConf = null;
 	
 	public LittleBug(Conf globalConf) {
 		super(true, "sprites/smallbug.gif");
 		_globalConf = globalConf;
 	}
 
-	/**
+	/* (non-Javadoc)
+	 * @see ch.aplu.jgamegrid.GGKeyListener#keyPressed(java.awt.event.KeyEvent)
 	 * key event for the "littlebug":
 	 * 
 	 * UP = 270 / RIGHT = 0 / LEFT = 180 / DOWN = 90
@@ -40,26 +40,27 @@ class LittleBug extends Actor implements GGKeyListener {
 			_globalConf.setStepModus(false);
 			break;
 		case KeyEvent.VK_P:
-			_globalConf.TIME = _globalConf.TIME + 100;
+			Conf.TIME = Conf.TIME + 100;
 			break;
 			
 		case KeyEvent.VK_M:
-			if (_globalConf.TIME>=100){
-			_globalConf.TIME = _globalConf.TIME - 100;
+			if (Conf.TIME>=100){
+			Conf.TIME = Conf.TIME - 100;
 			}
 			break;
 		}
 		canIgoOn();
-
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see ch.aplu.jgamegrid.GGKeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	public boolean keyReleased(KeyEvent evt) {
 		return true;
 	}
 
-	public void canIgoOn() {
-
+	private void canIgoOn() {
 		/**
 		 * get the actor of the cell you want to move to
 		 */
@@ -78,7 +79,7 @@ class LittleBug extends Actor implements GGKeyListener {
 			setHorzMirror(!isHorzMirror());
 	}
 
-	public void reset() {
-		setHorzMirror(false);
-	}
+//	public void reset() {
+//		setHorzMirror(false);
+//	}
 }

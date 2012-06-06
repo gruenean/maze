@@ -1,5 +1,6 @@
 package Interfaces.console;
 
+import java.util.Arrays;
 import java.util.logging.Level;
 
 import logging.UseLogger;
@@ -22,12 +23,17 @@ private String[] _possiblesLogs = null;
 				"CONFIG", "INFO", "WARNING", "SEVERE", "ALL" };
 	}
 
+	/**
+	 * @param loglevel
+	 * @return
+	 */
 	public boolean isLogLevel(String loglevel) {
-		for (int i = 0; i < _possiblesLogs.length; i++) {
-			if (_possiblesLogs[i].contains(loglevel.toUpperCase()))
-				return true;
-		}
-		return false;
+		return (Arrays.asList(_possiblesLogs).contains(loglevel));
+//		for (int i = 0; i < _possiblesLogs.length; i++) {
+//			if (_possiblesLogs[i].contains(loglevel.toUpperCase()))
+//				return true;
+//		}
+//		return false;
 	}
 
 	public void startListening(String[] input) {

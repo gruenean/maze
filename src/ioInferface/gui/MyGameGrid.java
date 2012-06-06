@@ -23,6 +23,9 @@ public class MyGameGrid extends GameGrid {
 
 	}
 
+	/**
+	 * @param pos
+	 */
 	public void configLitteBug(int[] pos) {
 		littleBug = new LittleBug(_globalConf);
 		addActor(littleBug, new Location(pos[0], pos[0]));
@@ -30,25 +33,37 @@ public class MyGameGrid extends GameGrid {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void setLittleBugOnTop() {
 		littleBug.setOnTop();
 		setPaintOrder(LittleBug.class);  // Rocket in foreground
 	}
 
+	/**
+	 * Adds a GUI wall at the given position. This is for displaying purposes only!
+	 * This method does not change anything in the maze itself.
+	 * 
+	 * @param row	row of the wall that should be added
+	 * @param col	column of the wall that should be added
+	 */
 	public void setWall(int row, int col) {
 		addActor(new Wall(), new Location(row, col));
 	}
 
+	/**
+	 * Removes a GUI wall at the given position. This is for displaying purposes only!
+	 * This method does not change anything in the maze itself.
+	 * 
+	 * @param pos	position of the wall that should be removed
+	 */
 	public void removeWall(int[] pos) {
 		removeActorsAt(new Location(pos[1], pos[0]));
 	}
 
 	public void setDot(int row, int col, String color) {
-		if (color == "red") {
-			RedDot red = new RedDot();
-			addActor(red, new Location(row, col));
-			red.setOnBottom();
-		} else if (color == "blue") {
+		if (color == "blue") {
 			BlueDot blue = new BlueDot();
 			addActor(blue, new Location(row, col));
 			blue.setOnBottom();
