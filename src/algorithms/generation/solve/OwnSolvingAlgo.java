@@ -5,19 +5,21 @@ import labyrinth.Maze;
 import logging.UseLogger;
 import main.Conf;
 
+/**
+ * @author green
+ *
+ */
 public class OwnSolvingAlgo extends ASolvingAlgorithms {
 
 	OwnSolvingAlgoCalcing _calc;
 
 	public OwnSolvingAlgo(Maze maze, Cell startCell, Cell endCell, Conf configs) {
 		super(maze, startCell, endCell, configs);
-
-		setName("<<eigener CreatingAlgo>>");
-
-		_currentCell = startCell;
-
 	}
 
+	/* (non-Javadoc)
+	 * @see algorithms.generation.solve.ISolvingAlgorithms#resolveMaze()
+	 */
 	@Override
 	public void resolveMaze() {
 
@@ -35,13 +37,16 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 			_globalConf.getGUI().setLittleBugOnTop();
 
 		} else {
-			_globalConf.get_output().printLine("keine Lšsung gefunden ;-( ...");
+			_globalConf.get_output().printLine("keine Lï¿½sung gefunden ;-( ...");
 			_globalConf.get_output()
 					.printLine(
-							"Erstellungs- und Lšsungsalgorithmus passen nicht zusammen...");
+							"Erstellungs- und Lï¿½sungsalgorithmus passen nicht zusammen...");
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see algorithms.generation.solve.ISolvingAlgorithms#getName()
+	 */
 	@Override
 	public String getName() {
 		return "OWN";

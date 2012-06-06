@@ -7,10 +7,6 @@ import algorithms.generation.Algorithms;
 
 abstract public class ASolvingAlgorithms extends Algorithms implements
 		ISolvingAlgorithms {
-
-	protected Cell _currentCell;
-	protected static int _solvingCounter = 0;
-
 	/**
 	 * Constructor for all Solving Algorithms.
 	 */
@@ -20,7 +16,6 @@ abstract public class ASolvingAlgorithms extends Algorithms implements
 		_globalConf = configs;
 		_startCell = startCell;
 		_endCell = endCell;
-
 	}
 
 	/**

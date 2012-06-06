@@ -27,6 +27,9 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		direction = Direction.EAST;
 	}
 
+	/* (non-Javadoc)
+	 * @see algorithms.generation.solve.ISolvingAlgorithms#resolveMaze()
+	 */
 	@Override
 	public void resolveMaze() {	
 		System.out.println("start cell " + _maze.getPositionOfCell(_startCell) + " enndcell " + _maze.getPositionOfCell(_endCell ));
@@ -219,6 +222,9 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 		_globalConf.get_output().printLine("[turnAround] my current position is now: " + Arrays.toString(currentCellPos) + " and my direction is " + direction);
 	}
 
+	/* (non-Javadoc)
+	 * @see algorithms.generation.solve.ISolvingAlgorithms#getName()
+	 */
 	@Override
 	public String getName() {
 		return "WALLFOLLOWER";

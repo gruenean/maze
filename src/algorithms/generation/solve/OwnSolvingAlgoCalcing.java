@@ -60,22 +60,12 @@ public class OwnSolvingAlgoCalcing {
 		if (notthisWall == 99) {
 			_directionPossible[0] = false;
 		}
-		//System.out.println("aktuelle Zelle = " + _myCell);
-		
-		
-		
-		// logString = " Ich bin Zelle " + _maze.getPositionOfCell(_myCell)[0]
-		// + _maze.getPositionOfCell(_myCell)[1] + " und mein Status = "
-		// + _myCell.getState();
-		//
-		// UseLogger.LOGGER.info(logString);
-
 	}
 
 	/**
+	 * Checks whether the neighbour in the given direction is a valid one
 	 * 
-	 * @param i
-	 *            defines which wall (left=0 / right = 1 / top = 2 / bottom = 3)
+	 * @param 	direction (left=0 / right = 1 / top = 2 / bottom = 3)
 	 * @return true if the Neigbour is a " " / false if the Neigbour is a U or B
 	 */
 	private boolean getPossibleNeigbour(int i) {
@@ -94,16 +84,13 @@ public class OwnSolvingAlgoCalcing {
 			UseLogger.LOGGER.info(logString);
 			return false;
 		}
-
 		return true;
-
 	}
 
 	/**
-	 * 
 	 * @return true if the solver reached the endCell, otherwise return false
 	 */
-	public boolean reachedTheEndCell() {
+	private boolean reachedTheEndCell() {
 		String logString = "current Cell = "
 				+ _maze.getPositionOfCell(_myCell)[0]
 				+ _maze.getPositionOfCell(_myCell)[1] + "     EndCell = "
@@ -117,10 +104,12 @@ public class OwnSolvingAlgoCalcing {
 			return true;
 		}
 		return false;
-
 	}
 
-	public boolean calc() {
+	/**
+	 * @return
+	 */
+	protected boolean calc() {
 		UseLogger.LOGGER.info("Calc von Zelle "
 				+ _maze.getPositionOfCell(_myCell)[0]
 				+ _maze.getPositionOfCell(_myCell)[1] + "aufgerufen...");
@@ -140,19 +129,18 @@ public class OwnSolvingAlgoCalcing {
 
 	}
 
-	public boolean calcnow() {
-
+	/**
+	 * @return
+	 */
+	private boolean calcnow() {
 		UseLogger.LOGGER.info("Moegliche Durchgang fuer Zelle "
 				+ _maze.getPositionOfCell(_myCell)[0]
 				+ _maze.getPositionOfCell(_myCell)[1] + " "
 				+ _directionPossible[0] + "  " + _directionPossible[1] + "  "
 				+ _directionPossible[2] + "  " + _directionPossible[3]);
-//		_globalConf.get_output()
-//				.printLine("Mein Status: " + _myCell.getState());
-
 		if (!_directionPossible[0] && !_directionPossible[1]
 				&& !_directionPossible[2] && !_directionPossible[3]) {
-			logString = "Kein Druchgang mšglich. Sorry.";
+			logString = "Kein Druchgang mï¿½glich. Sorry.";
 			UseLogger.LOGGER.info(logString);
 			//note: rows and columns are switched here!!!!
 			_globalConf.getGUI().setDot(_maze.getPositionOfCell(_myCell)[1], _maze.getPositionOfCell(_myCell)[0],"blue");
