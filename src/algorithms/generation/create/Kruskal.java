@@ -11,23 +11,26 @@ import labyrinth.Maze;
  */
 public class Kruskal extends ACreatingAlgorithms {
 
+	/**
+	 * @param maze
+	 */
 	public Kruskal(Maze maze) {
 		super(maze);
 	}
 
+	/* (non-Javadoc)
+	 * @see algorithms.generation.create.ICreatingAlgorithms#getName()
+	 */
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void defineStartandEndCell() {
-		// TODO Auto-generated method stub
-
-	}
-
+	/* (non-Javadoc)
+	 * @see algorithms.generation.create.ICreatingAlgorithms#createMaze()
+	 */
 	public void createMaze() {
 		// TODO Auto-generated method stub
 
 	}
-
 }

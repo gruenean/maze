@@ -4,6 +4,10 @@ import labyrinth.Cell;
 import labyrinth.Maze;
 import main.Conf;
 
+/**
+ * @author green
+ *
+ */
 abstract public class Algorithms implements IAlgorithms {
 
 	protected String _algoName;
@@ -27,16 +31,12 @@ abstract public class Algorithms implements IAlgorithms {
 	 */
 	public Algorithms(Maze maze) {
 		_maze = maze;
-		// _myOutput = _configs.get_output();
 	}
 
+	/**
+	 * @param sets the name of the algorithm
+	 */
 	public void setName(String name) {
 		_algoName = name;
 	}
-
-	public String getName() {
-		return _algoName;
-
-	}
-
 }

@@ -20,6 +20,9 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 		setName("<<eigener CreatingAlgo>>");
 	}
 
+	/* (non-Javadoc)
+	 * @see algorithms.generation.create.ICreatingAlgorithms#createMaze()
+	 */
 	public void createMaze() {
 		Cell randomCell;
 		Cell NeighbourCell;
@@ -50,4 +53,13 @@ public class ownCreatingAlgo extends ACreatingAlgorithms {
 			}
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see algorithms.generation.create.ICreatingAlgorithms#getName()
+	 */
+	@Override
+	public String getName() {
+		return "OWN";
+	}
+	
 }

@@ -8,7 +8,13 @@ package algorithms.generation.create;
  */
 public interface ICreatingAlgorithms {
 
+	/**
+	 * Creates the maze with the class' algorithm 
+	 */
 	public void createMaze();
 
+	/**
+	 * @return returns the algorithm's name
+	 */
 	public String getName();
 }
