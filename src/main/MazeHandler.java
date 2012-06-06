@@ -27,8 +27,8 @@ public class MazeHandler {
 	public MazeHandler(Conf globalConf) {
 		_globalConf = globalConf;
 		_globalConf.setMazeHandler(this);
-		_rows = 10;
-		_cols = 10;
+		_rows = 12;
+		_cols = 12;
 		_maze = new Maze(_rows, _cols, _globalConf);
 
 		/**
