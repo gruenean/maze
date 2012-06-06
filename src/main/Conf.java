@@ -48,32 +48,14 @@ public void setTime(int time){
 	public void set_output(IOutput output) {
 		this._output = output;
 	}
-
-	// TODO wird dies noch ben�tigt
-	public static int STEPS = 0;
-
+	
 	public static String LOGSTRING = null;
-
-	// public boolean STEPMODUS = false;
-
-	// public boolean isSTEPMODUS() {
-	// return STEPMODUS;
-	// }
-	//
-	// public void setSTEPMODUS(boolean sTEPMODUS) {
-	// STEPMODUS = sTEPMODUS;
-	// }
-
 	public boolean isStepModus() {
 		return _isStepModus;
 	}
 
 	public void setStepModus(boolean isStepModus) {
 		this._isStepModus = isStepModus;
-	}
-
-	public static void increseSteps() {
-		STEPS = STEPS + 1;
 	}
 
 	public void setUpLogger() {
@@ -89,7 +71,6 @@ public void setTime(int time){
 	}
 
 	public static String getWallName(int i) {
-
 		if (i == 0)
 			return "LEFT";
 		if (i == 1)
