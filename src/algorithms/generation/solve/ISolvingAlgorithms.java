@@ -4,6 +4,6 @@ public interface ISolvingAlgorithms {
 
 	public void resolveMaze();
 	
-	public String getCommand();
+	public String getName();
 
 }

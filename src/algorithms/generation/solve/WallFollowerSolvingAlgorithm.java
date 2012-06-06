@@ -220,7 +220,7 @@ public class WallFollowerSolvingAlgorithm extends ASolvingAlgorithms {
 	}
 
 	@Override
-	public String getCommand() {
+	public String getName() {
 		return "WALLFOLLOWER";
 	}
 

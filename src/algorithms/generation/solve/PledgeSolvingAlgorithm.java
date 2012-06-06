@@ -24,7 +24,7 @@ public class PledgeSolvingAlgorithm extends ASolvingAlgorithms {
 	}
 
 	@Override
-	public String getCommand() {
+	public String getName() {
 		return "PLEDGE";
 	}
 
