@@ -8,6 +8,7 @@ import java.util.Random;
 import labyrinth.Cell;
 import labyrinth.Maze;
 import algorithms.generation.create.ACreatingAlgorithms;
+import algorithms.generation.create.ICreatingAlgorithms;
 import algorithms.generation.create.ownCreatingAlgo;
 import algorithms.generation.solve.ASolvingAlgorithms;
 import algorithms.generation.solve.ISolvingAlgorithms;
@@ -62,42 +63,39 @@ public class MazeHandler {
 
 	}
 
-	public void createMaze() {
-		ACreatingAlgorithms _mycreatingAlgo = chooseOneRandomCreatingAlgo();
-
-		/**
-		 * creates all possibles Algorithms
-		 */
-		_mycreatingAlgo.createMaze();
-		
-		//Set and draw Entrance / Exit
-		_maze.createEntranceAndExit();
-		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
-		_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
-		
-		_globalConf.get_output().printLine(" ");
-		_maze.printAsciiMaze();
-		_globalConf.get_output().printLine(
-				"\n Das Labyrinth wurde mit dem " + _mycreatingAlgo.getName()
+	public void createMaze(String creatingAlgoName) {
+		for (ICreatingAlgorithms creatingAlgo : _possiblesCreatingAlgos) {
+			if (creatingAlgo.getName().equals(creatingAlgoName)) {
+				System.out.println(creatingAlgo.getName());
+				creatingAlgo.createMaze();
+				
+				//Set and draw Entrance / Exit
+				_maze.createEntranceAndExit();
+				_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getStartCell()));
+				_globalConf.getGUI().removeWall(_maze.getPositionOfCell(_maze.getEndCell()));
+				
+				_globalConf.get_output().printLine(" ");
+				_maze.printAsciiMaze();
+				_globalConf.get_output().printLine("\n Das Labyrinth wurde mit dem " + creatingAlgo.getName()
 						+ " erstellt... \n\n\n");
-
+			}
+		}
 	}
 
 	public Maze getMaze() {
 		return _maze;
 	}
 
+	/**
+	 * @param solvingAlgoName
+	 */
 	public void solveMaze(String solvingAlgoName) {
-
 		for (ISolvingAlgorithms solvingAlgo : _possiblesSolvingAlgos) {
-			if (solvingAlgo.getCommand().equals(solvingAlgoName)) {
-				System.out.println(solvingAlgo.getCommand());
+			if (solvingAlgo.getName().equals(solvingAlgoName)) {
+				System.out.println(solvingAlgo.getName());
 				solvingAlgo.resolveMaze();
-				System.out.println("test");
 			}
 		}
-		// TODO this is in TESING MODE
-
 	}
 
 	/**
@@ -130,8 +128,6 @@ public class MazeHandler {
 			_globalConf.getGUI().setWall(
 					_maze.getPositionOfCell(allWalls.get(i))[0],
 					_maze.getPositionOfCell(allWalls.get(i))[1]);
-
 		}
-
 	}
 }
