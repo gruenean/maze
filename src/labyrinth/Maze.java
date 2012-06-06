@@ -33,6 +33,7 @@ public class Maze {
 	 * TODO: still used?
 	 * @return
 	 */
+	@Deprecated
 	public int[] getLastPosition() {
 		int[] temp = { _rows, _cols };
 		return temp;

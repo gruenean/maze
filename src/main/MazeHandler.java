@@ -24,6 +24,11 @@ public class MazeHandler {
 	private Maze _maze;
 	private Conf _globalConf;
 
+	/**
+	 * Maze handler - holds the whole thing together :)
+	 * 
+	 * @param globalConf reference to the global configuration
+	 */
 	public MazeHandler(Conf globalConf) {
 		_globalConf = globalConf;
 		_globalConf.setMazeHandler(this);
@@ -31,16 +36,13 @@ public class MazeHandler {
 		_cols = 12;
 		_maze = new Maze(_rows, _cols, _globalConf);
 
-		/**
-		 * set _rows, _cols and _endCell new
-		 */
-		_rows = _maze.getLastPosition()[0];
-		_cols = _maze.getLastPosition()[1];
-
 		createNewGui();
 		createAlgos();
 	}
 
+	/**
+	 * all available algorithms should be added to these arrays. 
+	 */
 	private void createAlgos() {
 		_possiblesCreatingAlgos = new ACreatingAlgorithms[] { new ownCreatingAlgo(
 				_maze, _globalConf) };
@@ -51,7 +53,10 @@ public class MazeHandler {
 						_maze.getEndCell(), _globalConf) };
 	}
 
-	public void createNewGui() {
+	/**
+	 * starts up the graphical user interface
+	 */
+	private void createNewGui() {
 
 		if (_globalConf.getGUI() != null)
 			_globalConf.getGUI().hide();
@@ -63,6 +68,11 @@ public class MazeHandler {
 
 	}
 
+	/**
+	 * Create a maze with the selected generation algorithm
+	 * 
+	 * @param creatingAlgoName name of the selected generation algorithm
+	 */
 	public void createMaze(String creatingAlgoName) {
 		for (ICreatingAlgorithms creatingAlgo : _possiblesCreatingAlgos) {
 			if (creatingAlgo.getName().equals(creatingAlgoName)) {
@@ -81,12 +91,10 @@ public class MazeHandler {
 		}
 	}
 
-	public Maze getMaze() {
-		return _maze;
-	}
-
 	/**
-	 * @param solvingAlgoName
+	 * Solve a maze with the selected resolution algorithm
+	 * 
+	 * @param solvingAlgoName name of the selected resolution algorithm
 	 */
 	public void solveMaze(String solvingAlgoName) {
 		for (ISolvingAlgorithms solvingAlgo : _possiblesSolvingAlgos) {
@@ -97,20 +105,22 @@ public class MazeHandler {
 	}
 
 	/**
+	 * Chooses a creating algorithm randomly
 	 * 
 	 * @return gives a Random Creating Algorithms (off all possibles)
 	 */
-	public ACreatingAlgorithms chooseOneRandomCreatingAlgo() {
+	protected ACreatingAlgorithms chooseOneRandomCreatingAlgo() {
 		return _possiblesCreatingAlgos[new Random()
 				.nextInt(_possiblesCreatingAlgos.length)];
 
 	}
 
 	/**
+	 * Chooses a solving algorithm randomly
 	 * 
 	 * @return gives a Random Solving Algorithms (off all possibles)
 	 */
-	public ASolvingAlgorithms chooseOneRandomSolvingAlgo() {
+	protected ASolvingAlgorithms chooseOneRandomSolvingAlgo() {
 		return _possiblesSolvingAlgos[new Random()
 				.nextInt(_possiblesSolvingAlgos.length)];
 

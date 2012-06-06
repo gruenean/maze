@@ -15,28 +15,22 @@ public class MyLogger {
 	static private Formatter formatterHTML;
 
 	/**
-	 * Creates the logger itslef
+	 * Creates the logger itself
 	 * @throws IOException
 	 */
 	static public void setup() throws IOException {
-		/**
-		 *  Create Logger
-		 */
+		 // Create Logger
 		Logger logger = Logger.getLogger("");
 		logger.setLevel(Level.ALL);
 		fileTxt = new FileHandler("Logging.txt");
 		fileHTML = new FileHandler("Logging.html");
-
-		/**
-		 *  Create txt Formatter
-		 */
+		 
+		// Create txt Formatter
 		formatterTxt = new SimpleFormatter();
 		fileTxt.setFormatter(formatterTxt);
 		logger.addHandler(fileTxt);
 
-		/**
-		 *  Create HTML Formatter
-		 */
+		 // Create HTML Formatter
 		formatterHTML = new MyHtmlFormatter();
 		fileHTML.setFormatter(formatterHTML);
 		logger.addHandler(fileHTML);
