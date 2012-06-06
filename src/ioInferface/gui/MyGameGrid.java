@@ -13,7 +13,7 @@ public class MyGameGrid extends GameGrid {
 	private Conf _globalConf;
 
 	public MyGameGrid(int rows, int cols, Conf globalConf) {
-		super(rows, cols, 30, Color.black,
+		super(rows, cols, 22, Color.black,
 				"sprites/white_background_601x601.png", false);
 		this._globalConf = globalConf;
 

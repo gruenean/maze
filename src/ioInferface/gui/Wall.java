@@ -13,7 +13,7 @@ import ch.aplu.jgamegrid.Actor;
 class Wall extends Actor {
 
 	public Wall() {
-		super(true, "sprites/black_background.png");
+		super(true, "sprites/black_background_22.png");
 		this.setCollisionImage();
 	}
 }
