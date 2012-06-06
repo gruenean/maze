@@ -12,9 +12,7 @@ class LittleBug extends Actor implements GGKeyListener {
 	private Conf _globalConf = null;
 	
 	public LittleBug(Conf globalConf) {
-		//super(true, "sprites/smallbug.gif");
 		super(true, "sprites/smallbug.gif");
-		
 		_globalConf = globalConf;
 	}
 
@@ -62,6 +60,9 @@ class LittleBug extends Actor implements GGKeyListener {
 		return true;
 	}
 
+	/**
+	 * check whether there is an actor in front of us (e.g. a wall) 
+	 */
 	private void canIgoOn() {
 		/**
 		 * get the actor of the cell you want to move to
@@ -80,8 +81,4 @@ class LittleBug extends Actor implements GGKeyListener {
 		} else
 			setHorzMirror(!isHorzMirror());
 	}
-
-//	public void reset() {
-//		setHorzMirror(false);
-//	}
 }
