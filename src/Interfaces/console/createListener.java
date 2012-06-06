@@ -4,15 +4,17 @@ import main.Conf;
 import main.MazeHandler;
 
 public class createListener extends AConsoleListener {
-
 	private MazeHandler _mymaze;
 
 	public createListener(Conf globalConf, MazeHandler mymaze) {
 		super(globalConf);
 		_mymaze = mymaze;
-
 	}
 
+	/* (non-Javadoc)
+	 * @see Interfaces.console.IConsoleListener#startListening(java.lang.String[])
+	 */
+	@Override
 	public void startListening(String[] input) {
 		goingon = true;
 		stringArray = input;
@@ -27,7 +29,6 @@ public class createListener extends AConsoleListener {
 
 			if (stringArray[0].equals(ConsoleCommands.OWN)){ 
 				_mymaze.createMaze(ConsoleCommands.OWN);
-				System.out.println("1st string array = " + stringArray[0]);
 				reinitializeStringArray();
 				stringArray = new String[] {"QUIT"};
 				goingon = false;	
@@ -37,7 +38,6 @@ public class createListener extends AConsoleListener {
 			else if (stringArray[0].equals(ConsoleCommands.HELP)
 					|| stringArray.length == 0)
 				getHelp();
-
 			else
 				getHelp();
 			
@@ -46,6 +46,9 @@ public class createListener extends AConsoleListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see Interfaces.console.IConsoleListener#getHelp()
+	 */
 	@Override
 	public void getHelp() {
 		if (inputString.isEmpty()
@@ -63,6 +66,9 @@ public class createListener extends AConsoleListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see Interfaces.console.IConsoleListener#getCommand()
+	 */
 	@Override
 	public String getCommand() {
 		return "CREATE";
