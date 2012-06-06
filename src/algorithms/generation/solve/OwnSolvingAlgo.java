@@ -43,7 +43,7 @@ public class OwnSolvingAlgo extends ASolvingAlgorithms {
 	}
 	
 	@Override
-	public String getCommand() {
+	public String getName() {
 		return "OWN";
 	}
 }
